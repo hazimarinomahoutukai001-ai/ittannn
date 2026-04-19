@@ -10,9 +10,10 @@ import { siteConfig, menuItems, newsItems, memoryItems, staffList, galleryItems,
 const softFont = Zen_Maru_Gothic({ weight: ['400', '500', '700'], subsets: ['latin'] });
 const cleanFont = Noto_Sans_JP({ weight: ['400', '500', '700', '900'], subsets: ['latin'] });
 
-const elegantTransition = { duration: 0.8, ease: "easeOut" };
-const pageTransition = { duration: 0.5, ease: "easeOut" };
-const fadeInVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
+// エラーの原因だった ease を完全に削除しました！
+const elegantTransition = { duration: 0.8 };
+const pageTransition = { duration: 0.5 };
+const fadeInVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -20,7 +21,7 @@ const staggerContainer = {
 };
 const staggerItem = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
 };
 
 const swipeConfidenceThreshold = 10000;
@@ -44,16 +45,14 @@ export default function UltimateCommunitySite() {
   const parallaxX = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
   const parallaxAbout = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
-  // 🌟 3D空間動画用の定数と生成ロジック
-  const videoCount = 20; // 動画の数
-  const sphereRadius = useMemo(() => typeof window !== 'undefined' ? window.innerWidth * 0.4 : 500, []); // 球体の半径
-  const placeholderVideoUrl = "https://www.w3schools.com/html/mov_bbb.mp4"; // プレースホルダー動画URL
+  const videoCount = 20; 
+  const sphereRadius = useMemo(() => typeof window !== 'undefined' ? window.innerWidth * 0.4 : 500, []); 
+  const placeholderVideoUrl = "https://www.w3schools.com/html/mov_bbb.mp4"; 
 
-  // 🌟 動画の位置と角度を計算
   const sphereVideos = useMemo(() => {
     return Array.from({ length: videoCount }).map((_, idx) => {
-      const phi = Math.acos(-1 + (2 * idx) / videoCount); // 仰角
-      const theta = Math.sqrt(videoCount * Math.PI) * phi; // 水平角度
+      const phi = Math.acos(-1 + (2 * idx) / videoCount); 
+      const theta = Math.sqrt(videoCount * Math.PI) * phi; 
 
       const x = sphereRadius * Math.sin(phi) * Math.cos(theta);
       const y = sphereRadius * Math.sin(phi) * Math.sin(theta);
@@ -63,7 +62,6 @@ export default function UltimateCommunitySite() {
     });
   }, [videoCount, sphereRadius]);
 
-  // 🌟 線グラフィックの生成ロジック
   const sphereLines = useMemo(() => {
     return Array.from({ length: 8 }).map((_, idx) => {
       const angle = (idx / 8) * 2 * Math.PI;
@@ -200,7 +198,6 @@ export default function UltimateCommunitySite() {
                     <div className="absolute bottom-0 left-[10%] w-[50px] h-[150%] bg-gradient-to-t from-blue-200/20 to-transparent rotate-[30deg] origin-bottom" />
                   </div>
 
-                  {/* 🌟 集合写真の背後に3D動画球体を追加 */}
                   <motion.div
                     className="absolute inset-0 z-10 pointer-events-none overflow-hidden"
                     style={{ perspective: '2000px' }}
@@ -211,7 +208,6 @@ export default function UltimateCommunitySite() {
                       animate={{ rotateY: 360 }}
                       transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
                     >
-                      {/* 球体動画要素 */}
                       {sphereVideos.map((video, idx) => (
                         <motion.div
                           key={`video-${idx}`}
@@ -235,7 +231,6 @@ export default function UltimateCommunitySite() {
                         </motion.div>
                       ))}
 
-                      {/* 線グラフィック */}
                       {sphereLines.map((line, idx) => (
                         <motion.div
                           key={`line-${idx}`}
@@ -251,13 +246,13 @@ export default function UltimateCommunitySite() {
                     </motion.div>
                   </motion.div>
                   
-                  <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4, ease: "easeOut" }} className="relative z-30 w-full max-w-7xl mx-auto flex flex-col items-center h-full pt-10">
+                  <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }} className="relative z-30 w-full max-w-7xl mx-auto flex flex-col items-center h-full pt-10">
                     
                     {collectiveData && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 50 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
+                        transition={{ delay: 0.4, duration: 1 }}
                         className={`absolute inset-x-0 bottom-0 pb-16 md:pb-24 z-10 flex justify-center items-end pointer-events-none w-full`}
                       >
                         <motion.img 
@@ -329,7 +324,7 @@ export default function UltimateCommunitySite() {
                         <motion.div
                           key={item.id || idx}
                           animate={{ x: `${xPosition}%`, scale: scale, opacity: opacity, zIndex: zIndex }}
-                          transition={{ duration: 0.6, ease: "easeOut" }}
+                          transition={{ duration: 0.6 }}
                           drag={isCenter ? "x" : false}
                           dragConstraints={{ left: 0, right: 0 }}
                           dragElastic={1}
@@ -651,7 +646,7 @@ export default function UltimateCommunitySite() {
                         initial={{ opacity: 0, y: 20, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.98 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        transition={{ duration: 0.5 }}
                         className="relative w-full max-w-6xl mx-auto"
                       >
                         {staffList[selectedIndex]?.id === 'collective' ? (
@@ -776,7 +771,7 @@ export default function UltimateCommunitySite() {
                     {galleryItems.map((item) => (
                       <motion.div variants={staggerItem} key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 overflow-hidden group transition-all duration-500">
                         <div className="h-64 bg-slate-50 relative overflow-hidden">
-                          <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" alt={item.title} />
+                          <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-[0.22,1,0.36,1]" alt={item.title} />
                           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-bold text-slate-700 tracking-widest uppercase shadow-sm">{item.category}</div>
                         </div>
                         <div className="p-8">
