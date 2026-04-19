@@ -10,9 +10,9 @@ import { siteConfig, menuItems, newsItems, memoryItems, staffList, galleryItems,
 const softFont = Zen_Maru_Gothic({ weight: ['400', '500', '700'], subsets: ['latin'] });
 const cleanFont = Noto_Sans_JP({ weight: ['400', '500', '700', '900'], subsets: ['latin'] });
 
-const elegantTransition = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
-const pageTransition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
-const fadeInVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } };
+const elegantTransition = { duration: 0.8, ease: "easeOut" };
+const pageTransition = { duration: 0.5, ease: "easeOut" };
+const fadeInVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -20,7 +20,7 @@ const staggerContainer = {
 };
 const staggerItem = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
 };
 
 const swipeConfidenceThreshold = 10000;
@@ -170,7 +170,7 @@ export default function UltimateCommunitySite() {
                       <motion.button variants={staggerItem} onClick={() => switchPage(item.id)} className={`group relative block w-full text-lg md:text-xl tracking-widest font-bold transition-colors duration-500 text-left ${cleanFont.className} ${activePage === item.id ? 'text-blue-500' : 'text-slate-600 hover:text-blue-500'}`}>
                         {item.label}
                         <span className="relative block h-[2px] w-full bg-transparent mt-3 overflow-hidden">
-                          <span className={`absolute inset-0 bg-blue-500 transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${activePage === item.id ? 'translate-x-0' : '-translate-x-[101%] group-hover:translate-x-0'}`} />
+                          <span className={`absolute inset-0 bg-blue-500 transition-transform duration-[600ms] ease-out ${activePage === item.id ? 'translate-x-0' : '-translate-x-[101%] group-hover:translate-x-0'}`} />
                         </span>
                       </motion.button>
                     </div>
@@ -251,13 +251,13 @@ export default function UltimateCommunitySite() {
                     </motion.div>
                   </motion.div>
                   
-                  <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }} className="relative z-30 w-full max-w-7xl mx-auto flex flex-col items-center h-full pt-10">
+                  <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4, ease: "easeOut" }} className="relative z-30 w-full max-w-7xl mx-auto flex flex-col items-center h-full pt-10">
                     
                     {collectiveData && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 50 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ delay: 0.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
                         className={`absolute inset-x-0 bottom-0 pb-16 md:pb-24 z-10 flex justify-center items-end pointer-events-none w-full`}
                       >
                         <motion.img 
@@ -329,7 +329,7 @@ export default function UltimateCommunitySite() {
                         <motion.div
                           key={item.id || idx}
                           animate={{ x: `${xPosition}%`, scale: scale, opacity: opacity, zIndex: zIndex }}
-                          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{ duration: 0.6, ease: "easeOut" }}
                           drag={isCenter ? "x" : false}
                           dragConstraints={{ left: 0, right: 0 }}
                           dragElastic={1}
@@ -651,7 +651,7 @@ export default function UltimateCommunitySite() {
                         initial={{ opacity: 0, y: 20, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.98 }}
-                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
                         className="relative w-full max-w-6xl mx-auto"
                       >
                         {staffList[selectedIndex]?.id === 'collective' ? (
@@ -776,7 +776,7 @@ export default function UltimateCommunitySite() {
                     {galleryItems.map((item) => (
                       <motion.div variants={staggerItem} key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 overflow-hidden group transition-all duration-500">
                         <div className="h-64 bg-slate-50 relative overflow-hidden">
-                          <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-[0.22,1,0.36,1]" alt={item.title} />
+                          <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" alt={item.title} />
                           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-bold text-slate-700 tracking-widest uppercase shadow-sm">{item.category}</div>
                         </div>
                         <div className="p-8">
