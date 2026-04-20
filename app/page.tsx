@@ -496,7 +496,7 @@ export default function UltimateCommunitySite() {
                        
                        <div className="mb-4 relative w-full">
                          <span className={`text-[4.5rem] md:text-[6.5rem] font-black text-slate-300 leading-none tracking-tighter uppercase absolute -top-8 md:-top-12 -left-2 md:-left-4 pointer-events-none select-none opacity-80 ${cleanFont.className}`}>ABOUT</span>
-                         <h2 className={`text-3xl md:text-5xl font-black text-slate-900 mb-2 tracking-tight uppercase relative z-10 ${cleanFont.className}`}>「TSC」とは？</h2>
+                         <h2 className={`text-3xl md:text-5xl font-black text-slate-900 mb-2 tracking-tight uppercase relative z-10 ${cleanFont.className}`}>管理者・サブ管理人</h2>
                        </div>
 
                        <div className="w-full mb-8 relative z-10">
