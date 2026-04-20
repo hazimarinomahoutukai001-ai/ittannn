@@ -95,6 +95,14 @@ export const staffList = [
     customPosition: 'translate-y-4',
   },
   {
+    id: 'sub_admin_7',
+    name: 'しいな',
+    role: 'サブ管理人',
+    image: '/ittannn/あるう様立ち絵.png',
+    profile: '本人に考えてもらいます',
+  },
+
+  {
     id: 'sub_admin_3',
     name: 'がいくま',
     role: 'サブ管理人',
@@ -123,13 +131,7 @@ export const staffList = [
     image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
-  {
-    id: 'sub_admin_7',
-    name: 'あるぅ',
-    role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
-    profile: '本人に考えてもらいます',
-  },
+ 
   {
     id: 'sub_admin_8',
     name: 'つゆりひお',
