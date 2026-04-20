@@ -10,16 +10,18 @@ import { siteConfig, menuItems, newsItems, memoryItems, staffList, galleryItems,
 const softFont = Zen_Maru_Gothic({ weight: ['400', '500', '700'], subsets: ['latin'] });
 const cleanFont = Noto_Sans_JP({ weight: ['400', '500', '700', '900'], subsets: ['latin'] });
 
-// 🌟 ここがエラーの原因だった箇所です！バッチリ修正済みです！
+// 🌟 先ほど修正した部分
 const menuBgTransition = { duration: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
 const menuStaggerContainer = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
 };
+
+// 🌟 今回エラーになった部分（as const を付けて完全に修正済みです！）
 const menuStaggerItem = {
   hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } }
+  visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" as const } }
 };
 
 const pageTransition = { duration: 0.5 };
