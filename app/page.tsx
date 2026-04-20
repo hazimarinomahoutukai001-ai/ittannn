@@ -5,13 +5,14 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { Zen_Maru_Gothic, Noto_Sans_JP } from 'next/font/google';
 import { Menu, X, ChevronLeft, ChevronRight, ChevronDown, ShieldCheck, PlayCircle, Plus, Minus, Globe, Zap, CheckCircle2, Heart, ArrowRight, Mail, Users, Trophy, Video, Building2, BadgePercent, Handshake } from 'lucide-react';
 
-// 🌟 1つにまとまった articleItems だけを読み込むように修正しました！
 import { siteConfig, menuItems, newsItems, memoryItems, staffList, galleryItems, faqList, guidelineList, sponsorData, floatingMemories, articleItems } from './data';
 
 const softFont = Zen_Maru_Gothic({ weight: ['400', '500', '700'], subsets: ['latin'] });
 const cleanFont = Noto_Sans_JP({ weight: ['400', '500', '700', '900'], subsets: ['latin'] });
 
-const menuBgTransition = { duration: 0.3, ease: [0.22, 1, 0.36, 1] };
+// 🌟 ここがエラーの原因だった箇所です！バッチリ修正済みです！
+const menuBgTransition = { duration: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
+
 const menuStaggerContainer = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
@@ -656,7 +657,6 @@ export default function UltimateCommunitySite() {
 
             {/* 🌟 記事の詳細ページ（器） */}
             {activePage === 'article' && (() => {
-              // 👇 ここを修正！単純に1つの articleItems から探すようにしました！
               const article = articleItems.find(a => a.id === activeArticleId);
 
               if (!article) return <div className="pt-40 text-center font-bold text-slate-500 h-screen">記事が見つかりませんでした。</div>;
