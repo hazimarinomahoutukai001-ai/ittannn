@@ -3,15 +3,24 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Zen_Maru_Gothic, Noto_Sans_JP } from 'next/font/google';
-import { Menu, X, ChevronLeft, ChevronRight, ChevronDown, ShieldCheck, PlayCircle, Plus, Minus, Globe, Zap, CheckCircle2, Heart, ArrowRight, Mail, Users, Trophy, Video } from 'lucide-react';
+import { Menu, X, ChevronLeft, ChevronRight, ChevronDown, ShieldCheck, PlayCircle, Plus, Minus, Globe, Zap, CheckCircle2, Heart, ArrowRight, Mail, Users, Trophy, Video, Building2, BadgePercent, Handshake } from 'lucide-react';
 
-import { siteConfig, menuItems, newsItems, memoryItems, staffList, galleryItems, faqList, guidelineList } from './data';
+// 🌟 1つにまとまった articleItems だけを読み込むように修正しました！
+import { siteConfig, menuItems, newsItems, memoryItems, staffList, galleryItems, faqList, guidelineList, sponsorData, floatingMemories, articleItems } from './data';
 
 const softFont = Zen_Maru_Gothic({ weight: ['400', '500', '700'], subsets: ['latin'] });
 const cleanFont = Noto_Sans_JP({ weight: ['400', '500', '700', '900'], subsets: ['latin'] });
 
-// エラーの原因だった ease を完全に削除しました！
-const elegantTransition = { duration: 0.8 };
+const menuBgTransition = { duration: 0.3, ease: [0.22, 1, 0.36, 1] };
+const menuStaggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
+};
+const menuStaggerItem = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } }
+};
+
 const pageTransition = { duration: 0.5 };
 const fadeInVariant = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } };
 
@@ -35,6 +44,8 @@ export default function UltimateCommunitySite() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activePage, setActivePage] = useState('home');
+  
+  const [activeArticleId, setActiveArticleId] = useState<string | null>(null);
 
   const [memoryIndex, setMemoryIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -45,31 +56,18 @@ export default function UltimateCommunitySite() {
   const parallaxX = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
   const parallaxAbout = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
-  const videoCount = 20; 
-  const sphereRadius = useMemo(() => typeof window !== 'undefined' ? window.innerWidth * 0.4 : 500, []); 
-  const placeholderVideoUrl = "https://www.w3schools.com/html/mov_bbb.mp4"; 
-
-  const sphereVideos = useMemo(() => {
-    return Array.from({ length: videoCount }).map((_, idx) => {
-      const phi = Math.acos(-1 + (2 * idx) / videoCount); 
-      const theta = Math.sqrt(videoCount * Math.PI) * phi; 
-
-      const x = sphereRadius * Math.sin(phi) * Math.cos(theta);
-      const y = sphereRadius * Math.sin(phi) * Math.sin(theta);
-      const z = sphereRadius * Math.cos(phi);
-
-      return { x, y, z, phi, theta };
+  const marqueeMembers = useMemo(() => {
+    const individuals = staffList.filter(s => s.id !== 'collective');
+    return Array.from({ length: 12 }).map((_, idx) => {
+      const baseMember = individuals[idx % individuals.length];
+      return {
+        ...baseMember,
+        uniqueKey: `marquee-${idx}`,
+        displayName: idx === 0 ? 'ヒロキング' : `SUB_ADMIN_${String(idx).padStart(2, '0')}`,
+        roleName: idx === 0 ? 'ADMIN' : 'SUB-ADMIN'
+      };
     });
-  }, [videoCount, sphereRadius]);
-
-  const sphereLines = useMemo(() => {
-    return Array.from({ length: 8 }).map((_, idx) => {
-      const angle = (idx / 8) * 2 * Math.PI;
-      const x = sphereRadius * Math.cos(angle);
-      const z = sphereRadius * Math.sin(angle);
-      return { x, z, angle };
-    });
-  }, [sphereRadius]);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1200);
@@ -97,6 +95,12 @@ export default function UltimateCommunitySite() {
   const switchPage = (pageName: string) => {
     setActivePage(pageName);
     setIsMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openArticle = (articleId: string) => {
+    setActiveArticleId(articleId);
+    setActivePage('article');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -161,11 +165,11 @@ export default function UltimateCommunitySite() {
         <AnimatePresence>
           {isMenuOpen && (
             <>
-              <motion.div initial={{ x: '-100%', opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: '-100%', opacity: 0 }} transition={elegantTransition} className="fixed inset-y-0 left-0 z-[90] bg-white/95 backdrop-blur-2xl w-full md:w-[450px] border-r border-slate-200 px-12 pt-36 pb-12 overflow-y-auto flex flex-col shadow-[20px_0_60px_-15px_rgba(0,0,0,0.05)]">
-                <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="space-y-8 mt-auto mb-auto">
+              <motion.div initial={{ x: '-100%', opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: '-100%', opacity: 0 }} transition={menuBgTransition} className="fixed inset-y-0 left-0 z-[90] bg-white/95 backdrop-blur-2xl w-full md:w-[450px] border-r border-slate-200 px-12 pt-36 pb-12 overflow-y-auto flex flex-col shadow-[20px_0_60px_-15px_rgba(0,0,0,0.05)]">
+                <motion.div variants={menuStaggerContainer} initial="hidden" animate="visible" className="space-y-8 mt-auto mb-auto">
                   {menuItems.map((item) => (
                     <div key={item.id} className="overflow-hidden py-1">
-                      <motion.button variants={staggerItem} onClick={() => switchPage(item.id)} className={`group relative block w-full text-lg md:text-xl tracking-widest font-bold transition-colors duration-500 text-left ${cleanFont.className} ${activePage === item.id ? 'text-blue-500' : 'text-slate-600 hover:text-blue-500'}`}>
+                      <motion.button variants={menuStaggerItem} onClick={() => switchPage(item.id)} className={`group relative block w-full text-lg md:text-xl tracking-widest font-bold transition-colors duration-500 text-left ${cleanFont.className} ${activePage === item.id ? 'text-blue-500' : 'text-slate-600 hover:text-blue-500'}`}>
                         {item.label}
                         <span className="relative block h-[2px] w-full bg-transparent mt-3 overflow-hidden">
                           <span className={`absolute inset-0 bg-blue-500 transition-transform duration-[600ms] ease-out ${activePage === item.id ? 'translate-x-0' : '-translate-x-[101%] group-hover:translate-x-0'}`} />
@@ -175,7 +179,7 @@ export default function UltimateCommunitySite() {
                   ))}
                 </motion.div>
               </motion.div>
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} className="fixed inset-0 z-[80] bg-slate-900/20 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 z-[80] bg-slate-900/20 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
             </>
           )}
         </AnimatePresence>
@@ -198,56 +202,51 @@ export default function UltimateCommunitySite() {
                     <div className="absolute bottom-0 left-[10%] w-[50px] h-[150%] bg-gradient-to-t from-blue-200/20 to-transparent rotate-[30deg] origin-bottom" />
                   </div>
 
-                  <motion.div
-                    className="absolute inset-0 z-10 pointer-events-none overflow-hidden"
-                    style={{ perspective: '2000px' }}
-                  >
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center"
-                      style={{ transformStyle: 'preserve-3d' }}
-                      animate={{ rotateY: 360 }}
-                      transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-                    >
-                      {sphereVideos.map((video, idx) => (
-                        <motion.div
-                          key={`video-${idx}`}
-                          className="absolute w-24 h-24 border-2 border-blue-500/30 rounded-lg overflow-hidden shadow-lg bg-black/50"
-                          style={{
-                            x: video.x,
-                            y: video.y,
-                            z: video.z,
-                            rotateY: `${(video.theta / Math.PI) * 180}deg`,
-                            rotateX: `${((video.phi - Math.PI / 2) / Math.PI) * 180}deg`,
-                            transformStyle: 'preserve-3d',
-                          }}
-                        >
-                          <video
-                            src={placeholderVideoUrl}
-                            autoPlay
-                            loop
-                            muted
-                            className="w-full h-full object-cover"
+                  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+                    {floatingMemories.map((item) => (
+                      <motion.div
+                        key={`float-media-${item.id}`}
+                        className="absolute w-48 h-32 md:w-64 md:h-40 border-2 border-slate-200/50 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.1)] bg-white/50 backdrop-blur-sm"
+                        style={{
+                          top: item.top,
+                          scale: item.scale,
+                          opacity: item.opacity,
+                          left: 0,
+                        }}
+                        animate={{
+                          x: item.dir === 1 ? ['-50vw', '150vw'] : ['150vw', '-50vw'],
+                          y: [0, 15, 0]
+                        }}
+                        transition={{
+                          x: { duration: item.duration, repeat: Infinity, ease: "linear", delay: item.delay },
+                          y: { duration: 6 + item.id, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                      >
+                        {item.type === 'image' ? (
+                          <img 
+                            src={item.src} 
+                            alt="Floating Memory" 
+                            className="w-full h-full object-cover pointer-events-none select-none opacity-90"
                           />
-                        </motion.div>
-                      ))}
-
-                      {sphereLines.map((line, idx) => (
-                        <motion.div
-                          key={`line-${idx}`}
-                          className="absolute h-px bg-blue-400/20"
-                          style={{
-                            x: line.x - sphereRadius,
-                            z: line.z,
-                            width: sphereRadius * 2,
-                            rotateY: `${(line.angle / Math.PI) * 180}deg`,
-                          }}
-                        />
-                      ))}
-                    </motion.div>
-                  </motion.div>
+                        ) : (
+                          <div className="w-full h-full relative opacity-90">
+                            <iframe 
+                              width="100%" 
+                              height="100%" 
+                              src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${item.youtubeId}`} 
+                              frameBorder="0" 
+                              allow="autoplay; encrypted-media" 
+                              className="w-full h-full pointer-events-none scale-[1.35]"
+                              tabIndex={-1}
+                            ></iframe>
+                            <div className="absolute inset-0 z-10 bg-transparent" />
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
                   
-                  <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }} className="relative z-30 w-full max-w-7xl mx-auto flex flex-col items-center h-full pt-10">
-                    
+                  <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }} className="relative z-30 w-full max-w-7xl mx-auto flex flex-col items-center h-full pt-10 pointer-events-none">
                     {collectiveData && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 50 }}
@@ -260,7 +259,7 @@ export default function UltimateCommunitySite() {
                           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                           src={collectiveData.image} 
                           alt="Collective Photograph" 
-                          className={`w-[120%] sm:w-[110%] md:w-full max-w-none object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)]`}
+                          className={`w-[120%] sm:w-[110%] md:w-full max-w-none object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.2)] pointer-events-none select-none`}
                         />
                       </motion.div>
                     )}
@@ -392,6 +391,35 @@ export default function UltimateCommunitySite() {
                         }`}
                       />
                     ))}
+                  </div>
+                </section>
+
+                <section className="py-16 bg-[#FAFAFA] border-t border-slate-200/50 overflow-hidden flex flex-col items-center justify-center relative">
+                  <div className="mb-10 flex flex-col items-center z-10">
+                    <p className="text-blue-500 font-bold text-[10px] tracking-[0.4em] uppercase mb-2">Our Staffs</p>
+                    <h3 className={`text-xl md:text-2xl font-black text-slate-800 tracking-wider ${cleanFont.className}`}>総勢12名の運営チーム</h3>
+                  </div>
+
+                  <div className="w-full flex overflow-hidden group px-0">
+                    <motion.div
+                      className="flex gap-8 md:gap-12 px-4 md:px-6 w-max"
+                      animate={{ x: ["-50%", "0%"] }} 
+                      transition={{ ease: "linear", duration: 180, repeat: Infinity }} 
+                    >
+                      {[...marqueeMembers, ...marqueeMembers].map((member, idx) => (
+                        <div 
+                          key={`marquee-item-${idx}`} 
+                          className="w-[70vw] h-[50vh] sm:w-[45vw] sm:h-[40vh] md:w-[30vw] md:h-[45vh] lg:w-[25vw] lg:h-[55vh] shrink-0 bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-md relative transition-all duration-500 group-hover:opacity-50 hover:!opacity-100 hover:scale-105 hover:shadow-2xl cursor-pointer hover:z-20"
+                          onClick={() => switchPage('profile')} 
+                        >
+                          <img src={member.image} alt={member.displayName} className="w-full h-full object-cover" />
+                          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent p-6 flex flex-col justify-end h-1/2">
+                             <span className="text-[10px] md:text-xs font-black text-blue-400 tracking-widest uppercase mb-1 drop-shadow-md">{member.roleName}</span>
+                             <span className="text-lg md:text-2xl font-bold text-white truncate drop-shadow-md">{member.displayName}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </motion.div>
                   </div>
                 </section>
 
@@ -543,10 +571,169 @@ export default function UltimateCommunitySite() {
                   </div>
                 </section>
 
+                <section className="py-32 px-6 bg-[#FAFAFA] border-t border-slate-100 relative overflow-hidden">
+                  <div className="max-w-5xl mx-auto text-center relative z-10">
+                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} variants={fadeInVariant} className="mb-16">
+                        <p className="text-blue-500 font-bold text-[11px] tracking-[0.4em] uppercase mb-4">{sponsorData.headerTitle}</p>
+                        <h2 className={`text-4xl md:text-5xl font-black tracking-tight uppercase ${cleanFont.className}`}>{sponsorData.homeSection.title}</h2>
+                        <div className="w-12 h-1 bg-blue-500 mx-auto mt-6" />
+                     </motion.div>
+
+                     <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="bg-white p-10 md:p-16 rounded-3xl border border-slate-200 shadow-xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+                        
+                        <h3 className={`text-2xl md:text-3xl font-black text-slate-900 mb-6 ${cleanFont.className}`}>
+                           {sponsorData.homeSection.subtitle}
+                        </h3>
+                        <p className="text-slate-600 leading-loose mb-10 max-w-2xl mx-auto font-medium">
+                           {sponsorData.homeSection.text}
+                        </p>
+                        
+                        <div className="flex flex-col sm:flex-row justify-center gap-6">
+                           <div className="flex items-center justify-center gap-3 bg-slate-50 px-6 py-4 rounded-xl border border-slate-100">
+                              <Building2 className="text-blue-400" size={24} />
+                              <span className="font-bold text-slate-700">{sponsorData.homeSection.features[0]}</span>
+                           </div>
+                           <div className="flex items-center justify-center gap-3 bg-slate-50 px-6 py-4 rounded-xl border border-slate-100">
+                              <BadgePercent className="text-blue-400" size={24} />
+                              <span className="font-bold text-slate-700">{sponsorData.homeSection.features[1]}</span>
+                           </div>
+                        </div>
+
+                        <button onClick={() => switchPage('sponsors')} className="mt-12 px-8 py-4 bg-[#333333] hover:bg-blue-500 text-white font-bold rounded-full transition-all duration-300 tracking-widest text-sm flex items-center gap-3 mx-auto shadow-md hover:shadow-xl hover:-translate-y-1 group">
+                           VIEW SPONSORS <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                     </motion.div>
+                  </div>
+                </section>
+
                 <section className="py-32 px-6 bg-[#FAFAFA] border-t border-slate-100">
                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariant}>{faqSection}</motion.div>
                 </section>
               </>
+            )}
+
+            {/* 🌟 MAGAZINE 一覧ページ */}
+            {activePage === 'magazine' && (
+              <section className="pt-32 md:pt-40 pb-32 px-6 bg-[#FAFAFA] min-h-screen">
+                <div className="max-w-5xl mx-auto">
+                  <div className="mb-16 border-b border-slate-200 pb-8 text-center md:text-left">
+                    <p className="text-blue-500 font-bold text-[11px] tracking-[0.4em] uppercase mb-4">Official Magazine</p>
+                    <h2 className={`text-4xl md:text-5xl font-black tracking-tight text-slate-900 uppercase ${cleanFont.className}`}>Magazine</h2>
+                    <p className="text-slate-500 mt-4 text-sm font-medium">運営チームからのコラムや、イベントの詳細レポートなどをお届けします。</p>
+                  </div>
+
+                  <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {articleItems.map((article) => (
+                      <motion.div 
+                        variants={staggerItem} 
+                        key={article.id}
+                        onClick={() => openArticle(article.id)}
+                        className="group bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer hover:-translate-y-2 flex flex-col"
+                      >
+                        {article.thumbnail && (
+                          <div className="w-full h-48 md:h-56 bg-slate-50 relative overflow-hidden shrink-0">
+                            <img src={article.thumbnail} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-[0.22,1,0.36,1]" alt={article.title} />
+                          </div>
+                        )}
+                        <div className="p-8 flex flex-col flex-grow">
+                          <div className="flex items-center gap-3 mb-4">
+                            <span className="text-xs font-bold tracking-widest text-slate-400 font-mono">{article.date}</span>
+                            <span className="text-[10px] font-bold px-3 py-1 rounded-md uppercase tracking-wider bg-blue-50 text-blue-600">{article.category}</span>
+                          </div>
+                          <h3 className={`text-xl font-bold mb-4 text-slate-900 group-hover:text-blue-500 transition-colors leading-snug ${cleanFont.className}`}>{article.title}</h3>
+                          
+                          <div className="mt-auto pt-4 flex items-center gap-1 text-[10px] font-bold text-blue-500 tracking-widest uppercase">
+                            READ MORE <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
+              </section>
+            )}
+
+            {/* 🌟 記事の詳細ページ（器） */}
+            {activePage === 'article' && (() => {
+              // 👇 ここを修正！単純に1つの articleItems から探すようにしました！
+              const article = articleItems.find(a => a.id === activeArticleId);
+
+              if (!article) return <div className="pt-40 text-center font-bold text-slate-500 h-screen">記事が見つかりませんでした。</div>;
+
+              return (
+                <section className="pt-32 md:pt-40 pb-32 px-4 md:px-6 bg-[#FAFAFA] min-h-screen relative overflow-hidden">
+                  <div className="max-w-3xl mx-auto relative z-10">
+                    <button onClick={() => switchPage('magazine')} className="mb-8 flex items-center gap-2 text-slate-500 hover:text-blue-500 font-bold text-sm tracking-widest transition-colors group">
+                      <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                      BACK TO LIST
+                    </button>
+                    
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                      {article.thumbnail && (
+                        <div className="w-full h-64 md:h-80 bg-slate-100 relative">
+                          <img src={article.thumbnail} alt={article.title} className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      <div className="p-8 md:p-12">
+                        <div className="flex items-center gap-4 mb-6">
+                          <span className="text-xs font-bold tracking-widest text-slate-400 font-mono">{article.date}</span>
+                          <span className={`text-[10px] font-bold px-3 py-1 rounded-md uppercase tracking-wider bg-blue-50 text-blue-600`}>{article.category}</span>
+                        </div>
+                        <h1 className={`text-2xl md:text-4xl font-black text-slate-900 mb-10 leading-tight ${cleanFont.className}`}>{article.title}</h1>
+                        <div className="w-12 h-1 bg-blue-500 mb-10 rounded-full" />
+                        
+                        <div className="text-slate-600 leading-loose font-medium text-sm md:text-base whitespace-pre-wrap">
+                          {article.content}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </section>
+              );
+            })()}
+
+            {activePage === 'sponsors' && (
+              <section className="pt-32 md:pt-40 pb-32 px-6 bg-[#FAFAFA] min-h-screen">
+                <div className="max-w-6xl mx-auto">
+                  <div className="mb-16 border-b border-slate-200 pb-8 text-center md:text-left">
+                    <p className="text-blue-500 font-bold text-[11px] tracking-[0.4em] uppercase mb-4">{sponsorData.headerTitle}</p>
+                    <h2 className={`text-4xl md:text-5xl font-black tracking-tight text-slate-900 uppercase ${cleanFont.className}`}>{sponsorData.mainTitle}</h2>
+                    <p className="text-slate-500 mt-6 leading-relaxed max-w-2xl font-medium text-sm md:text-base whitespace-pre-wrap">
+                       {sponsorData.description}
+                    </p>
+                  </div>
+
+                  <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     {sponsorData.companies.map((company, idx) => (
+                       <motion.div key={company.id} variants={staggerItem} className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                          <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                             <Building2 size={32} className="text-slate-400" />
+                          </div>
+                          <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold tracking-wider rounded-md mb-4 uppercase">{company.category}</div>
+                          <h3 className={`text-2xl font-bold text-slate-900 mb-3 ${cleanFont.className}`}>{company.name}</h3>
+                          <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                             {company.description}
+                          </p>
+                          <div className="flex items-center gap-2 text-sm font-bold text-blue-500">
+                             {idx === 0 ? <BadgePercent size={16} /> : <Handshake size={16} />} {company.benefit}
+                          </div>
+                       </motion.div>
+                     ))}
+                  </motion.div>
+                  
+                  <motion.div variants={fadeInVariant} initial="hidden" animate="visible" className="mt-16 bg-slate-900 rounded-3xl p-10 text-center relative overflow-hidden">
+                     <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#00AEEF 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                     <h3 className={`text-2xl font-bold text-white mb-4 relative z-10 ${cleanFont.className}`}>{sponsorData.footer.title}</h3>
+                     <p className="text-slate-400 text-sm mb-8 max-w-2xl mx-auto relative z-10">
+                        {sponsorData.footer.text}
+                     </p>
+                     <button className="relative z-10 px-8 py-3 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-full transition-all duration-300 tracking-widest text-sm flex items-center gap-2 mx-auto">
+                        <Mail size={16} /> お問い合わせ
+                     </button>
+                  </motion.div>
+                </div>
+              </section>
             )}
 
             {activePage === 'news' && (
@@ -557,14 +744,24 @@ export default function UltimateCommunitySite() {
                   </div>
                   <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="space-y-6">
                     {newsItems.map((news) => (
-                      <motion.div variants={staggerItem} key={news.id} className="group bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col md:flex-row gap-6 md:gap-10 items-start cursor-pointer">
+                      <motion.div 
+                        variants={staggerItem} 
+                        key={news.id} 
+                        onClick={() => news.articleId && openArticle(news.articleId)}
+                        className={`group bg-white p-8 rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row gap-6 md:gap-10 items-start transition-all duration-300 ${news.articleId ? 'cursor-pointer hover:shadow-lg hover:border-blue-200 hover:-translate-y-1' : ''}`}
+                      >
                         <div className="shrink-0 w-full md:w-40 pt-1">
                           <span className="text-xs font-bold tracking-widest text-slate-400 block mb-3 font-mono">{news.date}</span>
                           <span className={`text-[10px] font-bold px-3 py-1 rounded-md uppercase tracking-wider ${news.category === 'IMPORTANT' ? 'bg-red-50 text-red-600' : news.category === 'EVENT' ? 'bg-blue-50 text-blue-600' : 'bg-slate-100 text-slate-600'}`}>{news.category}</span>
                         </div>
                         <div className="flex-grow">
-                          <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-blue-500 transition-colors duration-300 leading-snug">{news.title}</h3>
+                          <h3 className={`text-xl font-bold mb-3 text-slate-900 leading-snug transition-colors duration-300 ${news.articleId ? 'group-hover:text-blue-500' : ''}`}>{news.title}</h3>
                           <p className="text-slate-500 leading-relaxed text-sm">{news.content}</p>
+                          {news.articleId && (
+                             <span className="inline-flex items-center gap-1 mt-4 text-[10px] font-bold text-blue-500 tracking-widest uppercase">
+                               READ MORE <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                             </span>
+                          )}
                         </div>
                       </motion.div>
                     ))}
@@ -727,7 +924,7 @@ export default function UltimateCommunitySite() {
                     </h2>
                     <div className="w-12 h-1 bg-blue-500 mx-auto mb-8 rounded-full" />
                     <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-2xl font-medium">
-                      このサーバーで、全員が快適にクリエイティブな活動を楽しむためのプロトコル（約束事）です。
+                      皆様の自由な創作活動と、心地よい交流を守るための大切なプロトコル（約束事）です。全文の中から、コミュニティの基盤となる重要なルールを一部抜粋いたしました。
                     </p>
                   </motion.div>
 
@@ -754,7 +951,7 @@ export default function UltimateCommunitySite() {
 
                   <motion.div variants={fadeInVariant} initial="hidden" animate="visible" className="mt-16 p-8 bg-blue-50 border border-blue-100 rounded-2xl text-center -skew-x-[2deg]">
                     <p className="text-sm text-blue-600 font-bold leading-relaxed skew-x-[2deg] tracking-widest">
-                      ※ガイドラインは随時更新されます。不明な点があれば、管理メンバーまでお問い合わせください。
+                      ※ここに記載しきれない一般的なマナー（無断での連絡先交換の禁止など）につきましても、節度ある行動をお願いいたします。細かなルールで過度に制限することは本意ではありませんが、皆様が安心して活動できるコミュニティを守るため、運営陣がしっかりと治安維持に努めております。ご不明な点やご不安なことがございましたら、いつでも管理メンバーまでご相談ください。
                     </p>
                   </motion.div>
                 </div>
@@ -769,15 +966,25 @@ export default function UltimateCommunitySite() {
                   </div>
                   <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {galleryItems.map((item) => (
-                      <motion.div variants={staggerItem} key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-2 overflow-hidden group transition-all duration-500">
+                      <motion.div 
+                        variants={staggerItem} 
+                        key={item.id} 
+                        onClick={() => item.articleId && openArticle(item.articleId)}
+                        className={`bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group transition-all duration-500 ${item.articleId ? 'cursor-pointer hover:shadow-xl hover:-translate-y-2' : ''}`}
+                      >
                         <div className="h-64 bg-slate-50 relative overflow-hidden">
                           <img src={item.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-[0.22,1,0.36,1]" alt={item.title} />
                           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-bold text-slate-700 tracking-widest uppercase shadow-sm">{item.category}</div>
                         </div>
                         <div className="p-8">
                           <span className="text-xs text-slate-400 font-bold mb-3 block font-mono tracking-wider">{item.date}</span>
-                          <h3 className={`text-2xl font-bold mb-3 text-slate-900 group-hover:text-blue-500 transition-colors ${cleanFont.className}`}>{item.title}</h3>
+                          <h3 className={`text-2xl font-bold mb-3 text-slate-900 transition-colors ${cleanFont.className} ${item.articleId ? 'group-hover:text-blue-500' : ''}`}>{item.title}</h3>
                           <p className="text-slate-500 leading-relaxed text-sm">{item.description}</p>
+                          {item.articleId && (
+                             <div className="mt-6 flex items-center gap-1 text-[10px] font-bold text-blue-500 tracking-widest uppercase">
+                               READ MORE <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                             </div>
+                          )}
                         </div>
                       </motion.div>
                     ))}
