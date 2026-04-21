@@ -66,7 +66,7 @@ export const staffList = [
     id: 'collective',
     name: 'TSC STAFF COLLECTIVE',
     role: '運営チーム',
-    image: '/ittannn/collective.png',
+    image: '/ittannn/Snapshot_849.PNG',
   },
   {
     id: 'admin_hiro',
