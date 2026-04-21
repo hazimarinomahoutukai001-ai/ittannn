@@ -10,7 +10,7 @@ import { siteConfig, menuItems, newsItems, memoryItems, staffList, galleryItems,
 const softFont = Zen_Maru_Gothic({ weight: ['400', '500', '700'], subsets: ['latin'] });
 const cleanFont = Noto_Sans_JP({ weight: ['400', '500', '700', '900'], subsets: ['latin'] });
 
-// 🌟 先ほど修正した部分
+// 🌟 先ほど修正した部分da
 const menuBgTransition = { duration: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
 const menuStaggerContainer = {
