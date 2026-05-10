@@ -231,8 +231,16 @@ export const staffList = [
     id: 'sub_admin_19',
     name: 'ʸᵘᵏⁱʰᵃ/ₖₐᵧₒ',
     role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
+    image: '/kayotatie.png',
     profile: 'クラゲの「かよ」が生み出した「雪羽」という、コンセプトストリーマー。『あつまれどうぶつの森』や『原神』など、まったりとした空間でゲームを配信を行うのが特徴的。表情豊かで癒やしをお届け！',
+    offsetX: -220,
+    offsetY: 200,
+    scale: 1.2,
+    links: {
+    x: 'https://x.com/YukihaKayo',
+    twitch: 'https://www.twitch.tv/yukiha_kayo',
+    youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',    
+   },
   },
   {
     id: 'sub_admin_11',
