@@ -3,11 +3,11 @@ export const siteConfig = {
   description: "The Streamer Creator Server",
   
   // 👇 右側に表示されるロゴの画像パス
-  logo: '/GoznTJVa4AAoq0S.jpg',  
+  logo: '/ittannn/GoznTJVa4AAoq0S.jpg',  
   
   // 👇 中央に表示される11人の集合写真の画像パス
   heroImages: [
-    '/Snapshot_868.PNG', 
+    '/ittannn/Snapshot_868.PNG', 
   ],
 };
 
@@ -38,13 +38,13 @@ export const memoryItems = [
   {
     id: 'm1',
     type: 'image',
-    src: '/Snapshot_841.PNG',
+    src: '/ittannn/Snapshot_841.PNG',
     title: 'TSC公式サイトオープン',
   },
   {
     id: 'm2',
     type: 'image',
-    src: '/HHXii0FbcAAbaDj.jpg',
+    src: '/ittannn/HHXii0FbcAAbaDj.jpg',
     title: '管理者ヒロキングtwitchパートナーへ',
   },
   {
