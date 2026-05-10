@@ -4,12 +4,11 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-// 🌟 ここから下の metadata をまるっとTSC仕様に変更！
 export const metadata: Metadata = {
   title: "TSC - The Streamer Community",
   description: "4000人以上のストリーマーが所属する国内最大級のクリエイターコミュニティ。",
   icons: {
-    icon: "/ittannn/icon.png", // 設定したファビコン（favicon.icoのままでもOK）
+    icon: "/ittannn/icon.png", // ※ファビコンを別の名前にしている場合はここも合わせてください
   },
   openGraph: {
     title: "TSC - The Streamer Community",
@@ -18,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "TSC",
     images: [
       {
-        url: "/ittannn/ogp-image.jpg", // 🌟 appフォルダに入れたロゴ画像のパス！
+        url: "/ittannn/TSCaikon.jpg", // 🌟 ここを「TSCaikon.jpg」に変更しました！
         width: 1200,
         height: 630,
         alt: "TSC公式ロゴ",
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TSC - The Streamer Community",
     description: "4000人以上のストリーマーが所属するコミュニティ",
-    images: ["/ittannn/ogp-image.jpg"],
+    images: ["/ittannn/TSCaikon.jpg"], // 🌟 X(Twitter)用も「TSCaikon.jpg」に変更！
   },
 }
 
@@ -41,7 +40,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    // 🌟 ついでにここを "en" から "ja"（日本語）に変更！
     <html lang="ja">
       <body className={inter.className}>{children}</body>
     </html>
