@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "TSC - The Streamer Community",
   description: "4000人以上のストリーマーが所属する国内最大級のクリエイターコミュニティ。",
   icons: {
-    icon: "/ittannn/favicon.ico", // ※ファビコンを別の名前にしている場合はここも合わせてください
+    icon: "/ittannn/TSCaikon.jpg", // ※ファビコンを別の名前にしている場合はここも合わせてください
   },
   openGraph: {
     title: "TSC - The Streamer Community",
