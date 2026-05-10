@@ -67,7 +67,7 @@ export const staffList = [
     id: 'admin_hiro',
     name: 'ヒロキング',
     role: '管理者',
-    image: '/IMG_0795 (1).webp',
+    image: '/ittannn/IMG_0795 (1).webp',
     profile: 'Twitchパートナーとして活動する配信者。ゲーム配信や雑談配信を中心に活動しながら、配信者・VTuber・クリエイター交流コミュニティ「TSC」を運営。コラボ企画やイベント運営を通して、活動者同士が繋がれる場所を作り続けている。',
     links: {
     x: 'https://x.com/hiroking_0306',
@@ -86,7 +86,7 @@ export const staffList = [
     id: 'SUB_ADMIN_01',
     name: 'ふゆち',
     role: 'サブ管理人',
-    image: '/ba32f0a3566c8740.png',
+    image: '/ittannn/ba32f0a3566c8740.png',
     profile:
       'TSCの舞台裏を支える技術担当。Discordの複雑な権限設定やロール構築、機能的なチャンネルレイアウトの設計を一手に引き受けるスペシャリスト。メンバーが『使いやすい』と感じるその瞬間のために、裏側で緻密なコードと設定を組み上げる、鯖の心臓部を守るエンジニアです。技術的な相談があれば、ふゆちに聞けば間違いなし。',
     customScale: 'scale-90',
@@ -132,7 +132,7 @@ export const staffList = [
     id: 'sub_admin_4',
     name: '狼の野郎',
     role: 'サブ管理人',
-    image: '/3599568-3.png',
+    image: '/ittannn/3599568-3.png',
     profile: 'まぁ俺のは適当で良き',
     offsetX: -250,
     offsetY: 270,
@@ -196,7 +196,7 @@ export const staffList = [
 export const galleryItems = [
   {
     id: 1,
-    image: '/sss.PNG',
+    image: '/ittannn/sss.PNG',
     date: '2026.03.25',
     title: '第3回 TSC3000人記念杯',
     category: 'TOURNAMENT',
@@ -213,7 +213,7 @@ export const galleryItems = [
 // ⭐ 運営チーム（ABOUT）データ
 // ==========================================
 export const collectiveData = {
-  image: '/Snapshot_849.PNG', // ※実際の画像パスに直してくださいね
+  image: '/ittannn/Snapshot_849.PNG', // ※実際の画像パスに直してくださいね
   adminCount: 1,
   subAdminCount: 11,
   totalCount: 12,
@@ -320,7 +320,7 @@ export const articleItems = [
     category: 'IMPORTANT',
     date: '2026.04.15',
     title: 'TSC公式ポータルサイトがついにオープンしました！',
-    thumbnail: '/Snapshot_841.PNG',
+    thumbnail: '/ittannn/Snapshot_841.PNG',
     content: `ストリーマーとクリエイターのための次世代コミュニティ「TSC」の公式ポータルサイトが、ついに本日オープンいたしました！
 
 今までDiscord内だけで完結していた情報を、外部の方やこれから参加を検討している方にも分かりやすくお伝えできるよう、このサイトを立ち上げました。
@@ -342,7 +342,7 @@ export const articleItems = [
     category: 'TOURNAMENT',
     date: '2026.03.25',
     title: '第1回 TSC3000人記念杯 開催レポート！',
-    thumbnail: '/sss.PNG',
+    thumbnail: '/ittannn/sss.PNG',
     content: `サーバー参加者3,000人突破を記念して開催された、TSC初の大規模カスタムマッチ「第1回 TSC3000人記念杯」の開催レポートをお届けします！\n\n当日は総勢40名のメンバーが参加し、サーバーを代表するリーダーたちが率いるチームで白熱したバトルが繰り広げられました。普段は別々のゲームで遊んでいるメンバー同士が連携を取り、数々の名プレイや珍プレイが生まれ、DiscordのVCは終始笑いと歓声に包まれました。\n\n【大会結果】\n見事優勝を飾ったのは「チーム〇〇」の皆様！\n圧倒的な連携力とエイム力で、見事に他チームを圧倒しました。\n\n【豪華景品について】\n本大会では、協賛企業様からのご支援もあり、総額〇〇円相当の豪華景品が用意されました。\n・優勝チーム：特製デバイスセット\n・MVP賞：ギフトカード〇〇円分\n・珍プレイ賞：お好きなゲーム1本\n\nご参加いただいた皆様、そして大会を盛り上げてくれた視聴者の皆様、本当にありがとうございました！\n今後もTSCでは、誰もが楽しめるイベントを定期的に企画していきますので、次回開催もどうぞお楽しみに！`,
   },
 ];
