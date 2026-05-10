@@ -1,17 +1,24 @@
 export const siteConfig = {
-  title: 'The Streamer Creator Server',
-  description: 'ストリーマーとクリエイターのための次世代コミュニティ',
-  logo: '/ittannn/king.png', // ⚠️ ご自身の画像パスに合わせてください
+  name: "TSC Official",
+  description: "The Streamer Creator Server",
+  
+  // 👇 右側に表示されるロゴの画像パス
+  logo: '/GoznTJVa4AAoq0S.jpg',  
+  
+  // 👇 中央に表示される11人の集合写真の画像パス
+  heroImages: [
+    '/Snapshot_868.PNG', 
+  ],
 };
 
 export const menuItems = [
   { id: 'home', label: 'HOME' },
   { id: 'news', label: 'NEWS' },
-  { id: 'magazine', label: 'MAGAZINE' },
   { id: 'profile', label: 'PROFILE' },
   { id: 'activity', label: 'ACTIVITY' },
   { id: 'guidelines', label: 'GUIDELINES' },
   { id: 'sponsors', label: 'SPONSORS' },
+  { id: 'magazine', label: 'MAGAZINE' },
   { id: 'faq', label: 'FAQ' },
 ];
 
@@ -23,7 +30,6 @@ export const newsItems = [
     title: 'TSC鯖専用サイト開設',
     content:
       'TSC公式ポータルサイトがついにオープンしました！サーバーのガイドラインや活動記録、運営メンバーのプロフィールなど、TSCに関するあらゆる情報を集約しています。メンバーの皆様にとって使いやすく、外部の方には私たちの魅力をより伝えられる場所を目指していきます。ぜひチェックしてみてください！',
-    // 🌟 ここに articleId を入れると、クリックで詳細記事に飛びます！
     articleId: 'news-001',
   },
 ];
@@ -32,32 +38,21 @@ export const memoryItems = [
   {
     id: 'm1',
     type: 'image',
-    src: '/ittannn/Snapshot_849.PNG',
-    title: 'Season 1 Highlight',
+    src: '/Snapshot_841.PNG',
+    title: 'TSC公式サイトオープン',
   },
   {
     id: 'm2',
     type: 'image',
-    src: '/ittannn/Snapshot_849.PNG',
-    title: 'Community Event',
+    src: '/HHXii0FbcAAbaDj.jpg',
+    title: '管理者ヒロキングtwitchパートナーへ',
   },
   {
-    id: 'm3',
+    id: 'm3', // または m4 など
     type: 'video',
-    youtubeId: 'dQw4w9WgXcQ',
-    title: 'Server Trailer',
-  },
-  {
-    id: 'm4',
-    type: 'image',
-    src: '/ittannn/Snapshot_849.PNG',
-    title: 'Member Collaboration',
-  },
-  {
-    id: 'm5',
-    type: 'image',
-    src: '/ittannn/Snapshot_849.PNG',
-    title: 'Tournament Finals',
+    platform: 'twitch', // 👈 ここを twitch にする！
+    videoId: '2553796570', // 👈 Twitchの動画IDを入れる！
+    title: 'TSC３０００人記念杯', // 👈 動画のタイトルを入れる！
   },
 ];
 
@@ -66,98 +61,134 @@ export const staffList = [
     id: 'collective',
     name: 'TSC STAFF COLLECTIVE',
     role: '運営チーム',
-    image: '/ittannn/Snapshot_849.PNG',
+    image: '/ittannn/collective.png',
   },
   {
     id: 'admin_hiro',
     name: 'ヒロキング',
     role: '管理者',
-    image: '/ittannn/aruxuuuu.png',
-    profile:
-      'TSCの生みの親であり、たった一人で始まった場所を4000人が集う巨大コミュニティへと成長させた創設者。運営の傍ら、自らもTwitchストリーマーとして活動し、現在は『Twitchパートナー』という高い壁に挑むべく日々奮闘中。コミュニティの現状に満足することなく、その先にある新しいエンタメの形を追い求め、常にメンバーをワクワクさせるイベントを企画・実行し続けている。',
-  },
+    image: '/IMG_0795 (1).webp',
+    profile: 'Twitchパートナーとして活動する配信者。ゲーム配信や雑談配信を中心に活動しながら、配信者・VTuber・クリエイター交流コミュニティ「TSC」を運営。コラボ企画やイベント運営を通して、活動者同士が繋がれる場所を作り続けている。',
+    links: {
+    x: 'https://x.com/hiroking_0306',
+    twitch: 'https://www.twitch.tv/theseventhone666'
+      },
+    offsetX: -200,
+    offsetY: 200,
+    scale: 1.7,
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -200,   // スマホではズラさない（0）
+    mobileOffsetY: 290,   // スマホではズラさない（0）
+    mobileScale: 1.5,   // スマホでは等倍（1.0）に戻す
+
+},
   {
     id: 'SUB_ADMIN_01',
     name: 'ふゆち',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ba32f0a3566c8740.png',
     profile:
       'TSCの舞台裏を支える技術担当。Discordの複雑な権限設定やロール構築、機能的なチャンネルレイアウトの設計を一手に引き受けるスペシャリスト。メンバーが『使いやすい』と感じるその瞬間のために、裏側で緻密なコードと設定を組み上げる、鯖の心臓部を守るエンジニアです。技術的な相談があれば、ふゆちに聞けば間違いなし。',
     customScale: 'scale-90',
+    links: {
+    twitch: 'https://www.twitch.tv/fuyuchi_'
+      },
+    offsetX: -250,
+    offsetY: 120,
+    scale: 1.00,
+        // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -250,   // スマホではズラさない（0）
+    mobileOffsetY: 190,   // スマホではズラさない（0）
+    mobileScale: 0.9,  
   },
   {
     id: 'sub_admin_2',
     name: 'ひうひむ',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらおうかな？',
     customScale: 'scale-110',
     customPosition: 'translate-y-4',
+    offsetX: -50,
+    offsetY: 60,
+    scale: 1.15,
   },
-  {
-    id: 'sub_admin_7',
-    name: 'しいな',
-    role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
-    profile: '本人に考えてもらいます',
-  },
-
   {
     id: 'sub_admin_3',
     name: 'がいくま',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/gaikuma.png', 
     profile: '本人に考えてもらおうかな？',
-  },
+    offsetX: -180,
+    offsetY: 170,
+    scale: 1.2,
 
+            // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -250,   // スマホではズラさない（0）
+    mobileOffsetY:400,   // スマホではズラさない（0）
+    mobileScale: 1.3,  
+  },
   {
     id: 'sub_admin_4',
     name: '狼の野郎',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/3599568-3.png',
     profile: 'まぁ俺のは適当で良き',
+    offsetX: -250,
+    offsetY: 270,
+    scale: 2.5,
+     // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -280,   // スマホではズラさない（0）
+    mobileOffsetY: 370,   // スマホではズラさない（0）
+    mobileScale: 2.5,  
   },
   {
     id: 'sub_admin_5',
     name: 'こゆき',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
   {
     id: 'sub_admin_6',
     name: 'あるぅ',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
- 
+  {
+    id: 'sub_admin_7',
+    name: 'あるぅ',
+    role: 'サブ管理人',
+    image: '/ittannn/あるう様立ち絵.png',
+    profile: '本人に考えてもらいます',
+  },
   {
     id: 'sub_admin_8',
     name: 'つゆりひお',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
   {
     id: 'sub_admin_9',
     name: 'よるねるか',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
   {
     id: 'sub_admin_10',
     name: 'ʸᵘᵏⁱʰᵃ/ₖₐᵧₒ',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
   {
     id: 'sub_admin_11',
     name: '一楓あやの',
     role: 'サブ管理人',
-    image: '/ittannn/aruxuuuu.png',
+    image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
 ];
@@ -165,21 +196,41 @@ export const staffList = [
 export const galleryItems = [
   {
     id: 1,
-    image: '/ittannn/Snapshot_849.PNG',
+    image: '/sss.PNG',
     date: '2026.03.25',
     title: '第3回 TSC3000人記念杯',
     category: 'TOURNAMENT',
     description:
       'サーバー参加者3,000人突破を祝して開催された、TSC初の大規模カスタムマッチ！各チームのリーダーは当サーバーの代表メンバーから選出され、プライドを懸けた名勝負が繰り広げられました。優勝チームや活躍したプレイヤーには、総額〇〇円相当の超豪華景品が贈呈され、コミュニティ全体が大熱狂に包まれた記念すべき一夜となりました。。',
-    // 🌟 ここに articleId を入れると、クリックで詳細記事に飛びます！
-    articleId: 'activity-001', // 🌟 ここを追加！これでACTIVITYから記事に飛べます
+    articleId: 'activity-001',
   },
 ];
+
+
+// data.ts
+
+// ==========================================
+// ⭐ 運営チーム（ABOUT）データ
+// ==========================================
+export const collectiveData = {
+  image: '/Snapshot_849.PNG', // ※実際の画像パスに直してくださいね
+  adminCount: 1,
+  subAdminCount: 11,
+  totalCount: 12,
+  title: '管理者・サブ管理人',
+  subtitle: 'Admins & Sub-Admins',
+  mainMessage: 'あなたの活動をサポートします。',
+  description: [
+    "TSCサーバーでは、1名の管理人と11名のサブ管理人、計12名の運営チームが日々サーバーの治安維持と環境アップデートに努めています。",
+    "「Discordサーバーに参加するのは初めてで不安…」「もしトラブルがあったらどうしよう…」という方でも心配いりません。皆さんが安心して楽しく活動できるよう、しっかりとサポートする体制を整えています。"
+  ]
+};
+
 
 export const faqList = [
   {
     q: '参加に年齢制限はありますか？',
-    a: 'Discordの利用規約に基づき、13歳以上であればどなたでも参加可能です！サーバー内で特別な年齢制限ロールなどは設けていませんが、未成年の夜更かしは成長の敵です。夜はしっかり寝て、深夜の雑談に参加するのは18歳になってからの特権にしましょう！',
+    a: 'Discordの利用規約に基づき、16歳以上であればどなたでも参加可能です！サーバー内で特別な年齢制限ロールなどは設けていませんが、未成年の夜更かしは成長の敵です。夜はしっかり寝て、深夜の雑談に参加するのは18歳になってからの特権にしましょう！',
   },
   {
     q: '配信経験が全くないのですが、参加しても大丈夫ですか？',
@@ -241,9 +292,9 @@ export const sponsorData = {
     {
       id: 'sp1',
       category: '動画制作サービス',
-      name: '〇〇動画制作 様（※後日正式公開）',
+      name: '㈱NECOWorks  様',
       description:
-        '配信の切り抜きや解説動画、Montageなど、ストリーマー・クリエイターの活動を加速させるハイクオリティな動画制作サービスを提供。TSCメンバー専用の特別割引プランをご用意いただいており、あなたの活動のステップアップを強力にバックアップしてくれます。（※メリットの詳細は後日アップデート予定！）',
+        '配信の切り抜きや解説動画、Montageなど、ストリーマー・クリエイターの活動を加速させるハイクオリティな動画制作サービスを提供.TSCメンバー専用の特別割引プランをご用意いただいており、あなたの活動のステップアップを強力にバックアップしてくれます。（※メリットの詳細は後日アップデート予定！）',
       benefit: 'サーバー限定割引あり',
     },
     {
@@ -261,73 +312,15 @@ export const sponsorData = {
   },
 };
 
-// 🌟 新規追加＆統合：フワフワ動画（中身と動きの設定を一つにまとめました！）
-export const floatingMemories = [
-  {
-    id: 1,
-    type: 'image',
-    src: '/ittannn/Snapshot_849.PNG', // ⚠️ 画像パス
-    top: '12%',
-    dir: 1, // 1なら左から右、-1なら右から左
-    duration: 40,
-    delay: 0,
-    scale: 0.85,
-    opacity: 0.4,
-  },
-  {
-    id: 2,
-    type: 'video',
-    youtubeId: 'dQw4w9WgXcQ', // ⚠️ YouTubeのID
-    top: '30%',
-    dir: -1,
-    duration: 48,
-    delay: -15,
-    scale: 1.1,
-    opacity: 0.5,
-  },
-  {
-    id: 3,
-    type: 'image',
-    src: '/ittannn/Snapshot_849.PNG',
-    top: '55%',
-    dir: 1,
-    duration: 35,
-    delay: -25,
-    scale: 0.9,
-    opacity: 0.6,
-  },
-  {
-    id: 4,
-    type: 'video',
-    youtubeId: 'dQw4w9WgXcQ',
-    top: '72%',
-    dir: -1,
-    duration: 55,
-    delay: -5,
-    scale: 1.2,
-    opacity: 0.4,
-  },
-  {
-    id: 5,
-    type: 'image',
-    src: '/ittannn/Snapshot_849.PNG',
-    top: '85%',
-    dir: 1,
-    duration: 45,
-    delay: -30,
-    scale: 0.7,
-    opacity: 0.5,
-  },
-];
+export const floatingMemories: never[] = [];
 
-// 🌟 新規追加：長文を書くための「記事の詳細データ」の入れ物です！
 export const articleItems = [
   {
     id: 'news-001',
     category: 'IMPORTANT',
     date: '2026.04.15',
     title: 'TSC公式ポータルサイトがついにオープンしました！',
-    thumbnail: '/ittannn/Snapshot_849.PNG', // 記事のトップに出す画像
+    thumbnail: '/Snapshot_841.PNG',
     content: `ストリーマーとクリエイターのための次世代コミュニティ「TSC」の公式ポータルサイトが、ついに本日オープンいたしました！
 
 今までDiscord内だけで完結していた情報を、外部の方やこれから参加を検討している方にも分かりやすくお伝えできるよう、このサイトを立ち上げました。
@@ -345,11 +338,11 @@ export const articleItems = [
 皆様、引き続きよろしくお願いいたします！`,
   },
   {
-    id: 'activity-001', // 🌟 新規追加：ACTIVITY 用の詳しい記事
+    id: 'activity-001',
     category: 'TOURNAMENT',
     date: '2026.03.25',
     title: '第1回 TSC3000人記念杯 開催レポート！',
-    thumbnail: '/ittannn/Snapshot_849.PNG',
+    thumbnail: '/sss.PNG',
     content: `サーバー参加者3,000人突破を記念して開催された、TSC初の大規模カスタムマッチ「第1回 TSC3000人記念杯」の開催レポートをお届けします！\n\n当日は総勢40名のメンバーが参加し、サーバーを代表するリーダーたちが率いるチームで白熱したバトルが繰り広げられました。普段は別々のゲームで遊んでいるメンバー同士が連携を取り、数々の名プレイや珍プレイが生まれ、DiscordのVCは終始笑いと歓声に包まれました。\n\n【大会結果】\n見事優勝を飾ったのは「チーム〇〇」の皆様！\n圧倒的な連携力とエイム力で、見事に他チームを圧倒しました。\n\n【豪華景品について】\n本大会では、協賛企業様からのご支援もあり、総額〇〇円相当の豪華景品が用意されました。\n・優勝チーム：特製デバイスセット\n・MVP賞：ギフトカード〇〇円分\n・珍プレイ賞：お好きなゲーム1本\n\nご参加いただいた皆様、そして大会を盛り上げてくれた視聴者の皆様、本当にありがとうございました！\n今後もTSCでは、誰もが楽しめるイベントを定期的に企画していきますので、次回開催もどうぞお楽しみに！`,
   },
 ];
