@@ -106,7 +106,7 @@ export const staffList = [
     name: 'ひうひむ',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
-    profile: '本人に考えてもらおうかな？',
+    profile: '3匹の手下おばけを連れた、おっとりとした物静かな幽霊メイド。RPGなどのストーリーものを心から愛する配信者。ホラーゲームでも叫ばないくらいなので、作業中寂しいときにラジオ感覚で聴ける。神出鬼没なので、VCで会えたらラッキー。◆好きなもの紅茶、読書、映画鑑賞(ホラー大好き)、語学学習',
     customScale: 'scale-110',
     customPosition: 'translate-y-4',
     offsetX: -50,
@@ -118,7 +118,7 @@ export const staffList = [
     name: 'がいくま',
     role: 'サブ管理人',
     image: '/ittannn/gaikuma.png', 
-    profile: '本人に考えてもらおうかな？',
+    profile: '人間に憧れて熊から人間へ転生。VCは夕方から深夜で出没します。少人数用のVCにいることが多く、大人数が苦手でもご安心ください。APEXやちょっと変わったゲームをしています。共通するゲームがあれば、ぜひ一緒に遊びましょう！プレイを鑑賞したいだけでも大丈夫です。困ったことがあればご相談ください。',
     offsetX: -180,
     offsetY: 170,
     scale: 1.2,
@@ -162,7 +162,7 @@ export const staffList = [
     name: 'あるぅ',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
-    profile: '本人に考えてもらいます',
+    profile: 'サプライズが得意な個人勢Vstreamer。落ち着いた声色が特徴的だが、人を楽しませたり喜ばせるのが得意。『Apex Legends』や『DBD』のゲーム以外にも、料理配信や視聴者参加型の配信など、バラエティ豊かな企画配信も多く行っているエンターテイナー。',
   },
   {
     id: 'sub_admin_8',
@@ -197,7 +197,7 @@ export const staffList = [
     name: '一楓あやの',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
-    profile: '本人に考えてもらいます',
+    profile: '自称「どこでも迷子」方向音痴系個人勢VStreamer。けもみみとしっぽを愛する獣人。ファンからは「いぶたそ」の愛称で親しまれている。『Apex Legends』や『NTE』などのゲーム実況を中心に活動中。',
   },
 ];
 
