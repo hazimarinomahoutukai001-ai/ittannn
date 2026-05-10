@@ -166,8 +166,16 @@ export const staffList = [
     id: 'sub_admin_6',
     name: 'こゆき',
     role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
+    image: '/ittannn/koyukitatie.png',
     profile: 'ゲームとお酒とお喋り大好き、個人勢Vtuber。『Apex Legends』のゲーム実況を中心に活動中。七皇の剣の専属モデレーターも兼任中。おしゃべりが大好きなのでTSCでは主にVCの盛り上げ役や、裏方として技術面のサポートも行っている。',
+    offsetX: -250,
+    offsetY: 270,
+    scale: 1.3,
+    links: {
+    x: 'https://x.com/hajikoyuch',
+    twitch: 'https://www.twitch.tv/vtuberkoyuki',
+    youtube:'https://www.youtube.com/@hajikoyuch',
+      },
   },
   {
     id: 'sub_admin_7',
