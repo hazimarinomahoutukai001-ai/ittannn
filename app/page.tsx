@@ -100,7 +100,7 @@ export default function UltimateCommunitySite() {
   };
   // =========================================================================
   // =========================================================================
-  const marqueeMembers = useMemo(() => {
+    const marqueeMembers = useMemo(() => {
     const individuals = staffList.filter((s) => s.id !== 'collective');
     // 💡 12個の枠を埋めるために、メンバーを順番にループさせます
     return Array.from({ length: 12 }).map((_, idx) => {
@@ -634,7 +634,7 @@ export default function UltimateCommunitySite() {
                                   <iframe
                                     width="100%"
                                     height="100%"
-                                    src={`https://player.twitch.tv/?video=${(item as any).videoId}&parent=localhost&autoplay=false`}
+                                    src={`https://player.twitch.tv/?video=${(item as any).videoId}&parent=localhost&parent=hazimarinomahoutukai001-ai.github.io&autoplay=false`}
                                     frameBorder="0"
                                     allowFullScreen
                                     className={`w-full h-full ${
@@ -1547,7 +1547,7 @@ export default function UltimateCommunitySite() {
 
                                     <div className="flex flex-wrap gap-4">
                               {/* 💡 data.tsのlinksに書いてあるSNSだけを自動でボタンにする魔法 */}
-                              {Object.entries(staffList[selectedIndex]?.links || {}).map(([platform, url]) =>  (
+                              {staffList[selectedIndex]?.links && Object.entries(staffList[selectedIndex].links).map(([platform, url]) => (
                                 <a
                                   key={platform}
                                   href={url as string}
