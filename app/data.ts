@@ -181,9 +181,16 @@ export const staffList = [
     id: 'sub_admin_7',
     name: 'あるぅ',
     role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
+    image: '/aruxuuuu.png',
     profile: 'サプライズが得意な個人勢Vstreamer。落ち着いた声色が特徴的だが、人を楽しませたり喜ばせるのが得意。『Apex Legends』や『DBD』のゲーム以外にも、料理配信や視聴者参加型の配信など、バラエティ豊かな企画配信も多く行っているエンターテイナー。',
-  },
+    offsetX: -220,
+    offsetY: 220,
+    scale: 1.1,
+    links: {
+    x: 'https://x.com/aruu_jp',
+    twitch: 'https://m.twitch.tv/aruu_jp/home',
+    youtube: 'https://www.youtube.com/@aruu_jp',    
+   },
   {
     id: 'sub_admin_8',
     name: 'つゆりひお',
