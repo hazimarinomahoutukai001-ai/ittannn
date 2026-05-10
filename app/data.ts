@@ -7,7 +7,7 @@ export const siteConfig = {
   
   // 👇 中央に表示される11人の集合写真の画像パス
   heroImages: [
-    '/ittannn/Snapshot_868.PNG', 
+    '/ittannn/Snapshot_868.webp', 
   ],
 };
 
