@@ -246,8 +246,16 @@ export const staffList = [
     id: 'sub_admin_11',
     name: '一楓あやの',
     role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
+    image: '/ittannn/ibukiayano0.png',
     profile: '自称「どこでも迷子」方向音痴系個人勢VStreamer。けもみみとしっぽを愛する獣人。ファンからは「いぶたそ」の愛称で親しまれている。『Apex Legends』や『NTE』などのゲーム実況を中心に活動中。',
+    offsetX: -220,
+    offsetY: 40,
+    scale: 1.6,
+    links: {
+    x: 'https://x.com/ibuki_ayano',
+    twitch: 'https://www.twitch.tv/ibuki_ayano',
+    youtube: 'https://www.youtube.com/@Ibuki_ayano',    
+   },
   },
 ];
 
