@@ -1547,7 +1547,7 @@ export default function UltimateCommunitySite() {
 
                                     <div className="flex flex-wrap gap-4">
                               {/* 💡 data.tsのlinksに書いてあるSNSだけを自動でボタンにする魔法 */}
-                              {staffList[selectedIndex]?.links && Object.entries(staffList[selectedIndex].links).map(([platform, url]) => (
+                              {Object.entries(staffList[selectedIndex]?.links || {}).map(([platform, url]) =>  (
                                 <a
                                   key={platform}
                                   href={url as string}
