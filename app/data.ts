@@ -101,17 +101,22 @@ export const staffList = [
     mobileOffsetY: 190,   // スマホではズラさない（0）
     mobileScale: 0.9,  
   },
-  {
+ {
     id: 'sub_admin_2',
     name: 'ひうひむ',
     role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
+    image: '/hiuhimu2.png',
     profile: '3匹の手下おばけを連れた、おっとりとした物静かな幽霊メイド。RPGなどのストーリーものを心から愛する配信者。ホラーゲームでも叫ばないくらいなので、作業中寂しいときにラジオ感覚で聴ける。神出鬼没なので、VCで会えたらラッキー。◆好きなもの紅茶、読書、映画鑑賞(ホラー大好き)、語学学習',
     customScale: 'scale-110',
     customPosition: 'translate-y-4',
-    offsetX: -50,
-    offsetY: 60,
-    scale: 1.15,
+    offsetX: -200,
+    offsetY: 220,
+    scale: 1.3,
+    links: {
+    x: 'https://x.com/hiuhymn',
+    twitch: 'https://www.twitch.tv/hiuhymn',
+    youtube: 'https://www.youtube.com/@hiuhymn'
+      },
   },
   {
     id: 'sub_admin_3',
