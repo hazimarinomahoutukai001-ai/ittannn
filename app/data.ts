@@ -138,8 +138,15 @@ export const staffList = [
     id: 'sub_admin_4',
     name: 'しいな',
     role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
+    image: '/ittannn/siinatatie.png',
     profile: '不定期にPS5で怪奇現象（配信）をしているオバケ、というコンセプトストリーマー。『リトルナイトメア』や『ロックマン2』などのゲーム実況に加え、音ゲーの『DEEMO』をピアノで演奏するなど多岐にわたる。おっとりとした癒やし系の雰囲気があり、リスナーを大切にする温かい交流が魅力の配信者。TSC内でも細やかな気遣いや丁寧な仕事ぶりで運営を支えている。',
+    offsetX: -250,
+    offsetY: 170,
+    scale: 1.4,
+    links: {
+    x: 'https://x.com/shiina_81417',
+    twitch: 'https://www.twitch.tv/shiina_41777',
+      },
   },
   {
     id: 'sub_admin_5',
