@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "TSC",
     images: [
       {
-        url: "https://hazimarinomahoutukai001-ai.github.io/ittannn/TSCaikon.jpg", // 🌟 ここを「TSCaikon.jpg」に変更しました！
+        url: "https://hazimarinomahoutukai001-ai.github.io/ittannn/Snapshot_841.PNG", // 🌟 ここを「TSCaikon.jpg」に変更しました！
         width: 1200,
         height: 630,
         alt: "TSC公式ロゴ",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TSC - The Streamer Community",
     description: "4000人以上のストリーマーが所属するコミュニティ",
-    images: ["https://hazimarinomahoutukai001-ai.github.io/ittannn/TSCaikon.jpg"], // 🌟 X(Twitter)用も「TSCaikon.jpg」に変更！
+    images: ["https://hazimarinomahoutukai001-ai.github.io/ittannn/Snapshot_841.PNG"], // 🌟 X(Twitter)用も「TSCaikon.jpg」に変更！
   },
 }
 
