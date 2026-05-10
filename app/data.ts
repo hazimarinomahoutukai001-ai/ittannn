@@ -117,7 +117,7 @@ export const staffList = [
     id: 'sub_admin_3',
     name: 'がいくま',
     role: 'サブ管理人',
-    image: '/gaikuma.png', 
+    image: '/ittannn/gaikuma.png', 
     profile: '本人に考えてもらおうかな？',
     offsetX: -180,
     offsetY: 170,
@@ -196,7 +196,7 @@ export const staffList = [
 export const galleryItems = [
   {
     id: 1,
-    image: '/ittannn/sss.PNG',
+    image: '/ittannn/sss.png',
     date: '2026.03.25',
     title: '第3回 TSC3000人記念杯',
     category: 'TOURNAMENT',
@@ -342,7 +342,7 @@ export const articleItems = [
     category: 'TOURNAMENT',
     date: '2026.03.25',
     title: '第1回 TSC3000人記念杯 開催レポート！',
-    thumbnail: '/ittannn/sss.PNG',
+    thumbnail: '/ittannn/sss.png',
     content: `サーバー参加者3,000人突破を記念して開催された、TSC初の大規模カスタムマッチ「第1回 TSC3000人記念杯」の開催レポートをお届けします！\n\n当日は総勢40名のメンバーが参加し、サーバーを代表するリーダーたちが率いるチームで白熱したバトルが繰り広げられました。普段は別々のゲームで遊んでいるメンバー同士が連携を取り、数々の名プレイや珍プレイが生まれ、DiscordのVCは終始笑いと歓声に包まれました。\n\n【大会結果】\n見事優勝を飾ったのは「チーム〇〇」の皆様！\n圧倒的な連携力とエイム力で、見事に他チームを圧倒しました。\n\n【豪華景品について】\n本大会では、協賛企業様からのご支援もあり、総額〇〇円相当の豪華景品が用意されました。\n・優勝チーム：特製デバイスセット\n・MVP賞：ギフトカード〇〇円分\n・珍プレイ賞：お好きなゲーム1本\n\nご参加いただいた皆様、そして大会を盛り上げてくれた視聴者の皆様、本当にありがとうございました！\n今後もTSCでは、誰もが楽しめるイベントを定期的に企画していきますので、次回開催もどうぞお楽しみに！`,
   },
 ];
