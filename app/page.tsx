@@ -1829,7 +1829,7 @@ export default function UltimateCommunitySite() {
             </button>
 
             <img
-              src="/hirokinngutatie.jpg" 
+              src="/ittannn/hirokinngutatie.jpg" 
               alt="ヒロキング"
               className="w-32 h-32 rounded-full object-cover border-4 border-gray-100 mx-auto mb-4"
             />
