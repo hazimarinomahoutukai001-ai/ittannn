@@ -215,9 +215,18 @@ export const staffList = [
     id: 'sub_admin_9',
     name: 'よるねるか',
     role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
+    image: '/ittannn/yoruneruka.png',
     profile: '「セクシーサンキュー」な清楚癒し系お姉さんVstreamer。『Apex Legends』や『Minecraft』などのゲーム実況を中心に活動中。おっとりとした装いとは裏腹に、ゲームの腕前もお見事。自信のチャンネル内素材を作成する程のお絵描きスキルも持ち合わせている。',
+    offsetX: -220,
+    offsetY: 180,
+    scale: 1,
+    links: {
+    x: 'https://x.com/yorunerukamone',
+    twitch: 'https://www.twitch.tv/yoruneruka',
+    youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',    
+   },
   },
+  
   {
     id: 'sub_admin_19',
     name: 'ʸᵘᵏⁱʰᵃ/ₖₐᵧₒ',
