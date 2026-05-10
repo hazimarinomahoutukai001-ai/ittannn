@@ -105,7 +105,7 @@ export const staffList = [
     id: 'sub_admin_2',
     name: 'ひうひむ',
     role: 'サブ管理人',
-    image: '/hiuhimu2.png',
+    image: '/ittannn/hiuhimu2.png',
     profile: '3匹の手下おばけを連れた、おっとりとした物静かな幽霊メイド。RPGなどのストーリーものを心から愛する配信者。ホラーゲームでも叫ばないくらいなので、作業中寂しいときにラジオ感覚で聴ける。神出鬼没なので、VCで会えたらラッキー。◆好きなもの紅茶、読書、映画鑑賞(ホラー大好き)、語学学習',
     customScale: 'scale-110',
     customPosition: 'translate-y-4',
