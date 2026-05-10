@@ -89,7 +89,7 @@ export default function UltimateCommunitySite() {
   const yHero = useTransform(scrollY, [0, 1000], [0, -50]); 
   const parallaxAbout = useTransform(scrollYProgress, [0, 1], [50, -150]);
   const parallaxX = useTransform(scrollYProgress, [0, 1], [0, -1000]);
-
+  const carouselRef = useRef(null);
 // =========================================================================
   // ⭐ 画像サイズ＆位置調整パネル
   // =========================================================================
@@ -760,9 +760,12 @@ export default function UltimateCommunitySite() {
                     </h3>
                   </div>
 
-                  <div className="w-full flex overflow-hidden group px-0">
+                  <div className="w-full flex overflow-hidden group px-0" ref={carouselRef}>
                     <motion.div
-                      className="flex gap-8 md:gap-12 px-4 md:px-6 w-max"
+                      drag="x"
+                      dragConstraints={carouselRef}
+                      /* 🌟 修正1：全て半角スペースに直しました！ */
+                      className="flex gap-8 md:gap-12 px-4 md:px-6 w-max cursor-grab active:cursor-grabbing"
                       animate={{ x: ['-50%', '0%'] }}
                       transition={{
                         ease: 'linear',
@@ -780,7 +783,9 @@ export default function UltimateCommunitySite() {
                             <img
                               src={member.image}
                               alt={member.displayName}
-                              className="w-full h-full object-cover"
+                              /* 🌟 修正2：pointer-events-none を追加しました！ */
+
+                              className="w-full h-full object-cover pointer-events-none"
                             />
                             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent p-6 flex flex-col justify-end h-1/2">
                               <span className={`text-[10px] md:text-xs font-black text-blue-400 tracking-widest uppercase mb-1 drop-shadow-md ${montserrat.className}`}>
