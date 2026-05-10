@@ -128,8 +128,16 @@ export const staffList = [
     mobileOffsetY:400,   // スマホではズラさない（0）
     mobileScale: 1.3,  
   },
+
   {
     id: 'sub_admin_4',
+    name: 'しいな',
+    role: 'サブ管理人',
+    image: '/ittannn/あるう様立ち絵.png',
+    profile: '本人に考えてもらいます',
+  },
+  {
+    id: 'sub_admin_5',
     name: '狼の野郎',
     role: 'サブ管理人',
     image: '/ittannn/3599568-3.png',
@@ -143,15 +151,8 @@ export const staffList = [
     mobileScale: 2.5,  
   },
   {
-    id: 'sub_admin_5',
-    name: 'こゆき',
-    role: 'サブ管理人',
-    image: '/ittannn/あるう様立ち絵.png',
-    profile: '本人に考えてもらいます',
-  },
-  {
     id: 'sub_admin_6',
-    name: 'あるぅ',
+    name: 'こゆき',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
@@ -165,27 +166,34 @@ export const staffList = [
   },
   {
     id: 'sub_admin_8',
-    name: 'つゆりひお',
+    name: 'しいな',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
   {
     id: 'sub_admin_9',
-    name: 'よるねるか',
+    name: 'つゆりひお',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
   {
     id: 'sub_admin_10',
-    name: 'ʸᵘᵏⁱʰᵃ/ₖₐᵧₒ',
+    name: 'よるねるか',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
     profile: '本人に考えてもらいます',
   },
   {
     id: 'sub_admin_11',
+    name: 'ʸᵘᵏⁱʰᵃ/ₖₐᵧₒ',
+    role: 'サブ管理人',
+    image: '/ittannn/あるう様立ち絵.png',
+    profile: '本人に考えてもらいます',
+  },
+  {
+    id: 'sub_admin_12',
     name: '一楓あやの',
     role: 'サブ管理人',
     image: '/ittannn/あるう様立ち絵.png',
