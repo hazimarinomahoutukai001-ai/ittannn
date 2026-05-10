@@ -73,9 +73,8 @@ export default function UltimateCommunitySite() {
   const [memoryIndex, setMemoryIndex] = useState(0);
   const [previousPage, setPreviousPage] = useState('home')
 
-
-
   const [direction, setDirection] = useState(0); 
+  const [modalMode, setModalMode] = useState(""); // "" なら閉じている、"join" なら参加、"contact" なら問い合わせ
   const paginate = (newDirection: number) => { 
     setDirection(newDirection);
     setMemoryIndex((prevIndex) => (prevIndex + newDirection + memoryItems.length) % memoryItems.length);
@@ -899,10 +898,14 @@ export default function UltimateCommunitySite() {
                   TSC鯖は、スキルや経験よりも「一緒に楽しむ心」を大切にしています。配信者も、クリエイターも、それを応援したい人も。最低限のマナーを守り、お互いをリスペクトできる方なら、誰でも参加可能です。
                 </p>
                 {/* 画像に合わせた、深い青のグラデーションボタン */}
-                <button className={`inline-flex items-center gap-2.5 px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 tracking-widest text-xs md:text-sm group hover:-translate-y-1 ${montserrat.className}`}>
-                  JOIN DISCORD <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </motion.div>
+              {/* 画像に合わせた、深い青のグラデーションボタン */}
+              <button 
+                onClick={() => setModalMode("join")} // 🌟 "join" をセット
+                className={`inline-flex items-center gap-2.5 px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 tracking-widest text-xs md:text-sm group hover:-translate-y-1 ${montserrat.className}`}
+              >
+                JOIN DISCORD <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </motion.div>
 
               {/* 右側：3つのカード */}
               <motion.div
@@ -1371,7 +1374,10 @@ export default function UltimateCommunitySite() {
                     <p className="text-slate-400 text-sm mb-8 max-w-2xl mx-auto relative z-10">
                       {sponsorData.footer.text}
                     </p>
-                    <button className="relative z-10 px-8 py-3 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-full transition-all duration-300 tracking-widest text-sm flex items-center gap-2 mx-auto">
+                    <button 
+                      onClick={() => setModalMode("contact")} // 🌟 "contact" をセット
+                      className="relative z-10 px-8 py-3 bg-blue-500 hover:bg-blue-400 text-white font-bold rounded-full transition-all duration-300 tracking-widest text-sm flex items-center gap-2 mx-auto"
+                    >
                       <Mail size={16} /> お問い合わせ
                     </button>
                   </motion.div>
@@ -1767,7 +1773,9 @@ export default function UltimateCommunitySite() {
                 サーバーへの参加希望やコラボのご相談など、お気軽にお問い合わせください。
               </p>
             </div>
-            <button className={`relative z-10 shrink-0 px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full shadow-lg transition-all flex items-center gap-2 tracking-widest text-xs hover:-translate-y-1 ${montserrat.className}`}>
+            <button 
+            onClick={() => setModalMode("contact")} // 🌟 これを追加！
+            className={`relative z-10 shrink-0 px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full shadow-lg transition-all flex items-center gap-2 tracking-widest text-xs hover:-translate-y-1 ${montserrat.className}`}>
               <Mail size={16} /> Contact
             </button>
           </div>
@@ -1789,7 +1797,6 @@ export default function UltimateCommunitySite() {
               ))}
             </div>
           </div>
-
           {/* 最下部：コピーライト */}
           <div className="border-t border-slate-800 pt-8 text-center flex flex-col md:flex-row justify-between items-center gap-4">
             <p className={`text-[10px] font-bold tracking-widest text-slate-500 uppercase ${montserrat.className}`}>
@@ -1806,6 +1813,49 @@ export default function UltimateCommunitySite() {
           </div>
         </div>
       </footer>
+
+      {/* ========================================= */}
+      {/* 🌟 文面切り替え対応版ポップアップ本体 */}
+      {/* ========================================= */}
+      {modalMode !== "" && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-8 max-w-sm w-full relative shadow-2xl animate-in fade-in zoom-in duration-300">
+            
+            <button
+              onClick={() => setModalMode("")} // 🌟 空にすると閉じる
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-3xl font-bold"
+            >
+              ×
+            </button>
+
+            <img
+              src="/hirokinngutatie.jpg" 
+              alt="ヒロキング"
+              className="w-32 h-32 rounded-full object-cover border-4 border-gray-100 mx-auto mb-4"
+            />
+
+            {/* 🌟 ここで文面を切り替えています！ */}
+            <h3 className="text-xl font-bold text-black text-center mb-2">
+              {modalMode === "join" ? "参加申請はこちらから！" : "お問い合わせはこちらから！"}
+            </h3>
+            
+            <p className="text-sm text-gray-600 text-center mb-6">
+              {modalMode === "join" 
+                ? "現在、コミュニティへの参加はヒロキングのDMにて承っております。お気軽にご連絡ください！" 
+                : "サイトやコミュニティに関するお問い合わせは、ヒロキングのDMにて一括でお受けしております。"}
+            </p>
+
+            <a
+              href="https://x.com/hiroking_0306" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-black text-white text-center font-bold py-3 rounded-full hover:bg-gray-800 transition"
+            >
+              𝕏 DMを送る
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
