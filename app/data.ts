@@ -177,7 +177,8 @@ export const staffList = [
     youtube:'https://www.youtube.com/@hajikoyuch',
       },
   },
-  {
+
+    {
     id: 'sub_admin_7',
     name: 'あるぅ',
     role: 'サブ管理人',
@@ -191,7 +192,8 @@ export const staffList = [
     twitch: 'https://m.twitch.tv/aruu_jp/home',
     youtube: 'https://www.youtube.com/@aruu_jp',    
    },
-    ｝,
+  },
+
   {
     id: 'sub_admin_8',
     name: 'つゆりひお',
