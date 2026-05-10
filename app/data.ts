@@ -191,7 +191,7 @@ export const staffList = [
     twitch: 'https://m.twitch.tv/aruu_jp/home',
     youtube: 'https://www.youtube.com/@aruu_jp',    
    },
-    ｝
+    ｝,
   {
     id: 'sub_admin_8',
     name: 'つゆりひお',
