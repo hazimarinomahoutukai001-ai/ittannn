@@ -97,10 +97,10 @@ export const staffList = [
     offsetX: -250,
     offsetY: 120,
     scale: 1.00,
-        // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -250,   // スマホではズラさない（0）
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -190,   // スマホではズラさない（0）
     mobileOffsetY: 190,   // スマホではズラさない（0）
-    mobileScale: 0.9,  
+    mobileScale: 1.1,  
   },
  {
     id: 'sub_admin_2',
@@ -129,10 +129,10 @@ export const staffList = [
     offsetY: 170,
     scale: 1.2,
 
-            // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -250,   // スマホではズラさない（0）
-    mobileOffsetY:400,   // スマホではズラさない（0）
-    mobileScale: 1.3,  
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -170,   // スマホではズラさない（0）
+    mobileOffsetY:420,   // スマホではズラさない（0）
+    mobileScale: 2,  
   },
 
   {
@@ -147,6 +147,11 @@ export const staffList = [
     links: {
     x: 'https://x.com/shiina_81417',
     twitch: 'https://www.twitch.tv/shiina_41777',
+
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -190,   // スマホではズラさない（0）
+    mobileOffsetY:200,   // スマホではズラさない（0）
+    mobileScale: 1.7,  
       },
   },
   {
@@ -159,9 +164,9 @@ export const staffList = [
     offsetY: 270,
     scale: 2.5,
      // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -280,   // スマホではズラさない（0）
-    mobileOffsetY: 370,   // スマホではズラさない（0）
-    mobileScale: 2.5,  
+    mobileOffsetX: -220,   // スマホではズラさない（0）
+    mobileOffsetY: 300,   // スマホではズラさない（0）
+    mobileScale: 3,  
   },
   {
     id: 'sub_admin_6',
@@ -177,6 +182,10 @@ export const staffList = [
     twitch: 'https://www.twitch.tv/vtuberkoyuki',
     youtube:'https://www.youtube.com/@hajikoyuch',
       },
+     // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150,   // スマホではズラさない（0）
+    mobileOffsetY: 400,   // スマホではズラさない（0）
+    mobileScale: 2,  
   },
 
     {
@@ -193,6 +202,11 @@ export const staffList = [
     twitch: 'https://m.twitch.tv/aruu_jp/home',
     youtube: 'https://www.youtube.com/@aruu_jp',    
    },
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150,   // スマホではズラさない（0）
+    mobileOffsetY: 420,   // スマホではズラさない（0）
+    mobileScale: 1.8,  
+  
   },
 
   {
@@ -207,8 +221,13 @@ export const staffList = [
     links: {
     x: 'https://x.com/hiokikai_twitch',
     twitch: 'https://www.twitch.tv/noahio0507',
-    youtube: 'https://www.youtube.com/@Thuyurihio',    
+    youtube: 'https://www.youtube.com/@Thuyurihio',   
    },
+      
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150,   // スマホではズラさない（0）
+    mobileOffsetY: 450,   // スマホではズラさない（0）
+    mobileScale: 1.5,  
   
   
   },
@@ -226,6 +245,10 @@ export const staffList = [
     twitch: 'https://www.twitch.tv/yoruneruka',
     youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',    
    },
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150,   // スマホではズラさない（0）
+    mobileOffsetY: 400,   // スマホではズラさない（0）
+    mobileScale: 1.8,  
   },
   
   {
@@ -242,6 +265,10 @@ export const staffList = [
     twitch: 'https://www.twitch.tv/yukiha_kayo',
     youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',    
    },
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150,   // スマホではズラさない（0）
+    mobileOffsetY: 300,   // スマホではズラさない（0）
+    mobileScale: 1.7,  
   },
   {
     id: 'sub_admin_11',
@@ -257,6 +284,11 @@ export const staffList = [
     twitch: 'https://www.twitch.tv/ibuki_ayano',
     youtube: 'https://www.youtube.com/@Ibuki_ayano',    
    },
+      
+     // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150,   // スマホではズラさない（0）
+    mobileOffsetY: 120,   // スマホではズラさない（0）
+    mobileScale: 2,  
   },
 ];
 
