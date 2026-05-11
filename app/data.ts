@@ -118,6 +118,9 @@ export const staffList = [
     twitch: 'https://www.twitch.tv/hiuhymn',
     youtube: 'https://www.youtube.com/@hiuhymn'
       },
+    mobileOffsetX: -150,
+    mobileOffsetY: 350,
+    mobileScale: 1.7,
   },
   {
     id: 'sub_admin_3',
@@ -128,6 +131,10 @@ export const staffList = [
     offsetX: -180,
     offsetY: 170,
     scale: 1.2,
+    links: {
+    x: 'https://x.com/subkumasan3310',
+    twitch: 'https://www.twitch.tv/gaikumasan_twitch?sr=a',
+      },
 
     // ▼ スマホ用の設定（追加！） ▼
     mobileOffsetX: -170,   // スマホではズラさない（0）
