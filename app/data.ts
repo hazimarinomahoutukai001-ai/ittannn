@@ -77,9 +77,10 @@ export const staffList = [
     offsetY: 200,
     scale: 1.7,
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -200,   // スマホではズラさない（0）
-    mobileOffsetY: 290,   // スマホではズラさない（0）
-    mobileScale: 1.5,   // スマホでは等倍（1.0）に戻す
+    mobileOffsetX: -150,   // スマホではズラさない（0）
+    mobileOffsetY: 400,   // スマホではズラさない（0）
+    mobileScale: 2.5,   // スマホでは等倍（1.0）に戻す
+
 
 },
   {
