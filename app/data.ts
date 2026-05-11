@@ -154,12 +154,11 @@ export const staffList = [
     links: {
     x: 'https://x.com/shiina_81417',
     twitch: 'https://www.twitch.tv/shiina_41777',
-
+      },
     // ▼ スマホ用の設定（追加！） ▼
     mobileOffsetX: -190,   // スマホではズラさない（0）
     mobileOffsetY:200,   // スマホではズラさない（0）
     mobileScale: 1.7,  
-      },
   },
   {
     id: 'sub_admin_5',
