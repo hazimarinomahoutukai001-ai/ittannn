@@ -183,24 +183,42 @@ export default function UltimateCommunitySite() {
     </div>
   );
 
-  if (loading)
+ if (loading)
     return (
       <div className="h-screen w-full flex flex-col items-center justify-center bg-white">
         
-        <motion.div 
-          animate={{ opacity: [0.2, 1, 0.2] }} 
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-4"
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="flex flex-col items-center"
         >
-          {/* メインロゴ（真っ黒ではなく、少しだけ柔らかい高級な黒 #111） */}
-          <div className={`text-4xl md:text-5xl font-black text-[#111111] tracking-[0.3em] ml-[0.3em] ${cleanFont.className}`}>
-            TSC
+          {/* 1. 英語の正式名称（極細・セリフ体・超ワイド字間） */}
+          <div className="text-xs md:text-sm font-serif font-light tracking-[0.8em] md:tracking-[1.2em] ml-[0.8em] md:ml-[1.2em] uppercase text-[#222]">
+            The Streamer Community
           </div>
-          
-          {/* サブテキスト（グレーで控えめに） */}
-          <div className={`text-[9px] md:text-[10px] text-[#666666] tracking-[0.5em] ml-[0.5em] font-medium ${montserrat.className}`}>
-            LOADING
+
+          {/* 2. 繊細な縦の区切り線 */}
+          <motion.div 
+            initial={{ height: 0 }}
+            animate={{ height: "40px" }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
+            className="w-[1px] bg-[#ddd] my-6" 
+          />
+
+          {/* 3. 日本語（明朝体風・細字・ワイド字間） */}
+          <div className="text-[9px] md:text-[10px] font-serif font-light tracking-[0.6em] ml-[0.6em] text-[#666]">
+            ストリーマーコミュニティ
           </div>
+        </motion.div>
+
+        {/* 4. 控えめすぎるローディング文字 */}
+        <motion.div
+          animate={{ opacity: [0.1, 0.5, 0.1] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-12 text-[8px] font-serif tracking-[0.5em] text-[#999] uppercase"
+        >
+          Loading
         </motion.div>
 
       </div>
