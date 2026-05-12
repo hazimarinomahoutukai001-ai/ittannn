@@ -183,190 +183,59 @@ export default function UltimateCommunitySite() {
     </div>
   );
 
-  if (loading)
+if (loading)
     return (
-      <div className={`h-screen w-full flex flex-col items-center justify-center bg-slate-950 overflow-hidden relative ${montserrat.className}`}>
+      <div className={`h-screen w-full flex flex-col items-center justify-center bg-white ${montserrat.className}`}>
         
-        {/* ⭐ サイバーグリッド背景 */}
-        <div className="absolute inset-0 z-0 bg-grid-pattern opacity-100 pointer-events-none" />
-
-        {/* 1. サイバーカオス: 飛び交うネオンアイコンとデータストリーム */}
-        <div className="absolute inset-0 z-0pointer-events-none">
-          {[...Array(40)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ 
-                x: Math.random() * 2000 - 1000, 
-                y: Math.random() * 2000 - 1000, 
-                opacity: 0,
-                scale: Math.random() * 0.8 + 0.2,
-                rotate: Math.random() * 360,
-                filter: "blur(0px)"
-              }}
-              animate={{ 
-                x: [null, Math.random() * 400 - 200, 0], 
-                y: [null, Math.random() * 400 - 200, 0], 
-                opacity: [0, 1, 0],
-                scale: [0.2, 1.8, 0],
-                rotate: [0, 720],
-                filter: ["blur(0px)", "blur(2px)", "blur(0px)"]
-              }}
-              transition={{ 
-                duration: 2.2, 
-                repeat: Infinity, 
-                delay: i * 0.04,
-                ease: "circIn" 
-              }}
-              className="absolute top-1/2 left-1/2 text-blue-500 rounded-lg p-2 flex items-center justify-center drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] border border-blue-500/20 bg-blue-500/5"
-            >
-              {/* アイコンをごちゃ混ぜにする */}
-              {i % 5 === 0 ? <Users size={30} /> : 
-               i % 5 === 1 ? <Video size={25} /> : 
-               i % 5 === 2 ? <Zap size={28} /> : 
-               i % 5 === 3 ? <Heart size={20} /> : 
-               <Globe size={22} />}
-            </motion.div>
-          ))}
-          
-          {/* サイバーライン */}
-          {[...Array(10)].map((_, i) => (
-             <motion.div
-               key={`line-${i}`}
-               initial={{ x: "-100%", opacity: 0 }}
-               animate={{ x: "100%", opacity: [0, 1, 0] }}
-               transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.1, ease: "linear" }}
-               style={{ top: `${Math.random() * 100}%` }}
-               className="absolute w-full h-px bg-blue-500/30"
-             />
-          ))}
+        {/* 1. 滑らかに浮かび上がるメインロゴ */}
+        <div className="overflow-hidden pb-2 mb-6">
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} // 高級感のある滑らかな動き
+            className={`text-5xl md:text-7xl font-black text-slate-900 tracking-widest ${cleanFont.className}`}
+          >
+            TSC
+          </motion.div>
         </div>
 
-        {/* 2. TSCロゴとHUDチャージ演出：エネルギーの溜まり */}
-        <div className="relative z-10 flex flex-col items-center">
-          
-          {/* 高速デジタルテキストストリーム */}
-          <div className="h-10 overflow-hidden mb-6 relative">
-            <motion.div
-              animate={{ y: [0, -40, -80, -120, -160, -200, -240, -280] }}
-              transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
-              className={`text-blue-500 font-bold text-xl tracking-[0.4em] uppercase text-center ${montserrat.className}`}
-            >
-              {[
-                "Establishing Neural Link...",
-                "Syncing User Profiles...",
-                "Establishing Connections...",
-                "Uploading Community Data...",
-                "Activating Support Protocol...",
-                "Calibrating Creator Core...",
-                "Establishing TSC Neural Network...",
-                "AWAITING TSC ACTIVATION..."
-              ].map((text, idx) => (
-                <div key={idx} className="h-10 flex items-center justify-center whitespace-nowrap">
-                  {text}
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          <div className="relative w-24 h-24 flex items-center justify-center">
-             
-             {/* ⭐ TSCロゴ：サイバーグリッチアニメーション */}
-             <motion.div
-               animate={{ 
-                 scale: [1, 1.3, 1],
-                 opacity: [0.9, 1, 0.9],
-                 filter: ["blur(0px)", "blur(2px)", "blur(0px)"],
-                 x: ["0%", "1%", "-1%", "0%"]
-               }}
-               transition={{ duration: 0.4, repeat: Infinity }}
-               className={`text-white font-black tracking-tighter relative z-20 ${cleanFont.className}`}
-               style={{ 
-                fontSize: '80px',
-                lineHeight: '1',
-                textShadow: '0 0 10px rgba(59,130,246,1), 0 0 20px rgba(59,130,246,0.8), 0 0 30px rgba(59,130,246,0.6)'
-               }}
-             >
-               TSC
-             </motion.div>
-             
-             {/* ⭐ ぱぁん！の予兆: HUDの幾何学的チャージリング */}
-             {[...Array(3)].map((_, i) => (
-               <motion.div 
-                 key={`hud-${i}`}
-                 animate={{ 
-                   scale: [0.5, 3 + i * 0.5],
-                   opacity: [0.6 - i * 0.1, 0],
-                   rotate: [0, 180 + i * 90]
-                 }}
-                 transition={{ duration: 0.8 + i * 0.1, repeat: Infinity, ease: "easeOut", delay: i * 0.15 }}
-                 className="absolute inset-0 border-2 border-blue-500 rounded-full"
-                 style={{
-                   borderColor: `rgba(59,130,246,${0.6 - i * 0.1})`,
-                   maskImage: `radial-gradient(circle, transparent 40%, black 60%)`,
-                   maskType: 'alpha'
-                 }}
-               />
-             ))}
-
-             {/* HUDの光彩とフラッシュ予兆 */}
-             <motion.div 
-               animate={{ 
-                 scale: [0.5, 4],
-                 opacity: [0.4, 0],
-                 borderWidth: ["10px", "0px"]
-               }}
-               transition={{ duration: 0.5, repeat: Infinity, ease: "easeOut" }}
-               className="absolute inset-0 border-blue-100 rounded-full"
-             />
-
-             {/* 中央のテックリング */}
-             <motion.div 
-               animate={{ rotate: 360 }}
-               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-               className="absolute inset-[-10px] border border-blue-500/20 rounded-full"
-             />
-             <motion.div 
-               animate={{ rotate: -360 }}
-               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-               className="absolute inset-[-20px] border-t border-b border-blue-500/10 rounded-full"
-             />
-          </div>
-
-          {/* 画面全体のグリッチフラッシュ予兆（一時的） */}
-          <motion.div 
-            animate={{ 
-              opacity: [0, 0.4, 0],
-              scale: [1, 1.2, 1]
+        {/* 2. スタイリッシュな極細プログレスライン */}
+        <div className="w-48 md:w-64 h-[1px] bg-slate-200 relative overflow-hidden mb-6">
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "100%" }}
+            transition={{ 
+              duration: 1.5, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
             }}
-            transition={{ duration: 0.1, repeat: Infinity, delay: 0.05 }}
-            className="fixed inset-0 bg-blue-600 pointer-events-none z-50 mix-blend-color-dodge"
+            className="absolute top-0 bottom-0 left-0 w-full bg-blue-600"
           />
         </div>
 
-        {/* 下部のデジタルステータステキスト：タイピング演出 */}
-        <div className="mt-20 ml-[0.8em] text-center w-80">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className={`text-slate-400 text-sm font-bold tracking-[0.5em] uppercase text-center ml-[0.8em] ${montserrat.className}`}
+        {/* 3. 品のあるフェードインテキスト */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] md:text-xs font-bold text-slate-400 tracking-[0.5em] uppercase pl-[0.5em]">
+            The Streamer Community
+          </span>
+          <motion.span 
+            animate={{ opacity: [0.3, 1, 0.3] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="text-[9px] text-blue-500 font-bold tracking-widest uppercase"
           >
-            TSC Community Energy Loading...
-          </motion.p>
-          <div className="h-1 bg-slate-800 w-full mt-4 rounded-full overflow-hidden relative">
-            <motion.div 
-                initial={{ left: "-100%" }}
-                animate={{ left: "100%" }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                className="absolute w-2/3 h-full bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,1)]"
-            />
-          </div>
-          <p className="mt-2 text-slate-600 text-[10px] tracking-[0.3em] font-mono">
-             Gathering Data from 12 Admins, 12 Supporters, and 12 Partners
-          </p>
-        </div>
+            Loading...
+          </motion.span>
+        </motion.div>
+
       </div>
     );
+
+    // ⭐ ここまでローディング
 
   return (
     <div className={`bg-white text-slate-800 selection:bg-blue-100 selection:text-blue-600 overflow-x-hidden min-h-screen flex flex-col ${softFont.className}`}>
