@@ -183,59 +183,29 @@ export default function UltimateCommunitySite() {
     </div>
   );
 
-if (loading)
+  if (loading)
     return (
-      <div className={`h-screen w-full flex flex-col items-center justify-center bg-white ${montserrat.className}`}>
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-white">
         
-        {/* 1. 滑らかに浮かび上がるメインロゴ */}
-        <div className="overflow-hidden pb-2 mb-6">
-          <motion.div
-            initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} // 高級感のある滑らかな動き
-            className={`text-5xl md:text-7xl font-black text-slate-900 tracking-widest ${cleanFont.className}`}
-          >
-            TSC
-          </motion.div>
-        </div>
-
-        {/* 2. スタイリッシュな極細プログレスライン */}
-        <div className="w-48 md:w-64 h-[1px] bg-slate-200 relative overflow-hidden mb-6">
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: "100%" }}
-            transition={{ 
-              duration: 1.5, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="absolute top-0 bottom-0 left-0 w-full bg-blue-600"
-          />
-        </div>
-
-        {/* 3. 品のあるフェードインテキスト */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="flex flex-col items-center gap-2"
+        <motion.div 
+          animate={{ opacity: [0.2, 1, 0.2] }} 
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-4"
         >
-          <span className="text-[10px] md:text-xs font-bold text-slate-400 tracking-[0.5em] uppercase pl-[0.5em]">
-            The Streamer Community
-          </span>
-          <motion.span 
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-[9px] text-blue-500 font-bold tracking-widest uppercase"
-          >
-            Loading...
-          </motion.span>
+          {/* メインロゴ（真っ黒ではなく、少しだけ柔らかい高級な黒 #111） */}
+          <div className={`text-4xl md:text-5xl font-black text-[#111111] tracking-[0.3em] ml-[0.3em] ${cleanFont.className}`}>
+            TSC
+          </div>
+          
+          {/* サブテキスト（グレーで控えめに） */}
+          <div className={`text-[9px] md:text-[10px] text-[#666666] tracking-[0.5em] ml-[0.5em] font-medium ${montserrat.className}`}>
+            LOADING
+          </div>
         </motion.div>
 
       </div>
     );
 
-    // ⭐ ここまでローディング
 
   return (
     <div className={`bg-white text-slate-800 selection:bg-blue-100 selection:text-blue-600 overflow-x-hidden min-h-screen flex flex-col ${softFont.className}`}>
