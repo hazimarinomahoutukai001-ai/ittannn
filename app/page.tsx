@@ -804,24 +804,23 @@ export default function UltimateCommunitySite() {
 
                 {/* 🔽🔽🔽 ここにABOUTをペースト！！ 🔽🔽🔽 */}
                 {/* ⭐ ABOUT セクション（data.ts 連動＆安全対策版） ⭐ */}
-               <section className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden border-t border-slate-100">
+                <section className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden border-t border-slate-100">
                   <motion.div style={{ x: parallaxAbout }} className="absolute top-10 right-0 z-0 pointer-events-none select-none opacity-[0.03]">
                     <span className={`text-[12rem] md:text-[20rem] font-black text-slate-900 leading-none tracking-tighter uppercase ${cleanFont.className}`}>ABOUT</span>
                   </motion.div>
 
-                  {/* 🌟 修正1： lg:flex-row を 2xl:flex-row に変更！ */}
                   <div className="max-w-7xl mx-auto relative z-10 flex flex-col 2xl:flex-row items-center gap-10 2xl:gap-12">
                     
                     {/* 左側：画像とステータス */}
-                    {/* 🌟 修正2： lg:w-[55%] を 2xl:w-[55%] に変更！ */}
-                    <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full 2xl:w-[55%] relative flex flex-col justify-center items-center">
+                    {/* 🌟 修正1：画像コンテナの配置設定を変更！ */}
+                    <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full 2xl:w-[55%] relative flex flex-col items-center 2xl:items-end justify-center">
                         
-                       {/* 🌟 修正3：ここの lg: も 2xl: に変更して、ノートPCサイズまでは中央揃えをキープ！ */}
                        <div className="relative w-full flex justify-center 2xl:justify-end pr-4 2xl:pr-0">
                           {collectiveData?.image && (
                             <img 
                               src={collectiveData.image} 
-                              className="w-[120%] sm:w-[130%] lg:w-[140%] xl:w-[150%] 2xl:w-[150%] max-w-none h-auto object-contain drop-shadow-2xl z-20 relative -right-[5%] 2xl:-right-[10%]" 
+                              {/* 🌟 修正2：画像の幅設定を変更！ 2xl:w-[150%] -> 2xl:w-full に！ */}
+                              className="w-[120%] sm:w-[130%] lg:w-[140%] xl:w-[150%] 2xl:w-full max-w-none h-auto object-contain drop-shadow-2xl z-20 relative -right-[5%] 2xl:-right-[10%]" 
                               alt="TSC Staff Collective" 
                             />
                           )}
@@ -845,7 +844,6 @@ export default function UltimateCommunitySite() {
                     </motion.div>
 
                     {/* 右側：テキストコンテンツ */}
-                    {/* 🌟 修正4： lg:w-[45%] を 2xl:w-[45%] に変更し、lg:pt-0 を 2xl:pt-0 に変更！ */}
                     <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full 2xl:w-[45%] flex flex-col items-center 2xl:items-start text-left relative z-10 pt-16 2xl:pt-0">
                         
                        <div className="mb-4 relative w-full text-center 2xl:text-left">
