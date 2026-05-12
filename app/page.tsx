@@ -187,44 +187,46 @@ export default function UltimateCommunitySite() {
     </div>
   );
 
- if (loading)
+if (loading)
     return (
       <div className="h-screen w-full flex flex-col items-center justify-center bg-white fixed inset-0 z-[9999]">
         
-        <div className="flex flex-col items-center max-w-xs w-full px-10">
+        {/* max-w-xsを外して、画面幅いっぱい(w-full)で中央揃えにすることで狭いスマホにも対応 */}
+        <div className="flex flex-col items-center w-full px-2">
           
-          {/* 1. 英語名称：極細・セリフ体・超ワイド字間 */}
+          {/* 1. 英語名称：絶対に改行させない (whitespace-nowrap) */}
           <motion.div
-            initial={{ opacity: 0, letterSpacing: "0.5em" }}
-            animate={{ opacity: 1, letterSpacing: "1.2em" }}
+            initial={{ opacity: 0, letterSpacing: "0.2em" }}
+            animate={{ opacity: 1, letterSpacing: "0.6em" }} // スマホでもはみ出ないように最大幅を少し調整
             transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[10px] md:text-xs font-serif font-extralight text-[#111] uppercase whitespace-nowrap ml-[1.2em]"
+            className="text-[9px] sm:text-[10px] md:text-xs font-serif font-extralight text-[#111] uppercase whitespace-nowrap ml-[0.6em]"
           >
             The Streamer Community
           </motion.div>
 
-          {/* 2. センターライン：上から下へゆっくり伸びる */}
+          {/* 2. センターライン */}
           <motion.div 
             initial={{ height: 0 }}
             animate={{ height: "60px" }}
             transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
-            className="w-[0.5px] bg-[#333] my-8" 
+            className="w-[0.5px] bg-[#333] my-6 md:my-8" 
           />
 
-          {/* 3. 日本語名称：明朝体風・細字・静かな浮上 */}
-          <div className="overflow-hidden">
+          {/* 3. 日本語名称（テキスト変更）：絶対に改行させない (whitespace-nowrap) */}
+          <div className="overflow-hidden w-full flex justify-center">
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.5, delay: 1.5, ease: "easeOut" }}
-              className="text-[10px] md:text-[11px] font-serif font-light tracking-[0.8em] text-[#555] ml-[0.8em]"
+              // 🌟 スマホでは文字と字間を少し小さくし、PCでは大きくするレスポンシブ対応！
+              className="text-[8px] sm:text-[9px] md:text-[11px] font-serif font-light tracking-[0.3em] sm:tracking-[0.4em] md:tracking-[0.8em] text-[#555] ml-[0.3em] sm:ml-[0.4em] md:ml-[0.8em] whitespace-nowrap"
             >
-              ストリーマーコミュニティ
+              配信者クリエイターコミュニティ
             </motion.div>
           </div>
 
-          {/* 4. 下部の進行状況（細い線が1本だけゆっくり走る） */}
-          <div className="w-32 h-[1px] bg-[#eee] mt-16 relative overflow-hidden">
+          {/* 4. 下部の進行状況 */}
+          <div className="w-24 md:w-32 h-[1px] bg-[#eee] mt-12 md:mt-16 relative overflow-hidden">
             <motion.div 
               initial={{ x: "-100%" }}
               animate={{ x: "100%" }}
@@ -234,7 +236,7 @@ export default function UltimateCommunitySite() {
           </div>
         </div>
 
-        {/* 5. 画面全体のフェードアウト予兆（最後にパッと消えるのではなく、少しずつ準備する） */}
+        {/* 5. 画面全体のフェードアウト予兆 */}
         <motion.div 
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
