@@ -201,7 +201,7 @@ if (loading)
             transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
             className="text-[9px] sm:text-[10px] md:text-xs font-serif font-extralight text-[#111] uppercase whitespace-nowrap ml-[0.6em]"
           >
-            The Streamer Community
+            The Streamer Creator Community
           </motion.div>
 
           {/* 2. センターライン */}
