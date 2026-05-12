@@ -877,7 +877,7 @@ export default function UltimateCommunitySite() {
                   </div>
                 </section>
 
-                {/* ⭐ SPONSOR セクション（復活！） ⭐ */}
+              {/* ⭐ SPONSOR セクション（完全データ連動版！） ⭐ */}
                 <section className="py-24 bg-white relative z-20 border-t border-slate-100">
                   <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
@@ -887,11 +887,9 @@ export default function UltimateCommunitySite() {
                       <h2 className={`text-3xl md:text-4xl font-black tracking-tight text-slate-900 ${cleanFont.className}`}>
                         {sponsorData.homeSection.title}
                       </h2>
-                      {/* タイトル下の青いライン */}
                       <div className="w-12 h-1 bg-blue-500 mx-auto mt-6 rounded-full"></div>
                     </div>
 
-                    {/* 中央の大きなカード */}
                     <div className="bg-[#F8FAFC] rounded-3xl p-8 md:p-16 max-w-4xl mx-auto text-center shadow-sm border border-slate-100">
                       <h3 className={`text-xl md:text-2xl font-bold text-slate-800 mb-6 ${cleanFont.className}`}>
                         {sponsorData.homeSection.subtitle}
@@ -900,19 +898,24 @@ export default function UltimateCommunitySite() {
                         {sponsorData.homeSection.text}
                       </p>
 
-                      {/* 2つの特徴バッジ */}
-                      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
+                      {/* 🌟 data.ts からタイトルと説明文を自動で読み込んでカードを作る！ */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-12 text-left relative z-10">
                         {sponsorData.homeSection.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-3 bg-white px-6 py-3.5 rounded-xl shadow-sm border border-slate-100 text-sm font-bold text-slate-700">
-                            <span className="text-blue-500">
-                              {idx === 0 ? <Building size={18} /> : <BadgePercent size={18} />}
-                            </span>
-                            {feature}
+                          <div key={idx} className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-4 hover:shadow-md hover:border-blue-200 transition-all duration-300 group">
+                            <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                              {/* 1個目はビル、2個目はパーセントのアイコンを自動で出す */}
+                              {idx === 0 ? <Building size={28} /> : <BadgePercent size={28} />}
+                            </div>
+                            <h4 className="text-lg md:text-xl font-bold text-slate-800">
+                              {feature.title}
+                            </h4>
+                            <p className="text-sm text-slate-600 leading-relaxed">
+                              {feature.description}
+                            </p>
                           </div>
                         ))}
                       </div>
 
-                      {/* ボタン */}
                       <button 
                         onClick={() => switchPage('sponsors')}
                         className={`inline-flex items-center gap-2 bg-[#333333] text-white px-8 py-4 rounded-full text-xs md:text-sm font-bold tracking-widest hover:bg-blue-600 transition-colors uppercase shadow-md hover:shadow-lg hover:-translate-y-1 duration-300 ${montserrat.className}`}
