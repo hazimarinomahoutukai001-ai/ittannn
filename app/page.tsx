@@ -277,57 +277,6 @@ if (loading)
         </motion.div>
       </div>
       {/* 🌟🌟🌟 追加ここまで 🌟🌟🌟 */}
-
-      {/* hidden lg:flex でスマホでは消し、PCではflex表示。fixed top-0 で上部固定。z-[80] でメインコンテンツ(z-0~50)より手前、ハンバーガーメニュー(z-100)より後ろ。 */}
-      <header className={`hidden lg:flex fixed top-0 left-0 w-full h-32 bg-white/95 backdrop-blur-sm z-[80] items-center border-b border-slate-100 ${montserrat.className}`}>
-        
-        {/* 左端：既存のハンバーガーボタン(fixed top-8 left-8)がここに来るので、そのスペースを確保 */}
-        <div className="flex-shrink-0 w-32">
-          {/* 空白。 z-indexの調整で、既存のボタンがヘッダーの上に表示されます */}
-        </div>
-
-        {/* 中央：ナビゲーションメニュー。Cygames風に中央寄せで配置 */}
-        {/* w-full flex-grow で残りの幅を使い、items-center justify-center で中央に寄せる */}
-        <nav className="flex-grow flex items-center justify-center gap-x-10 xl:gap-x-14">
-          {[
-            { id: 'home', label: 'HOME' },
-            { id: 'news', label: 'NEWS' },
-            { id: 'profile', label: 'PROFILE' },
-            { id: 'activity', label: 'ACTIVITY' },
-            { id: 'guidelines', label: 'GUIDELINES' },
-            { id: 'sponsors', label: 'SPONSORS' },
-            { id: 'magazine', label: 'MAGAZINE' },
-            { id: 'faq', label: 'FAQ' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => switchPage(item.id)}
-              className={`text-[12px] xl:text-[13px] font-black tracking-[0.2em] xl:tracking-[0.3em] uppercase transition-all duration-300 relative group flex items-center justify-center ${
-                activePage === item.id ? 'text-blue-600' : 'text-slate-800 hover:text-blue-600'
-              }`}
-            >
-              {item.label}
-              {/* Cygames風：アクティブな時のパキッとした下線演出 */}
-              <span className={`absolute -bottom-1.5 left-0 h-[2px] bg-blue-600 transition-all duration-300 ${
-                activePage === item.id ? 'w-full' : 'w-0 group-hover:w-full'
-              }`} />
-            </button>
-          ))}
-        </nav>
-
-        {/* 右端：補助メニュー。Cygamesの「Cygames ID」的な位置 */}
-        {/* お問い合わせとDiscord参加ボタンを設置。ml-auto で右端に詰める */}
-        <div className="flex-shrink-0 flex items-center gap-6 ml-auto pr-12">
-          <button className="text-[11px] font-bold text-slate-500 hover:text-blue-600 tracking-[0.4em] uppercase whitespace-nowrap">
-            CONTACT
-          </button>
-          {/* Discordボタン風のデザイン */}
-          <button className="flex items-center gap-2.5 px-6 py-3 bg-blue-600 text-white rounded-full text-[11px] font-bold tracking-[0.3em] uppercase hover:bg-blue-700 transition-colors whitespace-nowrap">
-            JOIN DISCORD
-          </button>
-        </div>
-      </header>
-      {/* 🌟🌟🌟 追加ここまで 🌟🌟🌟 */}
       
       <style jsx global>{`
         .outline-text-elegant {
