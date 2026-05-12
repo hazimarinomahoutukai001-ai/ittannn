@@ -804,7 +804,7 @@ export default function UltimateCommunitySite() {
 
                 {/* 🔽🔽🔽 ここにABOUTをペースト！！ 🔽🔽🔽 */}
                 {/* ⭐ ABOUT セクション（data.ts 連動＆安全対策版） ⭐ */}
-                <section className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden border-t border-slate-100">
+               <section className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden border-t border-slate-100">
                   <motion.div style={{ x: parallaxAbout }} className="absolute top-10 right-0 z-0 pointer-events-none select-none opacity-[0.03]">
                     <span className={`text-[12rem] md:text-[20rem] font-black text-slate-900 leading-none tracking-tighter uppercase ${cleanFont.className}`}>ABOUT</span>
                   </motion.div>
@@ -824,17 +824,18 @@ export default function UltimateCommunitySite() {
                           )}
                        </div>
 
-                       <div className="mt-12 flex justify-center gap-8 md:gap-16 border-t border-slate-300/50 pt-8 w-[90%] md:w-[70%] mx-auto relative z-10">
+                       {/* 🌟 修正済：箱を広げて(w-full)、改行を絶対に防ぐ(whitespace-nowrap)！ */}
+                       <div className="mt-12 flex justify-center gap-6 sm:gap-10 lg:gap-6 2xl:gap-16 border-t border-slate-300/50 pt-8 w-full mx-auto relative z-10">
                          <div className="flex flex-col items-center">
                            <span className="text-[10px] md:text-xs text-blue-500 font-black tracking-[0.3em]">ADMIN</span>
-                           <span className="text-lg md:text-xl font-bold text-slate-700 mt-2">
+                           <span className="text-lg md:text-xl font-bold text-slate-700 mt-2 whitespace-nowrap">
                              管理人 <span className="text-sm ml-1 text-slate-500">{collectiveData?.adminCount || 1}名</span>
                            </span>
                          </div>
                          <div className="w-px h-12 bg-slate-300/50" />
                          <div className="flex flex-col items-center">
                            <span className="text-[10px] md:text-xs text-slate-400 font-black tracking-[0.3em]">SUB-ADMIN</span>
-                           <span className="text-lg md:text-xl font-bold text-slate-700 mt-2">
+                           <span className="text-lg md:text-xl font-bold text-slate-700 mt-2 whitespace-nowrap">
                              サブ管理人 <span className="text-sm ml-1 text-slate-500">{collectiveData?.subAdminCount || 11}名</span>
                            </span>
                          </div>
@@ -875,77 +876,6 @@ export default function UltimateCommunitySite() {
                     </motion.div>
                   </div>
                 </section>
-                {/* 🔼🔼🔼 ABOUTペーストここまで 🔼🔼🔼 */}
-
-
-
-            {/* ⭐ REQUIREMENTS セクション（画像の色に修正！） ⭐ */}
-          <section className="py-24 bg-[#0B1120] relative overflow-hidden z-20 border-t border-slate-800">
-            <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.5fr,2fr] gap-16 items-center">
-              
-              {/* 左側：メインタイトル */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-100px' }}
-                variants={fadeInVariant}
-                className="text-left"
-              >
-                <span className={`text-[11px] font-bold text-slate-100/90 tracking-[0.4em] uppercase mb-4 block ${montserrat.className}`}>
-                  REQUIREMENTS
-                </span>
-                <h2 className={`text-4xl md:text-5xl font-black text-slate-50 mb-6 leading-tight tracking-tight uppercase ${cleanFont.className}`}>
-                  誰でも歓迎、<br />でもリスペクトを。
-                </h2>
-                <p className="text-sm md:text-base text-slate-400 leading-loose max-w-lg mb-10">
-                  TSC鯖は、スキルや経験よりも「一緒に楽しむ心」を大切にしています。配信者も、クリエイターも、それを応援したい人も。最低限のマナーを守り、お互いをリスペクトできる方なら、誰でも参加可能です。
-                </p>
-                {/* 画像に合わせた、深い青のグラデーションボタン */}
-              {/* 画像に合わせた、深い青のグラデーションボタン */}
-              <button 
-                onClick={() => setModalMode("join")} // 🌟 "join" をセット
-                className={`inline-flex items-center gap-2.5 px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 tracking-widest text-xs md:text-sm group hover:-translate-y-1 ${montserrat.className}`}
-              >
-                JOIN DISCORD <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
-
-              {/* 右側：3つのカード */}
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="space-y-6"
-              >
-                {[
-                  { icon: PlayCircle, title: 'Streamers & Creators', text: '配信や動画制作、デザインなど、何かを発信・創造するのが好きな方。プラットフォームや登録者数は問いません。' },
-                  { icon: Heart, title: 'Supporters & Players', text: 'コミュニティを一緒に盛り上げてくれる方。配信を見るのが好きな方や、ただ一緒にゲームを楽しみたい方も大歓迎です。' },
-                  { icon: CheckCircle, title: 'Rules & Manners', text: '暴言や迷惑行為をしないこと。ゲームの腕前よりも、負けても笑い合えるような温かい空気作りをお願いします。' },
-                ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    variants={staggerItem}
-                    className="bg-[#161E31] border border-white/5 rounded-2xl p-6 md:p-8 flex items-start gap-6 shadow-sm group hover:bg-[#1E293B] hover:border-blue-500/20 hover:shadow-lg transition-all duration-300"
-                  >
-                    {/* 画像に合わせた、アイコン周りの青い円 */}
-                    <div className="shrink-0 size-14 bg-[#1E3A8A] rounded-full flex items-center justify-center border border-blue-500/20">
-                      <item.icon size={26} className="text-slate-50" />
-                    </div>
-                    <div>
-                      <h3 className={`text-lg md:text-xl font-bold text-slate-50 mb-3 ${cleanFont.className}`}>
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">
-                        {item.text}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-            </div>
-          </section>
 
                 {/* ⭐ SPONSOR セクション（復活！） ⭐ */}
                 <section className="py-24 bg-white relative z-20 border-t border-slate-100">
