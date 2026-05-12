@@ -248,6 +248,52 @@ if (loading)
 
   return (
     <div className={`bg-white text-slate-800 selection:bg-blue-100 selection:text-blue-600 overflow-x-hidden min-h-screen flex flex-col ${softFont.className}`}>
+
+      <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden flex items-center justify-center">
+        
+        {/* 1. 白い背景（ローディングの白から違和感なく繋げ、「がちゃん！」の瞬間に消える） */}
+        <motion.div
+          animate={{ opacity: [1, 1, 0, 0] }}
+          transition={{ duration: 1.8, times: [0, 0.35, 0.36, 1] }}
+          className="absolute inset-0 bg-white"
+        />
+
+        {/* 2. 斜めブロック全体を囲む巨大ラッパー（-15度傾ける） */}
+        <div className="absolute w-[200vw] h-[200vh] flex flex-col justify-center rotate-[-15deg]">
+          
+          {/* 上のブロック：上から猛スピードで降ってくる */}
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: ["-100%", "0%", "0%", "-100%"] }}
+            transition={{ duration: 1.8, times: [0, 0.3, 0.7, 1], ease: [0.76, 0, 0.24, 1] }}
+            className="w-full h-[100vh] bg-slate-900 border-b-[4px] md:border-b-[8px] border-blue-500 shadow-2xl"
+          />
+          
+          {/* 下のブロック：下から猛スピードで突き上がる */}
+          <motion.div
+            initial={{ y: "100%" }}
+            animate={{ y: ["100%", "0%", "0%", "100%"] }}
+            transition={{ duration: 1.8, times: [0, 0.3, 0.7, 1], ease: [0.76, 0, 0.24, 1] }}
+            className="w-full h-[100vh] bg-slate-900 border-t-[4px] md:border-t-[8px] border-blue-700 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]"
+          />
+
+        </div>
+
+        {/* 3. 「がちゃん！」の瞬間に中心で光るロゴ */}
+        <motion.div
+          animate={{ 
+            opacity: [0, 0, 1, 1, 0], 
+            scale: [0.5, 0.5, 1, 1.1, 1.3],
+            filter: ["blur(10px)", "blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]
+          }}
+          transition={{ duration: 1.8, times: [0, 0.3, 0.35, 0.65, 0.9] }}
+          className="absolute z-10 flex flex-col items-center justify-center"
+        >
+          <span className="text-white font-black text-6xl md:text-8xl tracking-widest italic drop-shadow-[0_0_20px_rgba(37,99,235,0.8)]">
+            TSC
+          </span>
+        </motion.div>
+      </div>
       
       <style jsx global>{`
         .outline-text-elegant {
