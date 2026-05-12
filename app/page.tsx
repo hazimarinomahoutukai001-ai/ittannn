@@ -249,19 +249,34 @@ if (loading)
   return (
     <div className={`bg-white text-slate-800 selection:bg-blue-100 selection:text-blue-600 overflow-x-hidden min-h-screen flex flex-col ${softFont.className}`}>
 
-     {/* 🌟🌟🌟 ここから：極限までシンプルな白のシーンチェンジ 🌟🌟🌟 */}
+     {/* 🌟🌟🌟 ここから：時間差で上がる3枚のベール（多重レイヤー演出） 🌟🌟🌟 */}
       <div className="fixed inset-0 z-[9999] pointer-events-none flex flex-col">
+        {/* 1枚目（最背面）：ほんの少しだけグレー */}
         <motion.div
           initial={{ y: "0%" }}
           animate={{ y: "-100%" }}
-          // Appleなどのサイトで使われる、最初はゆっくりで途中でスッと抜ける極上のカーブ
-          transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
-          className="w-full h-full bg-white relative"
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+          className="absolute inset-0 bg-[#f8f9fa]"
+        />
+        {/* 2枚目（中間）：さらに薄いグレー */}
+        <motion.div
+          initial={{ y: "0%" }}
+          animate={{ y: "-100%" }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.15 }}
+          className="absolute inset-0 bg-[#fdfdfd]"
+        />
+        {/* 3枚目（最前面）：純白 ＋ 下部の影 */}
+        <motion.div
+          initial={{ y: "0%" }}
+          animate={{ y: "-100%" }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+          className="absolute inset-0 bg-white"
         >
-          {/* 幕の下端に1pxの極薄い線と、かすかな影（これで「ただの白い四角」から「高級なベール」に変わります） */}
+          {/* この1pxの線と影が、ベールの立体感と高級感を生み出します */}
           <div className="absolute bottom-0 w-full h-[1px] bg-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)]" />
         </motion.div>
       </div>
+      {/* 🌟🌟🌟 追加ここまで 🌟🌟🌟 */}
       
       <style jsx global>{`
         .outline-text-elegant {
