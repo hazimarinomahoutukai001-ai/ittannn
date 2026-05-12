@@ -804,22 +804,24 @@ export default function UltimateCommunitySite() {
 
                 {/* 🔽🔽🔽 ここにABOUTをペースト！！ 🔽🔽🔽 */}
                 {/* ⭐ ABOUT セクション（data.ts 連動＆安全対策版） ⭐ */}
-                <section className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden border-t border-slate-100">
+               <section className="py-32 px-6 bg-[#FAFAFA] relative overflow-hidden border-t border-slate-100">
                   <motion.div style={{ x: parallaxAbout }} className="absolute top-10 right-0 z-0 pointer-events-none select-none opacity-[0.03]">
                     <span className={`text-[12rem] md:text-[20rem] font-black text-slate-900 leading-none tracking-tighter uppercase ${cleanFont.className}`}>ABOUT</span>
                   </motion.div>
 
-                  <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+                  {/* 🌟 修正1： lg:flex-row を 2xl:flex-row に変更！ */}
+                  <div className="max-w-7xl mx-auto relative z-10 flex flex-col 2xl:flex-row items-center gap-10 2xl:gap-12">
                     
                     {/* 左側：画像とステータス */}
-                    <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-[55%] relative flex flex-col justify-center items-center">
+                    {/* 🌟 修正2： lg:w-[55%] を 2xl:w-[55%] に変更！ */}
+                    <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full 2xl:w-[55%] relative flex flex-col justify-center items-center">
                         
-                       <div className="relative w-full flex justify-center lg:justify-end pr-4 lg:pr-0">
-                          {/* 💡 ?. をつけて安全に画像を読み込みます */}
+                       {/* 🌟 修正3：ここの lg: も 2xl: に変更して、ノートPCサイズまでは中央揃えをキープ！ */}
+                       <div className="relative w-full flex justify-center 2xl:justify-end pr-4 2xl:pr-0">
                           {collectiveData?.image && (
                             <img 
                               src={collectiveData.image} 
-                              className="w-[120%] sm:w-[130%] lg:w-[140%] xl:w-[150%] max-w-none h-auto object-contain drop-shadow-2xl z-20 relative -right-[5%] lg:-right-[10%]" 
+                              className="w-[120%] sm:w-[130%] lg:w-[140%] xl:w-[150%] 2xl:w-[150%] max-w-none h-auto object-contain drop-shadow-2xl z-20 relative -right-[5%] 2xl:-right-[10%]" 
                               alt="TSC Staff Collective" 
                             />
                           )}
@@ -843,16 +845,17 @@ export default function UltimateCommunitySite() {
                     </motion.div>
 
                     {/* 右側：テキストコンテンツ */}
-                    <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-[45%] flex flex-col items-start text-left relative z-10 pt-16 lg:pt-0">
+                    {/* 🌟 修正4： lg:w-[45%] を 2xl:w-[45%] に変更し、lg:pt-0 を 2xl:pt-0 に変更！ */}
+                    <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full 2xl:w-[45%] flex flex-col items-center 2xl:items-start text-left relative z-10 pt-16 2xl:pt-0">
                         
-                       <div className="mb-4 relative w-full">
-                         <span className={`text-[4.5rem] md:text-[6.5rem] font-black text-slate-300 leading-none tracking-tighter uppercase absolute -top-8 md:-top-12 -left-2 md:-left-4 pointer-events-none select-none opacity-80 ${cleanFont.className}`}>ABOUT</span>
+                       <div className="mb-4 relative w-full text-center 2xl:text-left">
+                         <span className={`text-[4.5rem] md:text-[6.5rem] font-black text-slate-300 leading-none tracking-tighter uppercase absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2 2xl:left-0 2xl:translate-x-0 pointer-events-none select-none opacity-80 ${cleanFont.className}`}>ABOUT</span>
                          <h2 className={`text-3xl md:text-5xl font-black text-slate-900 mb-2 tracking-tight uppercase relative z-10 ${cleanFont.className}`}>
                            {collectiveData?.title || '管理者・サブ管理人'}
                          </h2>
                        </div>
 
-                       <div className="w-full mb-8 relative z-10">
+                       <div className="w-full mb-8 relative z-10 flex justify-center 2xl:justify-start">
                          <div className="inline-block bg-blue-50/80 border border-blue-100 px-4 py-2 rounded-full shadow-sm">
                             <p className="text-blue-600 font-black tracking-[0.2em] text-xs md:text-sm uppercase flex items-center gap-2">
                               <ShieldCheck size={16} /> 管理体制 <span className="text-[10px] md:text-xs font-bold text-blue-400">/ {collectiveData?.subtitle || 'Admins & Sub-Admins'}</span>
@@ -860,18 +863,17 @@ export default function UltimateCommunitySite() {
                          </div>
                        </div>
                        
-                       <div className="space-y-6 text-slate-600 leading-loose font-medium text-sm md:text-base border-l-4 border-blue-500 pl-6 bg-white p-6 rounded-r-2xl shadow-sm relative z-10 w-full">
+                       <div className="space-y-6 text-slate-600 leading-loose font-medium text-sm md:text-base border-l-4 border-blue-500 pl-6 bg-white p-6 rounded-2xl 2xl:rounded-l-none shadow-sm relative z-10 w-full max-w-2xl 2xl:max-w-none text-left">
                          <p className="text-lg md:text-xl font-bold text-slate-800">
                            総勢<span className="text-blue-500 text-2xl md:text-3xl mx-1 font-black">{collectiveData?.totalCount || 12}</span>名の運営チームが、<br className="hidden md:block" />{collectiveData?.mainMessage || 'あなたの活動をサポートします。'}
                          </p>
                          
-                         {/* 💡 消えていたループ処理を復活させました！ */}
                          {collectiveData?.description?.map((text, idx) => (
                            <p key={idx}>{text}</p>
                          ))}
                        </div>
 
-                       <button onClick={() => switchPage('profile')} className="mt-10 mx-auto lg:mx-0 relative z-10 px-8 py-4 bg-white border-2 border-[#333333] text-[#333333] hover:bg-blue-500 hover:border-blue-500 hover:text-white font-bold rounded-full transition-all duration-300 tracking-widest text-xs md:text-sm flex items-center gap-3 group shadow-sm hover:shadow-[0_10px_20px_-10px_rgba(59,130,246,0.5)] hover:-translate-y-1">
+                       <button onClick={() => switchPage('profile')} className="mt-10 mx-auto 2xl:mx-0 relative z-10 px-8 py-4 bg-white border-2 border-[#333333] text-[#333333] hover:bg-blue-500 hover:border-blue-500 hover:text-white font-bold rounded-full transition-all duration-300 tracking-widest text-xs md:text-sm flex items-center gap-3 group shadow-sm hover:shadow-[0_10px_20px_-10px_rgba(59,130,246,0.5)] hover:-translate-y-1">
                          VIEW MEMBERS <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                        </button>
                     </motion.div>
