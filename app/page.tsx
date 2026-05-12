@@ -114,10 +114,14 @@ export default function UltimateCommunitySite() {
     });
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
+ useEffect(() => {
+  // サイト訪問から3.5秒後にロードを解除する
+  const timer = setTimeout(() => {
+    setLoading(false);
+  }, 3500); 
+
+  return () => clearTimeout(timer);
+}, []);
 
   const switchPage = (pageName: string) => {
     setActivePage(pageName);
@@ -185,45 +189,60 @@ export default function UltimateCommunitySite() {
 
  if (loading)
     return (
-      <div className="h-screen w-full flex flex-col items-center justify-center bg-white">
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-white fixed inset-0 z-[9999]">
         
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(4px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="flex flex-col items-center"
-        >
-          {/* 1. 英語の正式名称（極細・セリフ体・超ワイド字間） */}
-          <div className="text-xs md:text-sm font-serif font-light tracking-[0.8em] md:tracking-[1.2em] ml-[0.8em] md:ml-[1.2em] uppercase text-[#222]">
+        <div className="flex flex-col items-center max-w-xs w-full px-10">
+          
+          {/* 1. 英語名称：極細・セリフ体・超ワイド字間 */}
+          <motion.div
+            initial={{ opacity: 0, letterSpacing: "0.5em" }}
+            animate={{ opacity: 1, letterSpacing: "1.2em" }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[10px] md:text-xs font-serif font-extralight text-[#111] uppercase whitespace-nowrap ml-[1.2em]"
+          >
             The Streamer Community
-          </div>
+          </motion.div>
 
-          {/* 2. 繊細な縦の区切り線 */}
+          {/* 2. センターライン：上から下へゆっくり伸びる */}
           <motion.div 
             initial={{ height: 0 }}
-            animate={{ height: "40px" }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
-            className="w-[1px] bg-[#ddd] my-6" 
+            animate={{ height: "60px" }}
+            transition={{ duration: 1.5, delay: 0.8, ease: "easeInOut" }}
+            className="w-[0.5px] bg-[#333] my-8" 
           />
 
-          {/* 3. 日本語（明朝体風・細字・ワイド字間） */}
-          <div className="text-[9px] md:text-[10px] font-serif font-light tracking-[0.6em] ml-[0.6em] text-[#666]">
-            ストリーマーコミュニティ
+          {/* 3. 日本語名称：明朝体風・細字・静かな浮上 */}
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.5, delay: 1.5, ease: "easeOut" }}
+              className="text-[10px] md:text-[11px] font-serif font-light tracking-[0.8em] text-[#555] ml-[0.8em]"
+            >
+              ストリーマーコミュニティ
+            </motion.div>
           </div>
-        </motion.div>
 
-        {/* 4. 控えめすぎるローディング文字 */}
-        <motion.div
-          animate={{ opacity: [0.1, 0.5, 0.1] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-12 text-[8px] font-serif tracking-[0.5em] text-[#999] uppercase"
-        >
-          Loading
-        </motion.div>
+          {/* 4. 下部の進行状況（細い線が1本だけゆっくり走る） */}
+          <div className="w-32 h-[1px] bg-[#eee] mt-16 relative overflow-hidden">
+            <motion.div 
+              initial={{ x: "-100%" }}
+              animate={{ x: "100%" }}
+              transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
+              className="absolute inset-0 bg-[#999]"
+            />
+          </div>
+        </div>
 
+        {/* 5. 画面全体のフェードアウト予兆（最後にパッと消えるのではなく、少しずつ準備する） */}
+        <motion.div 
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1, delay: 3.5 }}
+          className="fixed inset-0 bg-white pointer-events-none z-[-1]"
+        />
       </div>
     );
-
 
   return (
     <div className={`bg-white text-slate-800 selection:bg-blue-100 selection:text-blue-600 overflow-x-hidden min-h-screen flex flex-col ${softFont.className}`}>
