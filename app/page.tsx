@@ -877,7 +877,7 @@ export default function UltimateCommunitySite() {
                   </div>
                 </section>
 
-              {/* ⭐ SPONSOR セクション（完全データ連動版！） ⭐ */}
+               {/* ⭐ SPONSOR セクション（完全データ連動版！） ⭐ */}
                 <section className="py-24 bg-white relative z-20 border-t border-slate-100">
                   <div className="max-w-5xl mx-auto px-6">
                     <div className="text-center mb-12">
