@@ -1,5 +1,6 @@
 name: Deploy to GitHub Pages
 
+
 on:
   push:
     branches: ["main"] # mainブランチに更新があったら実行
@@ -23,6 +24,9 @@ jobs:
         run: npm install
       - name: Build with Next.js
         run: npx next build
+        env:
+          NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY }}
+          NEXT_PUBLIC_SPREADSHEET_ID: ${{ secrets.NEXT_PUBLIC_SPREADSHEET_ID }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
