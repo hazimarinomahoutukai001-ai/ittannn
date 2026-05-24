@@ -3,8 +3,8 @@
 
 
 export async function fetchSheetData(sheetName: string, range: string = 'A2:H') {
-  const apiKey = process.env.GOOGLE_API_KEY;
-  const sheetId = process.env.SPREADSHEET_ID;
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_API_KEY;
+  const sheetId = process.env.NEXT_PUBLIC_SPREADSHEET_ID;
 
 // 🌟 ここで本当に値が入っているか確認する！
   console.log('API Key:', apiKey); 
