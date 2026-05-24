@@ -4,6 +4,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"] # mainブランチに更新があったら実行
+  workflow_dispatch:  # 🌟 これがあるから「手動ボタン」が出る！
 
 permissions:
   contents: read
