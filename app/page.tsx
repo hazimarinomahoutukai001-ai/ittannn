@@ -90,6 +90,28 @@ export default function UltimateCommunitySite() {
   const parallaxAbout = useTransform(scrollYProgress, [0, 1], [50, -150]);
   const parallaxX = useTransform(scrollYProgress, [0, 1], [0, -1000]);
   const carouselRef = useRef(null);
+
+// 🌟 フワッと感を極めたヘッダーアニメーション設定
+const headerNavContainer = { 
+  hidden: { opacity: 0 }, 
+  visible: { 
+    opacity: 1, 
+    transition: { 
+      staggerChildren: 0.15, // 💡 パラパラめくれる間隔を少しゆっくりに（0.1 -> 0.15）
+      delayChildren: 0.8     // 💡 ローディング明けの「タメ」を少し長く（0.6 -> 0.8）
+    } 
+  } 
+};
+
+const headerNavItem = { 
+  hidden: { opacity: 0, y: -20 }, // 💡 もう少し高い位置からフワッと落とす（-10 -> -20）
+  visible: { 
+    opacity: 1, y: 0, 
+    // 💡 時間を倍の0.8秒にし、動きを「じわ〜っ」と止まる高級なカーブに！
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } 
+  } 
+};
+ 
 // =========================================================================
   // ⭐ 画像サイズ＆位置調整パネル
   // =========================================================================
@@ -246,10 +268,10 @@ if (loading)
       </div>
     );
 
-  return (
+return (
     <div className={`bg-white text-slate-800 selection:bg-blue-100 selection:text-blue-600 overflow-x-hidden min-h-screen flex flex-col ${softFont.className}`}>
 
-     {/* 🌟🌟🌟 ここから：時間差で上がる3枚のベール（多重レイヤー演出） 🌟🌟🌟 */}
+      {/* 🌟🌟🌟 ここから：時間差で上がる3枚のベール（多重レイヤー演出） 🌟🌟🌟 */}
       <div className="fixed inset-0 z-[9999] pointer-events-none flex flex-col">
         {/* 1枚目（最背面）：ほんの少しだけグレー */}
         <motion.div
@@ -272,12 +294,11 @@ if (loading)
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
           className="absolute inset-0 bg-white"
         >
-          {/* この1pxの線と影が、ベールの立体感と高級感を生み出します */}
           <div className="absolute bottom-0 w-full h-[1px] bg-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)]" />
         </motion.div>
       </div>
       {/* 🌟🌟🌟 追加ここまで 🌟🌟🌟 */}
-      
+
       <style jsx global>{`
         .outline-text-elegant {
           color: transparent;
@@ -295,10 +316,11 @@ if (loading)
         }
       `}</style>
 
+      {/* 🌟 1. 丸ボタンとスライドメニュー */}
       <nav>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="fixed top-6 left-6 md:top-8 md:left-8 z-[100] p-4 bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-slate-200 text-slate-800 hover:text-blue-600 hover:shadow-md hover:scale-105 active:scale-95 transition-all"
+          className="fixed top-6 left-6 md:top-20 md:left-8 z-[120] p-4 bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-slate-200 text-slate-800 hover:text-blue-600 transition-all"
         >
           <AnimatePresence mode="wait">
             <motion.div key={isMenuOpen ? 'close' : 'menu'} initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 90 }} transition={{ duration: 0.3 }}>
@@ -309,7 +331,7 @@ if (loading)
         <AnimatePresence>
           {isMenuOpen && (
             <>
-              <motion.div initial={{ x: '-100%', opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: '-100%', opacity: 0 }} transition={menuBgTransition} className="fixed inset-y-0 left-0 z-[90] bg-white/95 backdrop-blur-2xl w-full md:w-[450px] border-r border-slate-200 px-12 pt-36 pb-12 overflow-y-auto flex flex-col shadow-[20px_0_60px_-15px_rgba(0,0,0,0.05)]">
+              <motion.div initial={{ x: '-100%', opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: '-100%', opacity: 0 }} transition={menuBgTransition} className="fixed inset-y-0 left-0 z-[110] bg-white/95 backdrop-blur-2xl w-full md:w-[450px] border-r border-slate-200 px-12 pt-36 pb-12 overflow-y-auto flex flex-col shadow-[20px_0_60px_-15px_rgba(0,0,0,0.05)]">
                 <motion.div variants={menuStaggerContainer} initial="hidden" animate="visible" className="space-y-8 mt-auto mb-auto">
                   {menuItems.map((item) => (
                     <div key={item.id} className="overflow-hidden py-1">
@@ -323,13 +345,39 @@ if (loading)
                   ))}
                 </motion.div>
               </motion.div>
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 z-[80] bg-slate-900/20 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 z-[105] bg-slate-900/20 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
             </>
           )}
         </AnimatePresence>
       </nav>
 
-      <div className="flex-grow flex flex-col w-full">
+{/* 🌟 2. PC版専用：Cygames風スリムヘッダー */}
+      <header className="hidden md:block fixed top-0 left-0 w-full h-14 z-[100] bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm transition-all">
+        <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-end">
+          
+          {/* 🌟 nav を motion.nav にし、variants をセット！ */}
+          <motion.nav 
+            variants={headerNavContainer}
+            initial="hidden"
+            animate="visible"
+            className={`flex items-center space-x-10 text-[11px] font-bold tracking-[0.25em] text-slate-500 uppercase ${montserrat.className}`}
+          >
+            {/* 🌟 各 button を motion.button にし、variants={headerNavItem} を追加！ */}
+            <motion.button variants={headerNavItem} onClick={() => switchPage('home')} className="hover:text-blue-600 transition-colors">HOME</motion.button>
+            <motion.button variants={headerNavItem} onClick={() => switchPage('news')} className="hover:text-blue-600 transition-colors">NEWS</motion.button>
+            <motion.button variants={headerNavItem} onClick={() => switchPage('profile')} className="hover:text-blue-600 transition-colors">PROFILE</motion.button>
+            <motion.button variants={headerNavItem} onClick={() => switchPage('activity')} className="hover:text-blue-600 transition-colors">ACTIVITY</motion.button>
+            <motion.button variants={headerNavItem} onClick={() => switchPage('guidelines')} className="hover:text-blue-600 transition-colors">GUIDELINES</motion.button>
+            <motion.button variants={headerNavItem} onClick={() => switchPage('magazine')} className="hover:text-blue-600 transition-colors">MAGAZINE</motion.button>
+            <motion.button variants={headerNavItem} onClick={() => switchPage('sponsors')} className="hover:text-blue-600 transition-colors">SPONSORS</motion.button>
+            <motion.button variants={headerNavItem} onClick={() => switchPage('faq')} className="hover:text-blue-600 transition-colors">FAQ</motion.button>
+          </motion.nav>
+          
+        </div>
+      </header>
+
+      {/* 🌟 3. メインコンテンツ（ここに md:pt-14 を入れています！） */}
+      <div className="flex-grow flex flex-col w-full md:pt-14">
         <AnimatePresence mode="wait">
           <motion.main key={activePage} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={pageTransition} className="w-full flex-grow flex flex-col">
             
@@ -716,7 +764,7 @@ if (loading)
                                   <iframe
                                     width="100%"
                                     height="100%"
-                                    src={`https://player.twitch.tv/?video=${(item as any).videoId}&parent=localhost&parent=hazimarinomahoutukai001-ai.github.io&autoplay=false`}
+                                    src={`https://player.twitch.tv/?video=${(item as any).videoId}&parent=localhost&parent=streamerhubjp-lab.github.io&autoplay=false`}
                                     frameBorder="0"
                                     allowFullScreen
                                     className={`w-full h-full ${
@@ -811,12 +859,12 @@ if (loading)
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInVariant} className="space-y-6 text-slate-600 relative z-10">
-                        <p className="text-xl leading-loose font-medium text-slate-800 bg-white/50 backdrop-blur-sm rounded-lg">ストリーマー、クリエイター、そしてゲームを愛するすべての人が集う「第三の居場所」です。</p>
-                        <p className="leading-loose text-slate-500 bg-white/50 backdrop-blur-sm rounded-lg">一人で遊ぶよりも、誰かと共有する喜びを。技術と創造性を掛け合わせ、新しいエンターテインメントの形を追求しています。</p>
+                        <p className="text-xl leading-loose font-medium text-slate-800 bg-white/50 backdrop-blur-sm rounded-lg">表現する人、創る人、そして支える人。交差するすべての人が集う「第三の居場所」です。</p>
+                        <p className="leading-loose text-slate-500 bg-white/50 backdrop-blur-sm rounded-lg">ここは、ただのチャットサーバーではありません。何気ない雑談からふと生まれるアイデアや、一人では辿り着けなかった最高の仲間との出会い。そして、培ってきた配信のノウハウや技術を惜しみなく分かち合う、創造の連鎖。一人で歩むよりも、遊ぶよりも誰かと共有する喜びを。技術と創造性を掛け合わせ、私たちは新しいエンターテインメントの形を追求しています。私たちは、あなたの「次の一歩」を応援するとともに、数ある世界の中の、ひとつの新しい居場所でありたいと願っています。</p>
                       </motion.div>
                       
                       <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 gap-4 relative z-10">
-                        {[ { icon: <Globe size={20} />, title: 'Open Environment', desc: '誰でも歓迎するオープンな空気感。' }, { icon: <Zap size={20} />, title: 'Tech & Creative', desc: '最新技術を取り入れた配信環境。' }, ].map((item, idx) => (
+                        {[ { icon: <Globe size={20} />, title: 'Open Environment', desc: '誰でも歓迎するオープンな空気感。' }, { icon: <Zap size={20} />, title: 'Tech & Creative', desc: '最新技術を取り入れた配信環境。' },{ icon: <Users size={20} />, title: 'A New Third Place', desc: '役割の垣根を超え、すべての人が自分らしくいられる「もうひとつの居場所」。' } ].map((item, idx) => (
                           <motion.div variants={staggerItem} key={idx} className="flex items-start gap-5 p-8 bg-[#FAFAFA] rounded-2xl border border-slate-100 transition-all hover:shadow-md hover:border-blue-100 hover:-translate-y-1 group relative overflow-hidden">
                             <div className="text-blue-500 p-3 bg-white rounded-xl shadow-sm group-hover:scale-110 transition-transform relative z-10">{item.icon}</div>
                             <div className="relative z-10">
@@ -868,7 +916,7 @@ if (loading)
                               alt={member.displayName}
                               /* 🌟 修正2：pointer-events-none を追加しました！ */
 
-                              className="w-full h-full object-cover pointer-events-none"
+                              className="w-full h-full object-cover object-top pointer-events-none"
                             />
                             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent p-6 flex flex-col justify-end h-1/2">
                               <span className={`text-[10px] md:text-xs font-black text-blue-400 tracking-widest uppercase mb-1 drop-shadow-md ${montserrat.className}`}>
@@ -977,9 +1025,11 @@ if (loading)
                       <h3 className={`text-xl md:text-2xl font-bold text-slate-800 mb-6 ${cleanFont.className}`}>
                         {sponsorData.homeSection.subtitle}
                       </h3>
-                      <p className="text-sm md:text-base text-slate-600 leading-loose mb-10 max-w-2xl mx-auto">
-                        {sponsorData.homeSection.text}
+                      {/* 🌟 修正後： whitespace-pre-wrap に変更！ */}
+                      <p className="text-sm md:text-base text-slate-600 leading-loose mb-10 max-w-3xl mx-auto whitespace-pre-wrap">
+                      {sponsorData.homeSection.text}
                       </p>
+  
 
                       {/* 🌟 data.ts からタイトルと説明文を自動で読み込んでカードを作る！ */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-12 text-left relative z-10">
@@ -1799,21 +1849,30 @@ if (loading)
             </button>
           </div>
 
-          {/* 中段：サーバー名のロゴ部分 */}
+        {/* 中段：サーバー名のロゴ部分 */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-10">
             <h2 className={`text-xl md:text-2xl font-black tracking-tight text-white uppercase leading-tight text-center md:text-left ${montserrat.className}`}>
               The Streamer <span className="text-slate-700 hidden md:inline">/</span>
               <br className="md:hidden" /> Creator Server
             </h2>
             <div className="flex flex-wrap justify-center md:justify-end gap-2 md:gap-3">
-              {['X (Twitter)', 'YouTube', 'Twitch', 'Discord'].map((sns, idx) => (
-                <button
+              
+              {/* 🌟 1. 文字列から「名前とURLのセット（オブジェクト）」に変更！ */}
+              {[
+                { name: 'X (Twitter)', url: 'https://x.com/hiroking_0306?lang=ja' },
+                { name: 'Twitch', url: 'https://www.twitch.tv/theseventhone666' },
+              ].map((sns, idx) => (
+                <a
                   key={idx}
-                  className={`px-5 py-2 bg-slate-800 border border-slate-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white rounded-full transition-all duration-300 text-xs font-bold tracking-wider text-slate-400 hover:-translate-y-1 shadow-sm ${montserrat.className}`}
+                  href={sns.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block px-5 py-2 bg-slate-800 border border-slate-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white rounded-full transition-all duration-300 text-xs font-bold tracking-wider text-slate-400 hover:-translate-y-1 shadow-sm ${montserrat.className}`}
                 >
-                  {sns}
-                </button>
+                  {sns.name}
+                </a>
               ))}
+              
             </div>
           </div>
           {/* 最下部：コピーライト */}
@@ -1848,7 +1907,7 @@ if (loading)
             </button>
 
             <img
-              src="/ittannn/hirokinngutatie.jpg" 
+              src="/tsc-official/hirokinngutatie.jpg" 
               alt="ヒロキング"
               className="w-32 h-32 rounded-full object-cover border-4 border-gray-100 mx-auto mb-4"
             />
