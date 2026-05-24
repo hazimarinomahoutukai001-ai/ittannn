@@ -37,14 +37,11 @@ import {
 import {
   siteConfig,
   menuItems,
-  newsItems,
   memoryItems,
   staffList,
-  galleryItems,
   faqList,
   guidelineList,
   sponsorData,
-  articleItems,
   collectiveData,
 } from './data';
 
@@ -63,7 +60,15 @@ const staggerItem = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
 
-export default function UltimateCommunitySite() {
+export default function UltimateCommunitySite({
+  dynamicNews = [],
+  dynamicArticles = [],
+  dynamicGallery = []
+}: {
+  dynamicNews?: any[];
+  dynamicArticles?: any[];
+  dynamicGallery?: any[];
+}) {
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -607,7 +612,7 @@ return (
                         </div>
                         
                         <div className="flex flex-col">
-                          {newsItems.slice(0, 3).map((news) => (
+                          {dynamicNews.slice(0, 3).map((news) => (
                             <div 
                               key={news.id} 
                               onClick={() => news.articleId && openArticle(news.articleId)}
@@ -639,7 +644,7 @@ return (
                         </div>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                          {articleItems.slice(0, 2).map((article) => (
+                          {dynamicArticles.slice(0, 2).map((article) => (
                             <div 
                               key={article.id}
                               onClick={() => openArticle(article.id)}
@@ -1186,7 +1191,7 @@ return (
                     animate="visible"
                     className="space-y-6"
                   >
-                    {newsItems.map((news) => (
+                    {dynamicNews.map((news) => (
                       <motion.div
                         variants={staggerItem}
                         key={news.id}
@@ -1250,7 +1255,7 @@ return (
                     animate="visible"
                     className="grid grid-cols-1 md:grid-cols-2 gap-8"
                   >
-                    {articleItems.map((article) => (
+                    {dynamicArticles.map((article) => (
                       <motion.div
                         variants={staggerItem}
                         key={article.id}
@@ -1299,7 +1304,7 @@ return (
             {/* 記事の詳細ページ（器） */}
             {activePage === 'article' &&
               (() => {
-                const article = articleItems.find(
+                const article = dynamicArticles.find(
                   (a) => a.id === activeArticleId
                 );
 
@@ -1745,7 +1750,7 @@ return (
                     animate="visible"
                     className="grid grid-cols-1 md:grid-cols-2 gap-8"
                   >
-                    {galleryItems.map((item) => (
+                    {dynamicGallery.map((item) => (
                       <motion.div
                         variants={staggerItem}
                         key={item.id}
