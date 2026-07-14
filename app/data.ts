@@ -1,14 +1,12 @@
 export const siteConfig = {
-  name: "TSC Official",
-  description: "The Streamer Creator Server",
-  
+  name: 'TSC Official',
+  description: 'The Streamer Creator Server',
+
   // 👇 右側に表示されるロゴの画像パス
-  logo: '/tsc-official/GoznTJVa4AAoq0S.jpg',  
-  
+  logo: '/tsc-official/GoznTJVa4AAoq0S.jpg',
+
   // 👇 中央に表示される11人の集合写真の画像パス
-  heroImages: [
-    '/tsc-official/Snapshot_868.webp', 
-  ],
+  heroImages: ['/tsc-official/Snapshot_868.webp'],
 };
 
 export const menuItems = [
@@ -20,6 +18,8 @@ export const menuItems = [
   { id: 'sponsors', label: 'SPONSORS' },
   { id: 'magazine', label: 'MAGAZINE' },
   { id: 'faq', label: 'FAQ' },
+  { id: 'admins', label: 'ADMINS' },
+  { id: 'navigation', label: 'NAVIGATOR' },
 ];
 
 export const newsItems = [
@@ -65,7 +65,7 @@ export const memoryItems = [
   },
 ];
 
-export const staffList = [
+export const recommendedCreators = [
   {
     id: 'collective',
     name: 'TSC STAFF COLLECTIVE',
@@ -77,56 +77,56 @@ export const staffList = [
     name: 'ヒロキング',
     role: '管理者',
     image: '/tsc-official/IMG_0795 (1).webp',
-    profile: 'Twitchパートナーとして活動する配信者。ゲーム配信や雑談配信を中心に活動しながら、配信者・VTuber・クリエイター交流コミュニティ「TSC」を運営。コラボ企画やイベント運営を通して、活動者同士が繋がれる場所を作り続けている。',
+    profile:
+      'Twitchパートナーとして活動する配信者。ゲーム配信や雑談配信を中心に活動しながら、配信者・VTuber・クリエイター交流コミュニティ「TSC」を運営。コラボ企画やイベント運営を通して、活動者同士が繋がれる場所を作り続けている。',
     links: {
-    x: 'https://x.com/hiroking_0306',
-    twitch: 'https://www.twitch.tv/theseventhone666'
-      },
+      x: 'https://x.com/hiroking_0306',
+      twitch: 'https://www.twitch.tv/theseventhone666',
+    },
     offsetX: -200,
     offsetY: 200,
     scale: 1.7,
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150,   // スマホではズラさない（0）
-    mobileOffsetY: 400,   // スマホではズラさない（0）
-    mobileScale: 2.5,   // スマホでは等倍（1.0）に戻す
-
-
-},
+    mobileOffsetX: -150, // スマホではズラさない（0）
+    mobileOffsetY: 400, // スマホではズラさない（0）
+    mobileScale: 2.5, // スマホでは等倍（1.0）に戻す
+  },
   {
     id: 'SUB_ADMIN_01',
     name: 'ふゆち',
     role: 'サブ管理人',
-    image: '/tsc-official/ba32f0a3566c8740.png',
+    image: '/tsc-official/huyuti.webp',
     profile:
       'TSCの舞台裏を支える技術担当。Discordの複雑な権限設定やロール構築、機能的なチャンネルレイアウトの設計を一手に引き受けるスペシャリスト。メンバーが『使いやすい』と感じるその瞬間のために、裏側で緻密なコードと設定を組み上げる、鯖の心臓部を守るエンジニアです。技術的な相談があれば、ふゆちに聞けば間違いなし。',
     customScale: 'scale-90',
     links: {
-    twitch: 'https://www.twitch.tv/fuyuchi_'
-      },
+      twitch: 'https://www.twitch.tv/fuyuchi_',
+    },
     offsetX: -250,
     offsetY: 120,
-    scale: 1.00,
+    scale: 1.0,
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -190,   // スマホではズラさない（0）
-    mobileOffsetY: 190,   // スマホではズラさない（0）
-    mobileScale: 1.1,  
+    mobileOffsetX: -190, // スマホではズラさない（0）
+    mobileOffsetY: 190, // スマホではズラさない（0）
+    mobileScale: 1.1,
   },
- {
+  {
     id: 'sub_admin_2',
     name: 'ひうひむ',
     role: 'サブ管理人',
-    image: '/tsc-official/hiuhimu2.png',
-    profile: '3匹の手下おばけを連れた、おっとりとした物静かな幽霊メイド。RPGなどのストーリーものを心から愛する配信者。ホラーゲームでも叫ばないくらいなので、作業中寂しいときにラジオ感覚で聴ける。神出鬼没なので、VCで会えたらラッキー。◆好きなもの紅茶、読書、映画鑑賞(ホラー大好き)、語学学習',
+    image: '/tsc-official/hiuhimu2.webp',
+    profile:
+      '3匹の手下おばけを連れた、おっとりとした物静かな幽霊メイド。RPGなどのストーリーものを心から愛する配信者。ホラーゲームでも叫ばないくらいなので、作業中寂しいときにラジオ感覚で聴ける。神出鬼没なので、VCで会えたらラッキー。◆好きなもの紅茶、読書、映画鑑賞(ホラー大好き)、語学学習',
     customScale: 'scale-110',
     customPosition: 'translate-y-4',
     offsetX: -200,
     offsetY: 220,
     scale: 1.3,
     links: {
-    x: 'https://x.com/hiuhymn',
-    twitch: 'https://www.twitch.tv/hiuhymn',
-    youtube: 'https://www.youtube.com/@hiuhymn'
-      },
+      x: 'https://x.com/hiuhymn',
+      twitch: 'https://www.twitch.tv/hiuhymn',
+      youtube: 'https://www.youtube.com/@hiuhymn',
+    },
     mobileOffsetX: -150,
     mobileOffsetY: 350,
     mobileScale: 1.7,
@@ -135,180 +135,186 @@ export const staffList = [
     id: 'sub_admin_3',
     name: 'がいくま',
     role: 'サブ管理人',
-    image: '/tsc-official/gaikuma.png', 
-    profile: '人間に憧れて熊から人間へ転生。VCは夕方から深夜で出没します。少人数用のVCにいることが多く、大人数が苦手でもご安心ください。APEXやちょっと変わったゲームをしています。共通するゲームがあれば、ぜひ一緒に遊びましょう！プレイを鑑賞したいだけでも大丈夫です。困ったことがあればご相談ください。',
+    image: '/tsc-official/gaikuma.webp',
+    profile:
+      '人間に憧れて熊から人間へ転生。VCは夕方から深夜で出没します。少人数用のVCにいることが多く、大人数が苦手でもご安心ください。APEXやちょっと変わったゲームをしています。共通するゲームがあれば、ぜひ一緒に遊びましょう！プレイを鑑賞したいだけでも大丈夫です。困ったことがあればご相談ください。',
     offsetX: -180,
     offsetY: 170,
     scale: 1.2,
     links: {
-    x: 'https://x.com/subkumasan3310',
-    twitch: 'https://www.twitch.tv/gaikumasan_twitch?sr=a',
-      },
+      x: 'https://x.com/subkumasan3310',
+      twitch: 'https://www.twitch.tv/gaikumasan_twitch?sr=a',
+    },
 
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -170,   // スマホではズラさない（0）
-    mobileOffsetY:420,   // スマホではズラさない（0）
-    mobileScale: 2,  
+    mobileOffsetX: -170, // スマホではズラさない（0）
+    mobileOffsetY: 420, // スマホではズラさない（0）
+    mobileScale: 2,
   },
 
   {
     id: 'sub_admin_4',
     name: 'しいな',
     role: 'サブ管理人',
-    image: '/tsc-official/siinatatie.png',
-    profile: '不定期にPS5で怪奇現象（配信）をしているオバケ、というコンセプトストリーマー。『リトルナイトメア』や『ロックマン2』などのゲーム実況に加え、音ゲーの『DEEMO』をピアノで演奏するなど多岐にわたる。おっとりとした癒やし系の雰囲気があり、リスナーを大切にする温かい交流が魅力の配信者。TSC内でも細やかな気遣いや丁寧な仕事ぶりで運営を支えている。',
+    image: '/tsc-official/siinatatie.webp',
+    profile:
+      '不定期にPS5で怪奇現象（配信）をしているオバケ、というコンセプトストリーマー。『リトルナイトメア』や『ロックマン2』などのゲーム実況に加え、音ゲーの『DEEMO』をピアノで演奏するなど多岐にわたる。おっとりとした癒やし系の雰囲気があり、リスナーを大切にする温かい交流が魅力の配信者。TSC内でも細やかな気遣いや丁寧な仕事ぶりで運営を支えている。',
     offsetX: -250,
     offsetY: 170,
     scale: 1.4,
     links: {
-    x: 'https://x.com/shiina_81417',
-    twitch: 'https://www.twitch.tv/shiina_41777',
-      },
+      x: 'https://x.com/shiina_81417',
+      twitch: 'https://www.twitch.tv/shiina_41777',
+    },
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -190,   // スマホではズラさない（0）
-    mobileOffsetY:200,   // スマホではズラさない（0）
-    mobileScale: 1.7,  
+    mobileOffsetX: -190, // スマホではズラさない（0）
+    mobileOffsetY: 200, // スマホではズラさない（0）
+    mobileScale: 1.7,
   },
   {
     id: 'sub_admin_5',
     name: '狼の野郎',
     role: 'サブ管理人',
-    image: '/tsc-official/3599568-3.png',
-    profile: 'ただの狼、人間生活大満喫中狼。配信者やら、物作りやら、小説書いたり、自由気ままにインターネット生活ライフ『Apex Legends』、『原神』、『VAROLANT』や『魔法少女ノ魔女裁判』などのストーリー系ゲームなど、多岐にわたるゲームを配信中。動画制作など色々と作り中ぜひみてね～。たのしぃ',
+    image: '/tsc-official/ookaminoyarou.webp',
+    profile:
+      'ただの狼、人間生活大満喫中狼。配信者やら、物作りやら、小説書いたり、自由気ままにインターネット生活ライフ『Apex Legends』、『原神』、『VAROLANT』や『魔法少女ノ魔女裁判』などのストーリー系ゲームなど、多岐にわたるゲームを配信中。動画制作など色々と作り中ぜひみてね～。たのしぃ',
     offsetX: -250,
     offsetY: 270,
     scale: 2.5,
-     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -220,   // スマホではズラさない（0）
-    mobileOffsetY: 300,   // スマホではズラさない（0）
-    mobileScale: 3,  
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -220, // スマホではズラさない（0）
+    mobileOffsetY: 300, // スマホではズラさない（0）
+    mobileScale: 3,
     links: {
-    x: 'https://x.com/wolf_wolf_wolfA',
-    twitch: 'https://www.twitch.tv/wolfyarou',
-    youtube:'https://www.youtube.com/channel/UCLJ0tGK4PpfdZJvf0fjGVWw',
-      },
+      x: 'https://x.com/wolf_wolf_wolfA',
+      twitch: 'https://www.twitch.tv/wolfyarou',
+      youtube: 'https://www.youtube.com/channel/UCLJ0tGK4PpfdZJvf0fjGVWw',
+    },
   },
   {
     id: 'sub_admin_6',
     name: 'こゆき',
     role: 'サブ管理人',
-    image: '/tsc-official/koyukitatie.png',
-    profile: 'ゲームとお酒とお喋り大好き、個人勢Vtuber。『Apex Legends』のゲーム実況を中心に活動中。七皇の剣の専属モデレーターも兼任中。おしゃべりが大好きなのでTSCでは主にVCの盛り上げ役や、裏方として技術面のサポートも行っている。',
+    image: '/tsc-official/koyukitatie.webp',
+    profile:
+      'ゲームとお酒とお喋り大好き、個人勢Vtuber。『Apex Legends』のゲーム実況を中心に活動中。七皇の剣の専属モデレーターも兼任中。おしゃべりが大好きなのでTSCでは主にVCの盛り上げ役や、裏方として技術面のサポートも行っている。',
     offsetX: -250,
     offsetY: 270,
     scale: 1.3,
     links: {
-    x: 'https://x.com/hajikoyuch',
-    twitch: 'https://www.twitch.tv/vtuberkoyuki',
-    youtube:'https://www.youtube.com/@hajikoyuch',
-      },
-     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150,   // スマホではズラさない（0）
-    mobileOffsetY: 400,   // スマホではズラさない（0）
-    mobileScale: 2,  
+      x: 'https://x.com/hajikoyuch',
+      twitch: 'https://www.twitch.tv/vtuberkoyuki',
+      youtube: 'https://www.youtube.com/@hajikoyuch',
+    },
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150, // スマホではズラさない（0）
+    mobileOffsetY: 400, // スマホではズラさない（0）
+    mobileScale: 2,
   },
 
-    {
+  {
     id: 'sub_admin_7',
     name: 'あるぅ',
     role: 'サブ管理人',
-    image: '/tsc-official/aruxuuuu.png',
-    profile: 'サプライズが得意な個人勢Vstreamer。落ち着いた声色が特徴的だが、人を楽しませたり喜ばせるのが得意。『Apex Legends』や『DBD』のゲーム以外にも、料理配信や視聴者参加型の配信など、バラエティ豊かな企画配信も多く行っているエンターテイナー。',
+    image: '/tsc-official/aruxu.webp',
+    profile:
+      'サプライズが得意な個人勢Vstreamer。落ち着いた声色が特徴的だが、人を楽しませたり喜ばせるのが得意。『Apex Legends』や『DBD』のゲーム以外にも、料理配信や視聴者参加型の配信など、バラエティ豊かな企画配信も多く行っているエンターテイナー。',
     offsetX: -220,
     offsetY: 220,
     scale: 1.1,
     links: {
-    x: 'https://x.com/aruu_jp',
-    twitch: 'https://m.twitch.tv/aruu_jp/home',
-    youtube: 'https://www.youtube.com/@aruu_jp',    
-   },
+      x: 'https://x.com/aruu_jp',
+      twitch: 'https://m.twitch.tv/aruu_jp/home',
+      youtube: 'https://www.youtube.com/@aruu_jp',
+    },
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150,   // スマホではズラさない（0）
-    mobileOffsetY: 420,   // スマホではズラさない（0）
-    mobileScale: 1.8,  
-  
+    mobileOffsetX: -150, // スマホではズラさない（0）
+    mobileOffsetY: 420, // スマホではズラさない（0）
+    mobileScale: 1.8,
   },
 
   {
     id: 'sub_admin_8',
     name: 'つゆりひお',
     role: 'サブ管理人',
-    image: '/tsc-official/tuyuriho.png',
-    profile: 'result e-Sports所属のハムスターモチーフの小動物系配信者。『Apex Legends』、『VAROLANT』、『DBD』やホラーゲームなど、多岐にわたるゲームを配信中。おっとりとしたかわいらしい雰囲気を持ちつつ、ゲームに対しては真剣に取り組むギャップも魅力的。',
+    image: '/tsc-official/tuyuriho.webp',
+    profile:
+      'result e-Sports所属のハムスターモチーフの小動物系配信者。『Apex Legends』、『VAROLANT』、『DBD』やホラーゲームなど、多岐にわたるゲームを配信中。おっとりとしたかわいらしい雰囲気を持ちつつ、ゲームに対しては真剣に取り組むギャップも魅力的。',
     offsetX: -220,
     offsetY: 180,
     scale: 0.8,
     links: {
-    x: 'https://x.com/hiokikai_twitch',
-    twitch: 'https://www.twitch.tv/noahio0507',
-    youtube: 'https://www.youtube.com/@Thuyurihio',   
-   },
-      
+      x: 'https://x.com/hiokikai_twitch',
+      twitch: 'https://www.twitch.tv/noahio0507',
+      youtube: 'https://www.youtube.com/@Thuyurihio',
+    },
+
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150,   // スマホではズラさない（0）
-    mobileOffsetY: 450,   // スマホではズラさない（0）
-    mobileScale: 1.5,  
-  
-  
+    mobileOffsetX: -150, // スマホではズラさない（0）
+    mobileOffsetY: 450, // スマホではズラさない（0）
+    mobileScale: 1.5,
   },
   {
     id: 'sub_admin_9',
     name: 'よるねるか',
     role: 'サブ管理人',
-    image: '/tsc-official/yoruneruka.png',
-    profile: '「セクシーサンキュー」な清楚癒し系お姉さんVstreamer。『Apex Legends』や『Minecraft』などのゲーム実況を中心に活動中。おっとりとした装いとは裏腹に、ゲームの腕前もお見事。自信のチャンネル内素材を作成する程のお絵描きスキルも持ち合わせている。',
+    image: '/tsc-official/yoruneruka.webp',
+    profile:
+      '「セクシーサンキュー」な清楚癒し系お姉さんVstreamer。『Apex Legends』や『Minecraft』などのゲーム実況を中心に活動中。おっとりとした装いとは裏腹に、ゲームの腕前もお見事。自信のチャンネル内素材を作成する程のお絵描きスキルも持ち合わせている。',
     offsetX: -220,
     offsetY: 180,
     scale: 1,
     links: {
-    x: 'https://x.com/yorunerukamone',
-    twitch: 'https://www.twitch.tv/yoruneruka',
-    youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',    
-   },
+      x: 'https://x.com/yorunerukamone',
+      twitch: 'https://www.twitch.tv/yoruneruka',
+      youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',
+    },
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150,   // スマホではズラさない（0）
-    mobileOffsetY: 400,   // スマホではズラさない（0）
-    mobileScale: 1.8,  
+    mobileOffsetX: -150, // スマホではズラさない（0）
+    mobileOffsetY: 400, // スマホではズラさない（0）
+    mobileScale: 1.8,
   },
-  
+
   {
     id: 'sub_admin_19',
     name: 'ʸᵘᵏⁱʰᵃ/ₖₐᵧₒ',
     role: 'サブ管理人',
-    image: '/tsc-official/kayotatie.png',
-    profile: 'クラゲの「かよ」が生み出した「雪羽」という、コンセプトストリーマー。『あつまれどうぶつの森』や『原神』など、まったりとした空間でゲームを配信を行うのが特徴的。表情豊かで癒やしをお届け！',
+    image: '/tsc-official/kayotatie.webp',
+    profile:
+      'クラゲの「かよ」が生み出した「雪羽」という、コンセプトストリーマー。『あつまれどうぶつの森』や『原神』など、まったりとした空間でゲームを配信を行うのが特徴的。表情豊かで癒やしをお届け！',
     offsetX: -220,
     offsetY: 200,
     scale: 1.2,
     links: {
-    x: 'https://x.com/YukihaKayo',
-    twitch: 'https://www.twitch.tv/yukiha_kayo',
-    youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',    
-   },
+      x: 'https://x.com/YukihaKayo',
+      twitch: 'https://www.twitch.tv/yukiha_kayo',
+      youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',
+    },
     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150,   // スマホではズラさない（0）
-    mobileOffsetY: 300,   // スマホではズラさない（0）
-    mobileScale: 1.7,  
+    mobileOffsetX: -150, // スマホではズラさない（0）
+    mobileOffsetY: 300, // スマホではズラさない（0）
+    mobileScale: 1.7,
   },
   {
     id: 'sub_admin_11',
     name: '一楓あやの',
     role: 'サブ管理人',
-    image: '/tsc-official/ibukiayano0.png',
-    profile: '自称「どこでも迷子」方向音痴系個人勢VStreamer。けもみみとしっぽを愛する獣人。ファンからは「いぶたそ」の愛称で親しまれている。『Apex Legends』や『NTE』などのゲーム実況を中心に活動中。',
+    image: '/tsc-official/ibukiayano0.webp',
+    profile:
+      '自称「どこでも迷子」方向音痴系個人勢VStreamer。けもみみとしっぽを愛する獣人。ファンからは「いぶたそ」の愛称で親しまれている。『Apex Legends』や『NTE』などのゲーム実況を中心に活動中。',
     offsetX: -220,
     offsetY: 40,
     scale: 1.6,
     links: {
-    x: 'https://x.com/ibuki_ayano',
-    twitch: 'https://www.twitch.tv/ibuki_ayano',
-    youtube: 'https://www.youtube.com/@Ibuki_ayano',    
-   },
-      
-     // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150,   // スマホではズラさない（0）
-    mobileOffsetY: 120,   // スマホではズラさない（0）
-    mobileScale: 2,  
+      x: 'https://x.com/ibuki_ayano',
+      twitch: 'https://www.twitch.tv/ibuki_ayano',
+      youtube: 'https://www.youtube.com/@Ibuki_ayano',
+    },
+
+    // ▼ スマホ用の設定（追加！） ▼
+    mobileOffsetX: -150, // スマホではズラさない（0）
+    mobileOffsetY: 120, // スマホではズラさない（0）
+    mobileScale: 2,
   },
 ];
 
@@ -325,7 +331,6 @@ export const galleryItems = [
   },
 ];
 
-
 // data.ts
 
 // ==========================================
@@ -340,11 +345,10 @@ export const collectiveData = {
   subtitle: 'Admins & Sub-Admins',
   mainMessage: 'あなたの活動をサポートします。',
   description: [
-    "TSCサーバーでは、1名の管理人と11名のサブ管理人、計12名の運営チームが日々サーバーの治安維持と環境アップデートに努めています。",
-    "「Discordサーバーに参加するのは初めてで不安…」「もしトラブルがあったらどうしよう…」という方でも心配いりません。皆さんが安心して楽しく活動できるよう、しっかりとサポートする体制を整えています。"
-  ]
+    'TSCサーバーでは、1名の管理人と11名のサブ管理人、計12名の運営チームが日々サーバーの治安維持と環境アップデートに努めています。',
+    '「Discordサーバーに参加するのは初めてで不安…」「もしトラブルがあったらどうしよう…」という方でも心配いりません。皆さんが安心して楽しく活動できるよう、しっかりとサポートする体制を整えています。',
+  ],
 };
-
 
 export const faqList = [
   {
@@ -405,17 +409,19 @@ export const sponsorData = {
     title: '協賛企業様について',
     subtitle: '企業様もこのコミュニティに参加されています',
     text: 'TSCサーバーには、私たちの活動に賛同してくださる企業様も参加しています。クリエイターやストリーマーの皆様に向けて、このサーバー独自の特別価格や限定サポートをご提示いただくことも可能です。',
-    
+
     // 🌟 ここを実際の運用に合わせてアップデート！
     features: [
       {
         title: '協賛企業様からの特別案内', // ※「交流」から実情に合わせたタイトルに微調整しました
-        description: 'ご希望の方を専用サーバーへご案内し、企業担当者様から直接サービスの説明や案内を聞くことができる機会を設けています。有益な情報をキャッチして、活動の幅を広げるきっかけとしてご活用ください。'
+        description:
+          'ご希望の方を専用サーバーへご案内し、企業担当者様から直接サービスの説明や案内を聞くことができる機会を設けています。有益な情報をキャッチして、活動の幅を広げるきっかけとしてご活用ください。',
       },
       {
         title: 'サーバー限定価格のご案内',
-        description: 'TSC参加者様限定の特別割引や専用プランをご案内しています。現在はクリエイター活動を多角的にサポートする企業様と提携しており、今後はさらにジャンルを問わず、皆さんの活動を支えるパートナーをどんどん増やしていく予定です。日々進化していくTSCのサポート体制にぜひご期待ください！'
-      }
+        description:
+          'TSC参加者様限定の特別割引や専用プランをご案内しています。現在はクリエイター活動を多角的にサポートする企業様と提携しており、今後はさらにジャンルを問わず、皆さんの活動を支えるパートナーをどんどん増やしていく予定です。日々進化していくTSCのサポート体制にぜひご期待ください！',
+      },
     ],
   },
   companies: [
@@ -441,7 +447,6 @@ export const sponsorData = {
     text: 'TSCでは、コミュニティを共に盛り上げてくださるスポンサー企業様を随時募集しております。お問い合わせフォームよりお気軽にご連絡ください。',
   },
 };
-
 
 export const floatingMemories: never[] = [];
 
@@ -474,8 +479,7 @@ export const articleItems = [
     date: '2026.03.25',
     title: '第1回 TSC3000人記念杯 開催レポート！',
     thumbnail: '/tsc-official/sss.png',
-    content: 
-`2025年8月30日（土）、配信者やクリエイターが集うDiscordサーバー「The streamer Creator server」の参加者3,000人突破を記念した、特別なAPEXカスタムマッチが開催されました！サーバー設立以来の大きな節目を祝うべく行われた本大会。総勢60名の配信者が参戦し、豪華な演出と驚愕のプレゼント企画で、始終熱気に包まれた当日の様子をレポートをお届けします。
+    content: `2025年8月30日（土）、配信者やクリエイターが集うDiscordサーバー「The streamer Creator server」の参加者3,000人突破を記念した、特別なAPEXカスタムマッチが開催されました！サーバー設立以来の大きな節目を祝うべく行われた本大会。総勢60名の配信者が参戦し、豪華な演出と驚愕のプレゼント企画で、始終熱気に包まれた当日の様子をレポートをお届けします。
 【豪華演出で祭典の幕を開け！】
 カウントダウンクイズ動画から始まり、記念大会にふさわしい圧倒的なクオリティーの豪華なオープニング映像演出でスタートしました。
 大会終わりのエンディング動画も含め、七皇の剣メンバー、りき狐りき子氏による完全オリジナル制作。プロフェッショナルな映像美が、参加者と視聴者の期待を一気に高めました。また、全20チーム60名のメンバー紹介や、本大会を支えてくださったスポンサー様紹介も丁寧に行われ、一人ひとりひとりが主役になれる、まさに「配信者・クリエイターサーバー」らしい愛の詰まった運営が印象的でした。
@@ -501,7 +505,7 @@ export const articleItems = [
 主催・運営： 七皇の剣
 映像制作： 七皇の剣`,
   },
-{
+  {
     id: 'news-002',
     category: 'EVENT',
     date: '2026.05.18',
@@ -554,5 +558,94 @@ Aブロック・Bブロックの上位10チームずつ（計20チーム）が�
 
 APEXカスタムの魅力を、少しでも多くの方へ届けたい。
 更に向こうへ、Plus ultra！皆様のご参加・ご視聴を心よりお待ちしております。`,
+  },
+];
+
+// ==========================================
+// ⭐ 運営陣・管理者（ADMINS）データ
+// ==========================================
+export const adminList = [
+  {
+    id: 'creator_01',
+    name: '狼の野郎',
+    romanName: 'WOLF YAROU',
+    role: 'Streamer / Creator',
+    image: '/ookaminoyarou.webp', // 狼の野郎さんの立ち絵パス
+    // 🌟 ミリシタ風の縦書きキャッチコピー（配列で複数行対応）
+    // 🌟 これを追加！好きな色コード（HEX）を入れてください
+    // 例：青系なら '#3B82F6'、赤系なら '#EF4444'、紫なら '#A855F7' など
+    themeColor: '#F97316',
+
+    // 🌟 これらをドーンと追加！（PROFILEで設定していた数値と同じでOKです）
+    offsetX: -100,
+    offsetY: 400,
+    scale: 3.8, // 👈 2倍の大きさに！
+    mobileOffsetX: 0,
+    mobileOffsetY: 170,
+    mobileScale: 2,
+
+    catchphrases: ['ただの狼、', '人間生活大満喫中狼。'],
+    // 🌟 右側に並べるグリッド情報
+    profileGrid: [
+      { label: 'メインゲーム', value: 'Apex, VALORANT' },
+      { label: 'プレイスタイル', value: 'ストーリー系も多岐にわたる' },
+      { label: '活動内容', value: '配信、物作り、小説執筆' },
+      { label: '出没時間', value: '自由気まま' },
+      // 🌟 ここから下が自動で追加されて描画されるデータ！
+      { label: 'MANAGEMENT', value: 'TSC Sub Administrator' },
+      { label: 'CREATIVE TOOLS', value: 'Blender, After Effects, AviUtl' },
+      { label: 'DEV SKILLS', value: 'Next.js, React, Tailwind CSS, SQL' },
+      { label: 'SPECIAL SKILL', value: 'Handball Coaching, DIY' },
+    ],
+    profileText:
+      'ただの狼、人間生活大満喫中狼。\n配信者やら、物作りやら、小説書いたり、自由気ままにインターネット生活ライフ！\n『Apex Legends』、『原神』、『VALORANT』や『魔法少女ノ魔女裁判』などのストーリー系ゲームなど、多岐にわたるゲームを配信中。動画制作など色々と作り中。ぜひみてね～たのしぃ。',
+    youtubeId: 'Pj1G8lVq8y0', // 🌟 ピックアップ動画のID
+    links: {
+      x: 'https://x.com/wolf_wolf_wolfA',
+      twitch: 'https://www.twitch.tv/wolfyarou',
+      youtube: 'https://www.youtube.com/channel/UCLJ0tGK4PpfdZJvf0fjGVWw',
+    },
+  },
+  // 他のクリエイターもここに追加していきます
+  {
+    id: 'creator_02',
+    name: 'kayo',
+    romanName: 'kayo',
+    role: 'Streamer / Creator',
+    image: '/kayotatie.webp', // 狼の野郎さんの立ち絵パス
+    // 🌟 ミリシタ風の縦書きキャッチコピー（配列で複数行対応）
+    // 🌟 これを追加！好きな色コード（HEX）を入れてください
+    // 例：青系なら '#3B82F6'、赤系なら '#EF4444'、紫なら '#A855F7' など
+    themeColor: '#0284C7',
+
+    // 🌟 これらをドーンと追加！（PROFILEで設定していた数値と同じでOKです）
+    offsetX: -100,
+    offsetY: 1100,
+    scale: 2.8, // 👈 2倍の大きさに！
+    mobileOffsetX: 0,
+    mobileOffsetY: 170,
+    mobileScale: 2,
+
+    catchphrases: ['ただの狼、', '人間生活大満喫中狼。'],
+    // 🌟 右側に並べるグリッド情報
+    profileGrid: [
+      { label: 'メインゲーム', value: 'Apex, VALORANT' },
+      { label: 'プレイスタイル', value: 'ストーリー系も多岐にわたる' },
+      { label: '活動内容', value: '配信、物作り、小説執筆' },
+      { label: '出没時間', value: '自由気まま' },
+      // 🌟 ここから下が自動で追加されて描画されるデータ！
+      { label: 'MANAGEMENT', value: 'TSC Sub Administrator' },
+      { label: 'CREATIVE TOOLS', value: 'Blender, After Effects, AviUtl' },
+      { label: 'DEV SKILLS', value: 'Next.js, React, Tailwind CSS, SQL' },
+      { label: 'SPECIAL SKILL', value: 'Handball Coaching, DIY' },
+    ],
+    profileText:
+      'ただの狼、人間生活大満喫中狼。\n配信者やら、物作りやら、小説書いたり、自由気ままにインターネット生活ライフ！\n『Apex Legends』、『原神』、『VALORANT』や『魔法少女ノ魔女裁判』などのストーリー系ゲームなど、多岐にわたるゲームを配信中。動画制作など色々と作り中。ぜひみてね～たのしぃ。',
+    youtubeId: 'Pj1G8lVq8y0', // 🌟 ピックアップ動画のID
+    links: {
+      x: 'https://x.com/wolf_wolf_wolfA',
+      twitch: 'https://www.twitch.tv/wolfyarou',
+      youtube: 'https://www.youtube.com/channel/UCLJ0tGK4PpfdZJvf0fjGVWw',
+    },
   },
 ];
