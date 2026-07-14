@@ -47,13 +47,13 @@ export const memoryItems = [
   {
     id: 'm1',
     type: 'image',
-    src: '/tsc-official/Snapshot_841.PNG',
+    src: '/hazimarinomahoutukai001-ai/Snapshot_841.PNG',
     title: 'TSC公式サイトオープン',
   },
   {
     id: 'm2',
     type: 'image',
-    src: '/tsc-official/HHXii0FbcAAbaDj.jpg',
+    src: '/hazimarinomahoutukai001-ai/HHXii0FbcAAbaDj.jpg',
     title: '管理者ヒロキングtwitchパートナーへ',
   },
   {
