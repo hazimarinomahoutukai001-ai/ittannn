@@ -95,7 +95,7 @@ export const recommendedCreators = [
     id: 'SUB_ADMIN_01',
     name: 'ふゆち',
     role: 'サブ管理人',
-    image: '/tsc-official/huyuti.webp',
+    image: '/ittannn/huyuti.webp',
     profile:
       'TSCの舞台裏を支える技術担当。Discordの複雑な権限設定やロール構築、機能的なチャンネルレイアウトの設計を一手に引き受けるスペシャリスト。メンバーが『使いやすい』と感じるその瞬間のために、裏側で緻密なコードと設定を組み上げる、鯖の心臓部を守るエンジニアです。技術的な相談があれば、ふゆちに聞けば間違いなし。',
     customScale: 'scale-90',
