@@ -6,7 +6,7 @@ export const siteConfig = {
   logo: '/tsc-official/GoznTJVa4AAoq0S.jpg',
 
   // 👇 中央に表示される11人の集合写真の画像パス
-  heroImages: ['/hazimarinomahoutukai001/Snapshot_868.webp'],
+  heroImages: ['/ittannn/Snapshot_868.webp'],
 };
 
 export const menuItems = [
@@ -47,13 +47,13 @@ export const memoryItems = [
   {
     id: 'm1',
     type: 'image',
-    src: '/hazimarinomahoutukai001-ai/Snapshot_868(1).PNG',
+    src: '/ittannn/Snapshot_868(1).PNG',
     title: 'TSC公式サイトオープン',
   },
   {
     id: 'm2',
     type: 'image',
-    src: '/hazimarinomahoutukai001-ai/sss.jpg',
+    src: '/ittannn/sss.jpg',
     title: '管理者ヒロキングtwitchパートナーへ',
   },
   {
