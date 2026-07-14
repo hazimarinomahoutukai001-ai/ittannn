@@ -6,7 +6,7 @@ export const siteConfig = {
   logo: '/tsc-official/GoznTJVa4AAoq0S.jpg',
 
   // 👇 中央に表示される11人の集合写真の画像パス
-  heroImages: ['/tsc-official/Snapshot_868.webp'],
+  heroImages: ['/hazimarinomahoutukai001/Snapshot_868.webp'],
 };
 
 export const menuItems = [
