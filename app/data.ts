@@ -47,7 +47,7 @@ export const memoryItems = [
   {
     id: 'm1',
     type: 'image',
-    src: '/ittannn/Snapshot_868(1).webp',
+    src: '/ittannn/Snapshot_868 (1).webp',
     title: 'TSC公式サイトオープン',
   },
   {
