@@ -214,7 +214,7 @@ export default function UltimateCommunitySite({
         uniqueKey: `marquee-${idx}`,
         // 💡 ダミーの名前ではなく、data.tsの本物のデータをそのまま使う！
         displayName: baseMember.name,
-        roleName: baseMember.role,
+        roleName: baseMember.scopes?.[0] || 'メンバー', // ← scopesの1つ目を表示（無ければ'メンバー'）
       };
     });
   }, []);
