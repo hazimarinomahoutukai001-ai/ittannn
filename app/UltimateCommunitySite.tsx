@@ -1755,7 +1755,7 @@ export default function UltimateCommunitySite({
               </section>
             )}
  {/* おすすめ配信者 一覧ページ */}
-          {activePage === 'profile' && (
+       {activePage === 'profile' && (
   <section className="relative w-full min-h-screen bg-[#FAFAFA] overflow-hidden">
     {/* サイト全体の背景（ドット） */}
     <div
@@ -1835,15 +1835,15 @@ export default function UltimateCommunitySite({
           transition={{ duration: 0.3 }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
         >
-          {/* --- 左側：立ち絵ビジュアル --- */}
-          <div className="lg:col-span-5 relative h-[400px] md:h-[600px] flex items-end justify-center bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden sticky top-24">
+          {/* 🌟 左側：立ち絵ビジュアル（箱を消して、空間に立たせました！） */}
+          <div className="lg:col-span-5 relative h-[450px] md:h-[650px] flex items-end justify-center sticky top-24 pointer-events-none">
             <motion.img
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5, type: 'spring' }}
               src={recommendedCreators[selectedIndex]?.image}
               alt={`${recommendedCreators[selectedIndex]?.name || 'クリエイター'}の立ち絵`}
-              className="relative z-10 max-h-[95%] object-contain drop-shadow-xl"
+              className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] pointer-events-auto"
             />
           </div>
 
@@ -1851,61 +1851,76 @@ export default function UltimateCommunitySite({
           <div className="lg:col-span-7 flex flex-col">
             
             {/* 🌟 情報カード：洗練されたクリーンデザイン */}
-            <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-sm h-full flex flex-col">
+            <div className="bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-full flex flex-col relative overflow-hidden">
               
-              {/* 活動範囲（タグ） */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {recommendedCreators[selectedIndex]?.scopes?.map((scope, i) => (
-                  <span 
-                    key={i} 
-                    className="px-3 py-1 bg-slate-50 text-slate-500 text-xs font-bold tracking-wider rounded-full border border-slate-200"
-                  >
-                    # {scope}
-                  </span>
-                ))}
+              {/* 背景の薄い装飾文字（IDを透かして配置） */}
+              <div className="absolute top-[-20px] right-[-20px] text-slate-100 font-black text-8xl uppercase tracking-tighter opacity-60 select-none pointer-events-none z-0">
+                {recommendedCreators[selectedIndex]?.id?.substring(0, 5)}
               </div>
 
-              {/* 名前 */}
-              <h3 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">
-                {recommendedCreators[selectedIndex]?.name}
-              </h3>
-
-              {/* 区切り線（アクセントカラー） */}
-              <div className="w-12 h-1 bg-blue-600 rounded-full mb-8"></div>
-
-              {/* 紹介文 */}
-              <div className="mb-10 flex-grow">
-                <h4 className="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase mb-3">
-                  About
-                </h4>
-                <p className="text-slate-700 text-sm md:text-base leading-relaxed font-medium">
-                  {recommendedCreators[selectedIndex]?.description || '紹介文が設定されていません。'}
-                </p>
-              </div>
-
-              {/* 活動プラットフォーム */}
-              <div className="mt-auto pt-6 border-t border-slate-100">
-                <h4 className="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase mb-4">
-                  Platforms
-                </h4>
-                <div className="flex flex-wrap gap-3">
-                  {recommendedCreators[selectedIndex]?.platforms?.map((platform, i) => (
-                    <a
-                      key={i}
-                      href={platform.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-center gap-2 px-6 py-2.5 bg-slate-50 hover:bg-slate-900 text-slate-700 hover:text-white rounded-xl text-xs font-bold tracking-wide focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:outline-none transition-all duration-300 border border-slate-200 hover:border-slate-900"
+              <div className="relative z-10 flex flex-col h-full">
+                {/* 活動範囲（タグを黒で引き締めました） */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {recommendedCreators[selectedIndex]?.scopes?.map((scope, i) => (
+                    <span 
+                      key={i} 
+                      className="px-4 py-1.5 bg-slate-900 text-white text-[11px] font-bold tracking-[0.2em] uppercase rounded-full shadow-sm"
                     >
-                      {platform.name}
-                      <svg className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
+                      {scope}
+                    </span>
                   ))}
                 </div>
-              </div>
 
+                {/* 名前とID */}
+                <div className="mb-8">
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-700 to-slate-500 tracking-tight mb-2 pb-1">
+                    {recommendedCreators[selectedIndex]?.name}
+                  </h3>
+                  <p className="text-slate-400 font-mono text-sm tracking-[0.3em] uppercase">
+                    ID : {recommendedCreators[selectedIndex]?.id}
+                  </p>
+                </div>
+
+                {/* 区切り線（アクセントカラーのグラデーション） */}
+                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full mb-8"></div>
+
+                {/* 紹介文 */}
+                <div className="mb-10 flex-grow">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    <h4 className="text-xs font-bold text-slate-400 tracking-[0.25em] uppercase">
+                      Profile
+                    </h4>
+                  </div>
+                  <p className="text-slate-600 text-sm md:text-base leading-loose font-medium">
+                    {recommendedCreators[selectedIndex]?.description || '紹介文が設定されていません。'}
+                  </p>
+                </div>
+
+                {/* 活動プラットフォーム */}
+                <div className="mt-auto pt-8 border-t border-slate-100">
+                  <h4 className="text-xs font-bold text-slate-400 tracking-[0.25em] uppercase mb-4">
+                    Official Links
+                  </h4>
+                  <div className="flex flex-wrap gap-3">
+                    {recommendedCreators[selectedIndex]?.platforms?.map((platform, i) => (
+                      <a
+                        key={i}
+                        href={platform.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center gap-3 px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 rounded-2xl text-xs font-bold tracking-widest uppercase focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:outline-none transition-all duration-300 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md hover:-translate-y-1"
+                      >
+                        {platform.name}
+                        <svg className="w-4 h-4 text-blue-500 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         </motion.div>
