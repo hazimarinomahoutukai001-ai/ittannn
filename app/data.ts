@@ -87,7 +87,7 @@ export const recommendedCreators: CreatorProfile[] = [
       { name: 'YouTube', url: 'https://youtube.com/...' },
       { name: 'X (Twitter)', url: 'https://x.com/...' },
     ],
-    description: 'FPSゲームを中心に、リスナーとの距離が近い参加型配信をメインに活動中！コミュニティの盛り上げ役として様々な企画にも顔を出しています。',
+    description: 'tFPSゲームを中心に、リスナーとの距離が近い参加型配信をメインに活動中！コミュニティの盛り上げ役として様々な企画にも顔を出しています。',
   },
   // ... 他のメンバーも同様に追加
 ];
