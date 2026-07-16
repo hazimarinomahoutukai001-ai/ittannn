@@ -131,7 +131,7 @@ export default function UltimateCommunitySite({
   dynamicGallery?: any[];
 }) {
   const [loading, setLoading] = useState(true);
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activePage, setActivePage] = useState('home');
