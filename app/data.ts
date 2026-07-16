@@ -65,258 +65,33 @@ export const memoryItems = [
   },
 ];
 
-export const recommendedCreators = [
-  {
-    id: 'collective',
-    name: 'TSC STAFF COLLECTIVE',
-    role: '運営チーム',
-    image: '/tsc-official/collective.png',
-  },
-  {
-    id: 'admin_hiro',
-    name: 'ヒロキング',
-    role: '管理者',
-    image: '/tsc-official/IMG_0795 (1).webp',
-    profile:
-      'Twitchパートナーとして活動する配信者。ゲーム配信や雑談配信を中心に活動しながら、配信者・VTuber・クリエイター交流コミュニティ「TSC」を運営。コラボ企画やイベント運営を通して、活動者同士が繋がれる場所を作り続けている。',
-    links: {
-      x: 'https://x.com/hiroking_0306',
-      twitch: 'https://www.twitch.tv/theseventhone666',
-    },
-    offsetX: -200,
-    offsetY: 200,
-    scale: 1.7,
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150, // スマホではズラさない（0）
-    mobileOffsetY: 400, // スマホではズラさない（0）
-    mobileScale: 2.5, // スマホでは等倍（1.0）に戻す
-  },
-  {
-    id: 'SUB_ADMIN_01',
-    name: 'ふゆち',
-    role: 'サブ管理人',
-    image: '/ittannn/huyuti.webp',
-    profile:
-      'TSCの舞台裏を支える技術担当。Discordの複雑な権限設定やロール構築、機能的なチャンネルレイアウトの設計を一手に引き受けるスペシャリスト。メンバーが『使いやすい』と感じるその瞬間のために、裏側で緻密なコードと設定を組み上げる、鯖の心臓部を守るエンジニアです。技術的な相談があれば、ふゆちに聞けば間違いなし。',
-    customScale: 'scale-90',
-    links: {
-      twitch: 'https://www.twitch.tv/fuyuchi_',
-    },
-    offsetX: -250,
-    offsetY: 120,
-    scale: 1.0,
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -190, // スマホではズラさない（0）
-    mobileOffsetY: 190, // スマホではズラさない（0）
-    mobileScale: 1.1,
-  },
-  {
-    id: 'sub_admin_2',
-    name: 'ひうひむ',
-    role: 'サブ管理人',
-    image: '/tsc-official/hiuhimu2.webp',
-    profile:
-      '3匹の手下おばけを連れた、おっとりとした物静かな幽霊メイド。RPGなどのストーリーものを心から愛する配信者。ホラーゲームでも叫ばないくらいなので、作業中寂しいときにラジオ感覚で聴ける。神出鬼没なので、VCで会えたらラッキー。◆好きなもの紅茶、読書、映画鑑賞(ホラー大好き)、語学学習',
-    customScale: 'scale-110',
-    customPosition: 'translate-y-4',
-    offsetX: -200,
-    offsetY: 220,
-    scale: 1.3,
-    links: {
-      x: 'https://x.com/hiuhymn',
-      twitch: 'https://www.twitch.tv/hiuhymn',
-      youtube: 'https://www.youtube.com/@hiuhymn',
-    },
-    mobileOffsetX: -150,
-    mobileOffsetY: 350,
-    mobileScale: 1.7,
-  },
-  {
-    id: 'sub_admin_3',
-    name: 'がいくま',
-    role: 'サブ管理人',
-    image: '/tsc-official/gaikuma.webp',
-    profile:
-      '人間に憧れて熊から人間へ転生。VCは夕方から深夜で出没します。少人数用のVCにいることが多く、大人数が苦手でもご安心ください。APEXやちょっと変わったゲームをしています。共通するゲームがあれば、ぜひ一緒に遊びましょう！プレイを鑑賞したいだけでも大丈夫です。困ったことがあればご相談ください。',
-    offsetX: -180,
-    offsetY: 170,
-    scale: 1.2,
-    links: {
-      x: 'https://x.com/subkumasan3310',
-      twitch: 'https://www.twitch.tv/gaikumasan_twitch?sr=a',
-    },
+// データの型（TypeScriptを使っている場合）
+export interface CreatorProfile {
+  id: string;
+  name: string;
+  image: string;
+  scopes: string[]; // 活動範囲（例: ['配信者', 'VTuber']）
+  platforms: { name: string; url: string }[]; // プラットフォーム
+  description: string; // 紹介文
+}
 
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -170, // スマホではズラさない（0）
-    mobileOffsetY: 420, // スマホではズラさない（0）
-    mobileScale: 2,
-  },
-
+// 実際のデータ
+export const recommendedCreators: CreatorProfile[] = [
   {
-    id: 'sub_admin_4',
-    name: 'しいな',
-    role: 'サブ管理人',
-    image: '/tsc-official/siinatatie.webp',
-    profile:
-      '不定期にPS5で怪奇現象（配信）をしているオバケ、というコンセプトストリーマー。『リトルナイトメア』や『ロックマン2』などのゲーム実況に加え、音ゲーの『DEEMO』をピアノで演奏するなど多岐にわたる。おっとりとした癒やし系の雰囲気があり、リスナーを大切にする温かい交流が魅力の配信者。TSC内でも細やかな気遣いや丁寧な仕事ぶりで運営を支えている。',
-    offsetX: -250,
-    offsetY: 170,
-    scale: 1.4,
-    links: {
-      x: 'https://x.com/shiina_81417',
-      twitch: 'https://www.twitch.tv/shiina_41777',
-    },
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -190, // スマホではズラさない（0）
-    mobileOffsetY: 200, // スマホではズラさない（0）
-    mobileScale: 1.7,
-  },
-  {
-    id: 'sub_admin_5',
+    id: 'wolf_yarou',
     name: '狼の野郎',
-    role: 'サブ管理人',
-    image: '/tsc-official/ookaminoyarou.webp',
-    profile:
-      'ただの狼、人間生活大満喫中狼。配信者やら、物作りやら、小説書いたり、自由気ままにインターネット生活ライフ『Apex Legends』、『原神』、『VAROLANT』や『魔法少女ノ魔女裁判』などのストーリー系ゲームなど、多岐にわたるゲームを配信中。動画制作など色々と作り中ぜひみてね～。たのしぃ',
-    offsetX: -250,
-    offsetY: 270,
-    scale: 2.5,
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -220, // スマホではズラさない（0）
-    mobileOffsetY: 300, // スマホではズラさない（0）
-    mobileScale: 3,
-    links: {
-      x: 'https://x.com/wolf_wolf_wolfA',
-      twitch: 'https://www.twitch.tv/wolfyarou',
-      youtube: 'https://www.youtube.com/channel/UCLJ0tGK4PpfdZJvf0fjGVWw',
-    },
+    image: '/images/wolf.png', // ※実際の立ち絵のパスに変更してください
+    scopes: ['配信者', 'VTuber', 'モデレーター'],
+    platforms: [
+      { name: 'Twitch', url: 'https://twitch.tv/...' },
+      { name: 'YouTube', url: 'https://youtube.com/...' },
+      { name: 'X (Twitter)', url: 'https://x.com/...' },
+    ],
+    description: 'FPSゲームを中心に、リスナーとの距離が近い参加型配信をメインに活動中！コミュニティの盛り上げ役として様々な企画にも顔を出しています。',
   },
-  {
-    id: 'sub_admin_6',
-    name: 'こゆき',
-    role: 'サブ管理人',
-    image: '/tsc-official/koyukitatie.webp',
-    profile:
-      'ゲームとお酒とお喋り大好き、個人勢Vtuber。『Apex Legends』のゲーム実況を中心に活動中。七皇の剣の専属モデレーターも兼任中。おしゃべりが大好きなのでTSCでは主にVCの盛り上げ役や、裏方として技術面のサポートも行っている。',
-    offsetX: -250,
-    offsetY: 270,
-    scale: 1.3,
-    links: {
-      x: 'https://x.com/hajikoyuch',
-      twitch: 'https://www.twitch.tv/vtuberkoyuki',
-      youtube: 'https://www.youtube.com/@hajikoyuch',
-    },
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150, // スマホではズラさない（0）
-    mobileOffsetY: 400, // スマホではズラさない（0）
-    mobileScale: 2,
-  },
-
-  {
-    id: 'sub_admin_7',
-    name: 'あるぅ',
-    role: 'サブ管理人',
-    image: '/tsc-official/aruxu.webp',
-    profile:
-      'サプライズが得意な個人勢Vstreamer。落ち着いた声色が特徴的だが、人を楽しませたり喜ばせるのが得意。『Apex Legends』や『DBD』のゲーム以外にも、料理配信や視聴者参加型の配信など、バラエティ豊かな企画配信も多く行っているエンターテイナー。',
-    offsetX: -220,
-    offsetY: 220,
-    scale: 1.1,
-    links: {
-      x: 'https://x.com/aruu_jp',
-      twitch: 'https://m.twitch.tv/aruu_jp/home',
-      youtube: 'https://www.youtube.com/@aruu_jp',
-    },
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150, // スマホではズラさない（0）
-    mobileOffsetY: 420, // スマホではズラさない（0）
-    mobileScale: 1.8,
-  },
-
-  {
-    id: 'sub_admin_8',
-    name: 'つゆりひお',
-    role: 'サブ管理人',
-    image: '/tsc-official/tuyuriho.webp',
-    profile:
-      'result e-Sports所属のハムスターモチーフの小動物系配信者。『Apex Legends』、『VAROLANT』、『DBD』やホラーゲームなど、多岐にわたるゲームを配信中。おっとりとしたかわいらしい雰囲気を持ちつつ、ゲームに対しては真剣に取り組むギャップも魅力的。',
-    offsetX: -220,
-    offsetY: 180,
-    scale: 0.8,
-    links: {
-      x: 'https://x.com/hiokikai_twitch',
-      twitch: 'https://www.twitch.tv/noahio0507',
-      youtube: 'https://www.youtube.com/@Thuyurihio',
-    },
-
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150, // スマホではズラさない（0）
-    mobileOffsetY: 450, // スマホではズラさない（0）
-    mobileScale: 1.5,
-  },
-  {
-    id: 'sub_admin_9',
-    name: 'よるねるか',
-    role: 'サブ管理人',
-    image: '/tsc-official/yoruneruka.webp',
-    profile:
-      '「セクシーサンキュー」な清楚癒し系お姉さんVstreamer。『Apex Legends』や『Minecraft』などのゲーム実況を中心に活動中。おっとりとした装いとは裏腹に、ゲームの腕前もお見事。自信のチャンネル内素材を作成する程のお絵描きスキルも持ち合わせている。',
-    offsetX: -220,
-    offsetY: 180,
-    scale: 1,
-    links: {
-      x: 'https://x.com/yorunerukamone',
-      twitch: 'https://www.twitch.tv/yoruneruka',
-      youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',
-    },
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150, // スマホではズラさない（0）
-    mobileOffsetY: 400, // スマホではズラさない（0）
-    mobileScale: 1.8,
-  },
-
-  {
-    id: 'sub_admin_19',
-    name: 'ʸᵘᵏⁱʰᵃ/ₖₐᵧₒ',
-    role: 'サブ管理人',
-    image: '/tsc-official/kayotatie.webp',
-    profile:
-      'クラゲの「かよ」が生み出した「雪羽」という、コンセプトストリーマー。『あつまれどうぶつの森』や『原神』など、まったりとした空間でゲームを配信を行うのが特徴的。表情豊かで癒やしをお届け！',
-    offsetX: -220,
-    offsetY: 200,
-    scale: 1.2,
-    links: {
-      x: 'https://x.com/YukihaKayo',
-      twitch: 'https://www.twitch.tv/yukiha_kayo',
-      youtube: 'https://www.youtube.com/channel/UCOgBheyN6Ge4MG_kq2wkRCA',
-    },
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150, // スマホではズラさない（0）
-    mobileOffsetY: 300, // スマホではズラさない（0）
-    mobileScale: 1.7,
-  },
-  {
-    id: 'sub_admin_11',
-    name: '一楓あやの',
-    role: 'サブ管理人',
-    image: '/tsc-official/ibukiayano0.webp',
-    profile:
-      '自称「どこでも迷子」方向音痴系個人勢VStreamer。けもみみとしっぽを愛する獣人。ファンからは「いぶたそ」の愛称で親しまれている。『Apex Legends』や『NTE』などのゲーム実況を中心に活動中。',
-    offsetX: -220,
-    offsetY: 40,
-    scale: 1.6,
-    links: {
-      x: 'https://x.com/ibuki_ayano',
-      twitch: 'https://www.twitch.tv/ibuki_ayano',
-      youtube: 'https://www.youtube.com/@Ibuki_ayano',
-    },
-
-    // ▼ スマホ用の設定（追加！） ▼
-    mobileOffsetX: -150, // スマホではズラさない（0）
-    mobileOffsetY: 120, // スマホではズラさない（0）
-    mobileScale: 2,
-  },
+  // ... 他のメンバーも同様に追加
 ];
+
 
 export const galleryItems = [
   {
