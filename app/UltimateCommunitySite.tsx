@@ -1754,186 +1754,165 @@ export default function UltimateCommunitySite({
                 </div>
               </section>
             )}
+ {/* おすすめ配信者 一覧ページ */}
+          {activePage === 'profile' && (
+  <section className="relative w-full min-h-screen bg-[#FAFAFA] overflow-hidden">
+    {/* サイト全体の背景（ドット） */}
+    <div
+      className="absolute inset-0 z-0 pointer-events-none opacity-40"
+      aria-hidden="true"
+      style={{
+        backgroundImage: 'radial-gradient(circle, #cbd5e1 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+      }}
+    />
 
-            {activePage === 'profile' && (
-              <section className="relative w-full min-h-screen bg-[#FAFAFA] overflow-hidden">
-                {/* サイト全体の背景（ドット） */}
-                <div
-                  className="absolute inset-0 z-0 pointer-events-none opacity-40"
-                  aria-hidden="true"
-                  style={{
-                    backgroundImage:
-                      'radial-gradient(circle, #cbd5e1 1px, transparent 1px)',
-                    backgroundSize: '24px 24px',
-                  }}
-                />
+    <div className="max-w-7xl mx-auto px-6 pt-0 pb-20 relative z-10">
+      
+      {/* ヒーローヘッダー（特大バナーエリア） */}
+      <div className="relative w-full rounded-3xl overflow-hidden mb-12 shadow-2xl min-h-[350px] md:min-h-[450px] flex flex-col">
+        {/* ▼ バナー画像のURL ▼ */}
+        <img
+          src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=2000&q=80"
+          alt="Hero Banner"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
+        <div className="relative z-10 p-8 md:p-12 mt-auto flex flex-col md:flex-row md:items-end justify-between gap-6 w-full">
+          <div className="border-l-4 border-blue-500 pl-6">
+            <p className="text-blue-300 font-mono text-[10px] tracking-[0.3em] uppercase mb-2 drop-shadow-md" aria-hidden="true">
+              // Recommended
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-lg">
+              おすすめ
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 ml-3">
+                配信者 / クリエイター
+              </span>
+            </h2>
+          </div>
+          <div className="flex gap-2 pb-1 overflow-x-auto no-scrollbar">
+            {['6月', '7月', '8月'].map((month) => (
+              <button
+                key={month}
+                className="px-6 py-2.5 text-xs font-bold rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none transition-all whitespace-nowrap shadow-sm"
+              >
+                {month}アーカイブ
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-                <div className="max-w-7xl mx-auto px-6 pt-0 pb-20 relative z-10">
-                  {/* 🌟 1. ヒーローヘッダー（特大バナーエリア） */}
-                  {/* min-h-[350px] md:min-h-[450px] で高さを大幅に確保しました！ */}
-                  <div className="relative w-full rounded-3xl overflow-hidden mb-12 shadow-2xl min-h-[350px] md:min-h-[450px] flex flex-col">
-                    {/* ▼ ここに自作したバナー画像のURLを入れます ▼ */}
-                    <img
-                      src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=2000&q=80"
-                      alt="Hero Banner"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
+      {/* メンバー選択タブ */}
+      <div className="flex flex-wrap gap-2 mb-10 relative z-30">
+        {recommendedCreators?.map((creator, idx) => {
+          if (creator?.id === 'collective') return null;
+          const isSelected = selectedIndex === idx;
+          return (
+            <button
+              key={creator?.id || idx}
+              onClick={() => setSelectedIndex(idx)}
+              aria-current={isSelected ? 'true' : 'false'}
+              className={`px-6 py-3 text-sm font-bold tracking-wide transition-all rounded-t-lg border-b-2 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none ${
+                isSelected
+                  ? 'bg-white text-slate-900 border-blue-600 shadow-sm'
+                  : 'bg-transparent text-slate-400 border-transparent hover:bg-white/50 hover:text-slate-600'
+              }`}
+            >
+              {creator?.name}
+            </button>
+          );
+        })}
+      </div>
 
-                    {/* グラデーションオーバーレイ：下に向かって暗くすることで文字の視認性を確保 */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
+      {/* メイン：ショーケース */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedIndex}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+        >
+          {/* --- 左側：立ち絵ビジュアル --- */}
+          <div className="lg:col-span-5 relative h-[400px] md:h-[600px] flex items-end justify-center bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden sticky top-24">
+            <motion.img
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
+              src={recommendedCreators[selectedIndex]?.image}
+              alt={`${recommendedCreators[selectedIndex]?.name || 'クリエイター'}の立ち絵`}
+              className="relative z-10 max-h-[95%] object-contain drop-shadow-xl"
+            />
+          </div>
 
-                    {/* バナーの上に乗るテキストとボタン（mt-auto で一番下に押し下げています） */}
-                    <div className="relative z-10 p-8 md:p-12 mt-auto flex flex-col md:flex-row md:items-end justify-between gap-6 w-full">
-                      {/* タイトル */}
-                      <div className="border-l-4 border-blue-500 pl-6">
-                        <p
-                          className="text-blue-300 font-mono text-[10px] tracking-[0.3em] uppercase mb-2 drop-shadow-md"
-                          aria-hidden="true"
-                        >
-                          // Recommended
-                        </p>
-                        <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-lg">
-                          おすすめ
-                          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 ml-3">
-                            配信者 / クリエイター
-                          </span>
-                        </h2>
-                      </div>
+          {/* --- 右側：詳細情報エリア --- */}
+          <div className="lg:col-span-7 flex flex-col">
+            
+            {/* 🌟 情報カード：洗練されたクリーンデザイン */}
+            <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-sm h-full flex flex-col">
+              
+              {/* 活動範囲（タグ） */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {recommendedCreators[selectedIndex]?.scopes?.map((scope, i) => (
+                  <span 
+                    key={i} 
+                    className="px-3 py-1 bg-slate-50 text-slate-500 text-xs font-bold tracking-wider rounded-full border border-slate-200"
+                  >
+                    # {scope}
+                  </span>
+                ))}
+              </div>
 
-                      {/* 月別アーカイブセレクター */}
-                      <div className="flex gap-2 pb-1 overflow-x-auto no-scrollbar">
-                        {['6月', '7月', '8月'].map((month) => (
-                          <button
-                            key={month}
-                            className="px-6 py-2.5 text-xs font-bold rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none transition-all whitespace-nowrap shadow-sm"
-                          >
-                            {month}アーカイブ
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+              {/* 名前 */}
+              <h3 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">
+                {recommendedCreators[selectedIndex]?.name}
+              </h3>
 
-                  {/* メンバー選択タブ */}
-                  <div className="flex flex-wrap gap-2 mb-10 relative z-30">
-                    {recommendedCreators?.map((staff, idx) => {
-                      if (staff?.id === 'collective') return null;
-                      const isSelected = selectedIndex === idx;
-                      return (
-                        <button
-                          key={staff?.id || idx}
-                          onClick={() => setSelectedIndex(idx)}
-                          aria-current={isSelected ? 'true' : 'false'}
-                          className={`px-6 py-3 text-sm font-bold tracking-wide transition-all rounded-t-lg border-b-2 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:outline-none ${
-                            isSelected
-                              ? 'bg-white text-slate-900 border-blue-600 shadow-sm'
-                              : 'bg-transparent text-slate-400 border-transparent hover:bg-white/50 hover:text-slate-600'
-                          }`}
-                        >
-                          {staff?.name}
-                        </button>
-                      );
-                    })}
-                  </div>
+              {/* 区切り線（アクセントカラー） */}
+              <div className="w-12 h-1 bg-blue-600 rounded-full mb-8"></div>
 
-                  {/* メイン：ショーケース */}
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={selectedIndex}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+              {/* 紹介文 */}
+              <div className="mb-10 flex-grow">
+                <h4 className="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase mb-3">
+                  About
+                </h4>
+                <p className="text-slate-700 text-sm md:text-base leading-relaxed font-medium">
+                  {recommendedCreators[selectedIndex]?.description || '紹介文が設定されていません。'}
+                </p>
+              </div>
+
+              {/* 活動プラットフォーム */}
+              <div className="mt-auto pt-6 border-t border-slate-100">
+                <h4 className="text-xs font-bold text-slate-400 tracking-[0.2em] uppercase mb-4">
+                  Platforms
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {recommendedCreators[selectedIndex]?.platforms?.map((platform, i) => (
+                    <a
+                      key={i}
+                      href={platform.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-2 px-6 py-2.5 bg-slate-50 hover:bg-slate-900 text-slate-700 hover:text-white rounded-xl text-xs font-bold tracking-wide focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:outline-none transition-all duration-300 border border-slate-200 hover:border-slate-900"
                     >
-                      {/* --- 左側：立ち絵ビジュアル --- */}
-                      <div className="lg:col-span-5 relative h-[400px] md:h-[600px] flex items-end justify-center bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden sticky top-24">
-                        <motion.img
-                          initial={{ scale: 0.95, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ delay: 0.1, duration: 0.4 }}
-                          src={recommendedCreators[selectedIndex]?.image}
-                          alt={`${
-                            recommendedCreators[selectedIndex]?.name ||
-                            'クリエイター'
-                          }の立ち絵`}
-                          className="relative z-10 max-h-[95%] object-contain drop-shadow-xl"
-                        />
-                      </div>
-
-                      {/* --- 右側：詳細情報エリア --- */}
-                      <div className="lg:col-span-7 flex flex-col gap-6">
-                        {/* 一目でわかる属性タグ ＆ 名前 */}
-                        <div className="flex flex-col gap-3 mb-2">
-                          <div className="flex flex-wrap gap-2">
-                            <span className="px-4 py-1.5 bg-blue-100 text-blue-700 text-sm font-bold rounded-md shadow-sm">
-                              配信者
-                            </span>
-                            <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-bold rounded-md shadow-sm">
-                              クリエイター
-                            </span>
-                          </div>
-                          <h3 className="text-3xl md:text-4xl font-black text-slate-900">
-                            {recommendedCreators[selectedIndex]?.name}
-                          </h3>
-                        </div>
-
-                        {/* 鯖主のおすすめポイント */}
-                        <div className="relative p-6 bg-blue-50/50 border border-blue-100 rounded-xl">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 rounded-full overflow-hidden border border-white shadow-sm">
-                              <img
-                                src={adminList?.[0]?.image}
-                                alt="管理人"
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <p className="text-sm font-bold text-slate-700">
-                              鯖主のおすすめポイント
-                            </p>
-                          </div>
-                          <p className="text-slate-700 leading-relaxed font-medium">
-                            「
-                            {recommendedCreators[selectedIndex]?.name ||
-                              'この方'}
-                            さんは、とにかくリスナーとの距離感が天才的。特に今回の企画での立ち回りは、鯖主の俺も嫉妬するレベルで格好よかったです！絶対に一度は配信を覗いて損はないです！」
-                          </p>
-                        </div>
-
-                        {/* 基本プロフィールカード */}
-                        <div className="p-6 md:p-8 bg-white rounded-2xl border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-slate-200">
-                          <h4 className="text-xl font-bold text-slate-900 mb-4 pb-4 border-b border-slate-100">
-                            プロフィール
-                          </h4>
-
-                          <p className="text-slate-600 text-sm md:text-base leading-loose mb-8">
-                            {recommendedCreators[selectedIndex]?.profile ||
-                              'プロフィール情報がありません。'}
-                          </p>
-
-                          {/* SNSリンク */}
-                          <div className="flex flex-wrap gap-3">
-                            {Object.entries(
-                              recommendedCreators[selectedIndex]?.links || {}
-                            ).map(([platform, url]) => (
-                              <a
-                                key={platform}
-                                href={url as string}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-5 py-2.5 bg-slate-50 hover:bg-slate-900 text-slate-600 hover:text-white rounded-full text-xs font-bold tracking-wide focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:outline-none transition-colors border border-slate-200 hover:border-slate-900"
-                              >
-                                {platform}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
+                      {platform.name}
+                      <svg className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  ))}
                 </div>
-              </section>
-            )}
+              </div>
+
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  </section>
+)}
 
             {activePage === 'guidelines' && (
               <section className="pt-32 md:pt-40 pb-32 px-4 md:px-6 bg-[#FAFAFA] text-slate-900 min-h-screen relative overflow-hidden">
