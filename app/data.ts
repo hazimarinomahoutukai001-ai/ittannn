@@ -96,8 +96,8 @@ export const recommendedCreators: CreatorProfile[] = [
     image: '/ittannn/ookami.webp', 
     // ▼ ここで「このキャラ専用のベストポジション」を指定します！
     imageStyle: {
-      scale: 1.15,    // ちょっと大きめに表示
-      x: '10px',      // 右に10pxズラす
+      scale: 2.1,    // ちょっと大きめに表示
+      x: '50px',      // 右に10pxズラす
       y: '20px',      // 下に20pxズラす（足が浮いているのを直す等）
     },
     scopes: ['配信者', 'VTuber', 'モデレーター'],
