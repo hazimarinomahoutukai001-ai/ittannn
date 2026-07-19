@@ -1845,23 +1845,40 @@ export default function UltimateCommunitySite({
             />
           </div>
 
-          {/* --- 左側：立ち絵ビジュアル --- */}
+         {/* --- 左側：立ち絵ビジュアル --- */}
           <div className="lg:col-span-5 relative h-[450px] md:h-[650px] flex items-end justify-center pointer-events-none z-10">
-            {/* 🌟 キャラクターの横に添える「縦書き」のアクセント */}
+            {/* キャラクターの横に添える「縦書き」のアクセント */}
             <div className="absolute left-0 top-1/4 -translate-x-4 hidden md:flex items-center text-slate-300 font-black text-2xl tracking-[0.5em] select-none z-0" style={{ writingMode: 'vertical-rl' }}>
               {recommendedCreators[selectedIndex]?.id?.toUpperCase()}
             </div>
 
-            <motion.img
-              initial={{ scale: 0.95, opacity: 0, x: -20 }}
-              animate={{ scale: 1, opacity: 1, x: 0 }}
-              transition={{ delay: 0.1, duration: 0.5, type: 'spring' }}
-              src={recommendedCreators[selectedIndex]?.image}
-              alt={`${recommendedCreators[selectedIndex]?.name || 'クリエイター'}の立ち絵`}
-              className="relative z-10 max-w-[120%] max-h-[110%] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)] pointer-events-auto origin-bottom"
-            />
+            {/* 🌟 ここが変更点！データから位置・サイズ情報を取得してCSSに適用するラッパー */}
+            <div 
+              className="relative z-10 w-full h-full flex items-end justify-center pointer-events-auto"
+              style={{
+                // data.tsに設定があればそれを使い、無ければデフォルト(ズレなし・等倍)にする
+                transform: `
+                  translate(
+                    ${recommendedCreators[selectedIndex]?.imageStyle?.x || '0px'}, 
+                    ${recommendedCreators[selectedIndex]?.imageStyle?.y || '0px'}
+                  ) 
+                  scale(${recommendedCreators[selectedIndex]?.imageStyle?.scale || 1})
+                `,
+                transformOrigin: 'bottom center' // 足元を基準に拡大縮小する
+              }}
+            >
+              <motion.img
+                initial={{ scale: 0.95, opacity: 0, x: -20 }}
+                animate={{ scale: 1, opacity: 1, x: 0 }}
+                transition={{ delay: 0.1, duration: 0.5, type: 'spring' }}
+                src={recommendedCreators[selectedIndex]?.image}
+                alt={`${recommendedCreators[selectedIndex]?.name || 'クリエイター'}の立ち絵`}
+                // max-wやmax-hの制限を少し緩めて、scaleで自由に大きくできるように調整
+                className="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
+              />
+            </div>
           </div>
-
+          
           {/* --- 右側：詳細情報エリア --- */}
           <div className="lg:col-span-7 flex flex-col relative z-10 h-full justify-center">
             
