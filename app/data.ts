@@ -63,6 +63,13 @@ export const memoryItems = [
     videoId: '2553796570', // 👈 Twitchの動画IDを入れる！
     title: 'TSC3000人記念杯', // 👈 動画のタイトルを入れる！
   },
+  {
+    id: 'm4', // または m4 など
+    type: 'image',
+    src: '/ittannn/aruitimaie.webp',
+    title: 'いっぱいどうだい？', // 👈 動画のタイトルを入れる！
+  },
+  
 ];
 
 // データの型（TypeScriptを使っている場合）
