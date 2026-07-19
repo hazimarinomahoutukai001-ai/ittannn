@@ -1897,7 +1897,7 @@ export default function UltimateCommunitySite({
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-[2px] bg-blue-500"></div>
                 <h4 className="text-sm font-black text-slate-800 tracking-[0.2em] uppercase">
-                  Profile
+                  紹介文
                 </h4>
               </div>
               <p className="text-slate-600 text-base md:text-lg leading-loose font-medium pl-11">
