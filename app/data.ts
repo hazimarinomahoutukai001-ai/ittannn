@@ -80,7 +80,7 @@ export const recommendedCreators: CreatorProfile[] = [
   {
     id: 'wolf_yarou',
     name: '狼の野郎',
-    image: '/images/ookami.webp', // ※実際の立ち絵のパスに変更してください
+    image: '/ittannn/ookami.webp', // ※実際の立ち絵のパスに変更してください
     scopes: ['配信者', 'VTuber', 'モデレーター'],
     platforms: [
       { name: 'Twitch', url: 'https://twitch.tv/...' },
