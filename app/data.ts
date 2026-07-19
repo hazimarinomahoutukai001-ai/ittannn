@@ -72,33 +72,44 @@ export const memoryItems = [
   
 ];
 
-// データの型（TypeScriptを使っている場合）
+// 🌟 1. データの型をアップデート
 export interface CreatorProfile {
   id: string;
   name: string;
   image: string;
-  scopes: string[]; // 活動範囲（例: ['配信者', 'VTuber']）
-  platforms: { name: string; url: string }[]; // プラットフォーム
-  description: string; // 紹介文
+  // ▼ これを追加！（立ち絵の微調整用データ）
+  imageStyle?: {
+    scale: number; // 拡大縮小（1が基準。1.2なら120%）
+    x: string;     // 横のズレ（例: '20px', '-5%'）
+    y: string;     // 縦のズレ（例: '10px', '-20px'）
+  };
+  scopes: string[]; 
+  platforms: { name: string; url: string }[]; 
+  description: string; 
 }
 
-// 実際のデータ
+// 🌟 2. 実際のデータをアップデート
 export const recommendedCreators: CreatorProfile[] = [
   {
     id: 'wolf_yarou',
     name: '狼の野郎',
-    image: '/ittannn/ookami.webp', // ※実際の立ち絵のパスに変更してください
+    image: '/ittannn/ookami.webp', 
+    // ▼ ここで「このキャラ専用のベストポジション」を指定します！
+    imageStyle: {
+      scale: 1.15,    // ちょっと大きめに表示
+      x: '10px',      // 右に10pxズラす
+      y: '20px',      // 下に20pxズラす（足が浮いているのを直す等）
+    },
     scopes: ['配信者', 'VTuber', 'モデレーター'],
     platforms: [
       { name: 'Twitch', url: 'https://twitch.tv/...' },
       { name: 'YouTube', url: 'https://youtube.com/...' },
       { name: 'X (Twitter)', url: 'https://x.com/...' },
     ],
-    description: 'tFPSゲームを中心に、リスナーとの距離が近い参加型配信をメインに活動中！コミュニティの盛り上げ役として様々な企画にも顔を出しています。',
+    description: 'FPSゲームを中心に、リスナーとの距離が近い参加型配信をメインに活動中！コミュニティの盛り上げ役として様々な企画にも顔を出しています。',
   },
-  // ... 他のメンバーも同様に追加
+  // ... 他のメンバーも同様に追加（調整が不要なキャラは imageStyle を書かなくてもOKです）
 ];
-
 
 export const galleryItems = [
   {
