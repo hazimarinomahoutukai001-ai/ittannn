@@ -1754,8 +1754,9 @@ export default function UltimateCommunitySite({
                 </div>
               </section>
             )}
- {/* おすすめ配信者 一覧ページ */}
-       {activePage === 'profile' && (
+            
+  {/* おすすめ配信者 一覧ページ */}
+{activePage === 'profile' && (
   <section className="relative w-full min-h-screen bg-[#FAFAFA] overflow-hidden">
     {/* サイト全体の背景（ドット） */}
     <div
@@ -1825,109 +1826,115 @@ export default function UltimateCommunitySite({
         })}
       </div>
 
-      {/* メイン：ショーケース */}
+      {/* メイン：ショーケース（🌟 ここが丸ごとゲーム風UIになっています！） */}
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedIndex}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+          exit={{ opacity: 0, y: -15 }}
+          transition={{ duration: 0.4 }}
+          className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-white rounded-[40px] shadow-sm border border-slate-100 overflow-hidden p-6 md:p-10"
         >
-          {/* 🌟 左側：立ち絵ビジュアル（箱を消して、空間に立たせました！） */}
-          <div className="lg:col-span-5 relative h-[450px] md:h-[650px] flex items-end justify-center sticky top-24 pointer-events-none">
+          {/* 🌟 背景の巨大な透かし立ち絵（ウォーターマーク） */}
+          <div className="absolute top-0 left-[-20%] w-[80%] h-full opacity-[0.04] pointer-events-none overflow-hidden z-0">
+            <img
+              src={recommendedCreators[selectedIndex]?.image}
+              alt="Background Watermark"
+              className="w-full h-full object-cover object-top grayscale scale-150 transform -translate-y-10"
+            />
+          </div>
+
+          {/* --- 左側：立ち絵ビジュアル --- */}
+          <div className="lg:col-span-5 relative h-[450px] md:h-[650px] flex items-end justify-center pointer-events-none z-10">
+            {/* 🌟 キャラクターの横に添える「縦書き」のアクセント */}
+            <div className="absolute left-0 top-1/4 -translate-x-4 hidden md:flex items-center text-slate-300 font-black text-2xl tracking-[0.5em] select-none z-0" style={{ writingMode: 'vertical-rl' }}>
+              {recommendedCreators[selectedIndex]?.id?.toUpperCase()}
+            </div>
+
             <motion.img
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
+              initial={{ scale: 0.95, opacity: 0, x: -20 }}
+              animate={{ scale: 1, opacity: 1, x: 0 }}
               transition={{ delay: 0.1, duration: 0.5, type: 'spring' }}
               src={recommendedCreators[selectedIndex]?.image}
               alt={`${recommendedCreators[selectedIndex]?.name || 'クリエイター'}の立ち絵`}
-              className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] pointer-events-auto"
+              className="relative z-10 max-w-[120%] max-h-[110%] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)] pointer-events-auto origin-bottom"
             />
           </div>
 
           {/* --- 右側：詳細情報エリア --- */}
-          <div className="lg:col-span-7 flex flex-col">
+          <div className="lg:col-span-7 flex flex-col relative z-10 h-full justify-center">
             
-            {/* 🌟 情報カード：洗練されたクリーンデザイン */}
-            <div className="bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-full flex flex-col relative overflow-hidden">
+            {/* 🌟 名前と役職の「タイトルバナー」 */}
+            <div className="bg-gradient-to-r from-slate-900 to-slate-700 rounded-2xl p-6 md:p-8 mb-8 text-white shadow-lg relative overflow-hidden">
+              {/* バナー内のキラキラした装飾 */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2"></div>
               
-              {/* 背景の薄い装飾文字（IDを透かして配置） */}
-              <div className="absolute top-[-20px] right-[-20px] text-slate-100 font-black text-8xl uppercase tracking-tighter opacity-60 select-none pointer-events-none z-0">
-                {recommendedCreators[selectedIndex]?.id?.substring(0, 5)}
-              </div>
-
-              <div className="relative z-10 flex flex-col h-full">
-                {/* 活動範囲（タグを黒で引き締めました） */}
-                <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-col gap-2 relative z-10">
+                <div className="flex flex-wrap gap-2 mb-1">
                   {recommendedCreators[selectedIndex]?.scopes?.map((scope, i) => (
                     <span 
                       key={i} 
-                      className="px-4 py-1.5 bg-slate-900 text-white text-[11px] font-bold tracking-[0.2em] uppercase rounded-full shadow-sm"
+                      className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold tracking-[0.2em] uppercase rounded-full border border-white/10"
                     >
                       {scope}
                     </span>
                   ))}
                 </div>
-
-                {/* 名前とID */}
-                <div className="mb-8">
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-700 to-slate-500 tracking-tight mb-2 pb-1">
+                <div className="flex items-end gap-4">
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight drop-shadow-md">
                     {recommendedCreators[selectedIndex]?.name}
                   </h3>
-                  <p className="text-slate-400 font-mono text-sm tracking-[0.3em] uppercase">
-                    ID : {recommendedCreators[selectedIndex]?.id}
-                  </p>
-                </div>
-
-                {/* 区切り線（アクセントカラーのグラデーション） */}
-                <div className="w-16 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full mb-8"></div>
-
-                {/* 紹介文 */}
-                <div className="mb-10 flex-grow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                    <h4 className="text-xs font-bold text-slate-400 tracking-[0.25em] uppercase">
-                      Profile
-                    </h4>
-                  </div>
-                  <p className="text-slate-600 text-sm md:text-base leading-loose font-medium">
-                    {recommendedCreators[selectedIndex]?.description || '紹介文が設定されていません。'}
-                  </p>
-                </div>
-
-                {/* 活動プラットフォーム */}
-                <div className="mt-auto pt-8 border-t border-slate-100">
-                  <h4 className="text-xs font-bold text-slate-400 tracking-[0.25em] uppercase mb-4">
-                    Official Links
-                  </h4>
-                  <div className="flex flex-wrap gap-3">
-                    {recommendedCreators[selectedIndex]?.platforms?.map((platform, i) => (
-                      <a
-                        key={i}
-                        href={platform.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center gap-3 px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 rounded-2xl text-xs font-bold tracking-widest uppercase focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:outline-none transition-all duration-300 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md hover:-translate-y-1"
-                      >
-                        {platform.name}
-                        <svg className="w-4 h-4 text-blue-500 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                    ))}
-                  </div>
+                  <span className="text-slate-300 font-bold tracking-widest uppercase text-sm mb-2 hidden md:block">
+                    {recommendedCreators[selectedIndex]?.id}
+                  </span>
                 </div>
               </div>
-              
             </div>
+
+            {/* 紹介文 */}
+            <div className="mb-10 px-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[2px] bg-blue-500"></div>
+                <h4 className="text-sm font-black text-slate-800 tracking-[0.2em] uppercase">
+                  Profile
+                </h4>
+              </div>
+              <p className="text-slate-600 text-base md:text-lg leading-loose font-medium pl-11">
+                {recommendedCreators[selectedIndex]?.description || '紹介文が設定されていません。'}
+              </p>
+            </div>
+
+            {/* 活動プラットフォーム */}
+            <div className="mt-auto pt-6 px-2">
+              <h4 className="text-xs font-bold text-slate-400 tracking-[0.25em] uppercase mb-4 pl-11">
+                Official Links
+              </h4>
+              <div className="flex flex-wrap gap-3 pl-11">
+                {recommendedCreators[selectedIndex]?.platforms?.map((platform, i) => (
+                  <a
+                    key={i}
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-2 px-5 py-2.5 bg-white text-slate-700 rounded-xl text-xs font-bold tracking-widest uppercase focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none transition-all duration-300 border-2 border-slate-200 hover:border-blue-500 hover:text-blue-600 hover:-translate-y-1 shadow-sm hover:shadow-md"
+                  >
+                    {platform.name}
+                    <svg className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+            
           </div>
         </motion.div>
       </AnimatePresence>
+
     </div>
   </section>
-)}
+)}   
 
             {activePage === 'guidelines' && (
               <section className="pt-32 md:pt-40 pb-32 px-4 md:px-6 bg-[#FAFAFA] text-slate-900 min-h-screen relative overflow-hidden">
